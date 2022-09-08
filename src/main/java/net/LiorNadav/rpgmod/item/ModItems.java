@@ -3,6 +3,8 @@ package net.LiorNadav.rpgmod.item;
 import net.LiorNadav.rpgmod.RPGMod;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,6 +19,12 @@ public class ModItems {
     public static final RegistryObject<Item> RED_INGOT = ITEMS.register("red_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+
+    //Weapons:
+
+    public static final RegistryObject<Item> STARTER_DAGGER = ITEMS.register("starter_dagger",
+            () -> new SwordItem(Tiers.STONE, 3, -2f,
+                    new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
     }
