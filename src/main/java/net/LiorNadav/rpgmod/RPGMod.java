@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod;
 
 import com.mojang.logging.LogUtils;
+import net.LiorNadav.rpgmod.block.ModBlocks;
 import net.LiorNadav.rpgmod.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,6 +26,7 @@ public class RPGMod
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);

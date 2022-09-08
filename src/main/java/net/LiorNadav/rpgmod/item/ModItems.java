@@ -12,9 +12,9 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, RPGMod.MOD_ID);
 
-    public static final RegistryObject<Item> BLUE_INGOT = ITEMS.register("blueingot",
+    public static final RegistryObject<Item> BLUE_INGOT = ITEMS.register("blue_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-    public static final RegistryObject<Item> RED_INGOT = ITEMS.register("redingot",
+    public static final RegistryObject<Item> RED_INGOT = ITEMS.register("red_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static void register(IEventBus eventbus){

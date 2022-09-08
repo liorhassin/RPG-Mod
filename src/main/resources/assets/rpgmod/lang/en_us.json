@@ -1,4 +1,6 @@
 {
-  "item.rpgmod.blueingot": "Blue Ingot",
-  "item.rpgmod.redingot": "Red Ingot"
+  "item.rpgmod.blue_ingot": "Blue Ingot",
+  "item.rpgmod.red_ingot": "Red Ingot",
+  "block.rpgmod.blue_ore": "Blue Ore",
+  "block.rpgmod.red_ore": "Red Ore"
 }
