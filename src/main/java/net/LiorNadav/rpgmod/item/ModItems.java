@@ -14,14 +14,15 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, RPGMod.MOD_ID);
 
+
+    //-------------- Ingots ---------------
     public static final RegistryObject<Item> BLUE_INGOT = ITEMS.register("blue_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final RegistryObject<Item> RED_INGOT = ITEMS.register("red_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 
-    //Weapons:
-
+    //----------- Weapons -------------
     public static final RegistryObject<Item> STARTER_DAGGER = ITEMS.register("starter_dagger",
             () -> new SwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
