@@ -3,5 +3,7 @@
   "item.rpgmod.red_ingot": "Red Ingot",
   "block.rpgmod.blue_ore": "Blue Ore",
   "block.rpgmod.red_ore": "Red Ore",
-  "item.rpgmod.starter_dagger": "Starter Dagger"
+  "item.rpgmod.starter_dagger": "Starter Dagger",
+  "item.rpgmod.beginner_broadsword": "Beginner Broadsword",
+  "item.rpgmod.beginner_battle_axe": "Beginner Battle Axe"
 }
