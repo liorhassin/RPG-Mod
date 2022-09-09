@@ -26,6 +26,14 @@ public class ModItems {
     public static final RegistryObject<Item> STARTER_DAGGER = ITEMS.register("starter_dagger",
             () -> new SwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
+            () -> new SwordItem(Tiers.STONE, 3, -2f,
+                    new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe",
+            () -> new SwordItem(Tiers.STONE, 5, -3f,
+                    new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
     }
