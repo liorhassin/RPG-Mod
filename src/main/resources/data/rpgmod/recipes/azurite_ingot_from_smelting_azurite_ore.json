@@ -2,9 +2,9 @@
   "type": "minecraft:smelting",
   "cookingtime": 200,
   "experience": 0.7,
-  "group": "red_ingot",
+  "group": "azurite_ingot",
   "ingredient": {
-    "item": "rpgmod:red_ore"
+    "item": "rpgmod:azurite_ore"
   },
-  "result": "rpgmod:red_ingot"
+  "result": "rpgmod:azurite_ingot"
 }

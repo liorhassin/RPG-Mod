@@ -14,13 +14,20 @@ public class ModPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
             DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, RPGMod.MOD_ID);
 
-    public static final RegistryObject<PlacedFeature> BLUE_ORE_PLACED = PLACED_FEATURES.register("blue_ore_placed",
-            () -> new PlacedFeature(ModConfiguredFeatures.BLUE_ORE.getHolder().get(),
+    //Setting place feature of ore blocks:
+    //------------------------------------
+    public static final RegistryObject<PlacedFeature> AZURITE_ORE_PLACED = PLACED_FEATURES.register("azurite_ore_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.AZURITE_ORE.getHolder().get(),
                     commonOrePlacement(12, // VeinsPerChunk
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(200)))));
 
-    public static final RegistryObject<PlacedFeature> RED_ORE_PLACED = PLACED_FEATURES.register("red_ore_placed",
-            () -> new PlacedFeature(ModConfiguredFeatures.RED_ORE.getHolder().get(),
+    public static final RegistryObject<PlacedFeature> ADAMANTITE_ORE_PLACED = PLACED_FEATURES.register("adamantite_ore_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.ADAMANTITE_ORE.getHolder().get(),
+                    commonOrePlacement(12, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(200)))));
+
+    public static final RegistryObject<PlacedFeature> JADEITE_ORE_PLACED = PLACED_FEATURES.register("jadeite_ore_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.JADEITE_ORE.getHolder().get(),
                     commonOrePlacement(12, // VeinsPerChunk
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(200)))));
 

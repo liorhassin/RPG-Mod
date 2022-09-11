@@ -16,11 +16,12 @@ public class ModItems {
 
 
     //-------------- Ingots ---------------
-    public static final RegistryObject<Item> BLUE_INGOT = ITEMS.register("blue_ingot",
+    public static final RegistryObject<Item> AZURITE_INGOT = ITEMS.register("azurite_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-    public static final RegistryObject<Item> RED_INGOT = ITEMS.register("red_ingot",
+    public static final RegistryObject<Item> ADAMANTITE_INGOT = ITEMS.register("adamantite_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-
+    public static final RegistryObject<Item> JADEITE_INGOT = ITEMS.register("jadeite_ingot",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     //----------- Weapons -------------
     public static final RegistryObject<Item> STARTER_DAGGER = ITEMS.register("starter_dagger",

@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "rpgmod:block/red_ore"
+    "all": "rpgmod:block/azurite_ore"
   }
 }

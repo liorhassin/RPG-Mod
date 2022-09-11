@@ -1,8 +1,10 @@
 {
-  "item.rpgmod.blue_ingot": "Blue Ingot",
-  "item.rpgmod.red_ingot": "Red Ingot",
-  "block.rpgmod.blue_ore": "Blue Ore",
-  "block.rpgmod.red_ore": "Red Ore",
+  "item.rpgmod.azurite_ingot": "Azurite Ingot",
+  "item.rpgmod.adamantite_ingot": "Adamantite Ingot",
+  "item.rpgmod.jadeite_ingot": "Jadeite Ingot",
+  "block.rpgmod.azurite_ore": "Azurite Ore",
+  "block.rpgmod.adamantite_ore": "Adamantite Ore",
+  "block.rpgmod.jadeite_ore": "Jadeite Ore",
   "item.rpgmod.starter_dagger": "Starter Dagger",
   "item.rpgmod.beginner_broadsword": "Beginner Broadsword",
   "item.rpgmod.beginner_battle_axe": "Beginner Battle Axe"

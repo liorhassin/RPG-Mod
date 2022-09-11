@@ -19,11 +19,15 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, RPGMod.MOD_ID);
 
-    public static final RegistryObject<Block> BLUE_ORE = registerBlock("blue_ore",
+    public static final RegistryObject<Block> AZURITE_ORE = registerBlock("azurite_ore",
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
 
-    public static final RegistryObject<Block> RED_ORE = registerBlock("red_ore",
+    public static final RegistryObject<Block> ADAMANTITE_ORE = registerBlock("adamantite_ore",
+            ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(4f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+
+    public static final RegistryObject<Block> JADEITE_ORE = registerBlock("jadeite_ore",
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
 
