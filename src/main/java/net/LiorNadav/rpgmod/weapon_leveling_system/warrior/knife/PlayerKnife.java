@@ -23,8 +23,10 @@ public class PlayerKnife{
     }
 
     public void addLevel(int level){
-        knifeLevel = Math.min(knifeLevel + level, MAX_LEVEL);
-        knifeExperience = 0;
+        if (level >= 0) {
+            knifeLevel = Math.min(knifeLevel + level, MAX_LEVEL);
+            knifeExperience = 0;
+        }
     }
 
     public void setKnifeLevel(int level){
@@ -34,6 +36,12 @@ public class PlayerKnife{
         }
         else{
             //Log output with wrong level given, levels of knife can be set between 1-10.
+        }
+    }
+
+    public void setKnifeExperience(int experience){
+        if(experience >= 0){
+            knifeExperience = experience;
         }
     }
 

@@ -1,7 +1,6 @@
 package net.LiorNadav.rpgmod.networking;
 
 import net.LiorNadav.rpgmod.RPGMod;
-import net.LiorNadav.rpgmod.networking.packet.ExampleC2SPacket;
 import net.LiorNadav.rpgmod.networking.packet.KnifeLevelC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;

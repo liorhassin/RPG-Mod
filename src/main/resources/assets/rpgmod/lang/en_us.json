@@ -11,6 +11,5 @@
   "key.category.rpgmod": "RPG Mod",
   "key.rpgmod.guide_book": "Open guide book",
   "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
-  "itemGroup.rpgmod_items_tab": "RPG Items",
-  "message.rpgmod.knife_level": "Knife Level: "
+  "itemGroup.rpgmod_items_tab": "RPG Items"
 }

@@ -16,7 +16,6 @@ import java.util.function.Supplier;
 //C2S meaning Client To Server.
 public class KnifeLevelC2SPacket {
 
-    private static final String MESSAGE_KNIFE_LEVEL = "message.rpgmod.knife_level";
     public KnifeLevelC2SPacket(){
 
     }
@@ -44,7 +43,9 @@ public class KnifeLevelC2SPacket {
             //player.sendSystemMessage(Component.literal("Knife level: ").withStyle(ChatFormatting.DARK_GREEN));
 
             player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                player.sendSystemMessage(Component.literal("Knife Experience: " + knifeExperience.getKnifeExperience() + "Knife level: " + knifeExperience.getKnifeLevel()));
+                player.sendSystemMessage(Component.literal("Knife Experience: "
+                        + knifeExperience.getKnifeExperience()
+                        + ", Knife level: " + knifeExperience.getKnifeLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });
         });
         return true;
