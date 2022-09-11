@@ -3,6 +3,7 @@ package net.LiorNadav.rpgmod;
 import com.mojang.logging.LogUtils;
 import net.LiorNadav.rpgmod.block.ModBlocks;
 import net.LiorNadav.rpgmod.item.ModItems;
+import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,7 +38,7 @@ public class RPGMod
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        ModMessages.register();
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

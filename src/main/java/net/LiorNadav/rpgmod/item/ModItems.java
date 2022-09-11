@@ -1,7 +1,6 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
@@ -17,24 +16,24 @@ public class ModItems {
 
     //-------------- Ingots ---------------
     public static final RegistryObject<Item> AZURITE_INGOT = ITEMS.register("azurite_ingot",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> ADAMANTITE_INGOT = ITEMS.register("adamantite_ingot",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> JADEITE_INGOT = ITEMS.register("jadeite_ingot",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
     //----------- Weapons -------------
-    public static final RegistryObject<Item> STARTER_DAGGER = ITEMS.register("starter_dagger",
+    public static final RegistryObject<Item> STARTER_KNIFE = ITEMS.register("starter_knife",
             () -> new SwordItem(Tiers.STONE, 3, -2f,
-                    new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
 
     public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
             () -> new SwordItem(Tiers.STONE, 3, -2f,
-                    new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
 
     public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe",
             () -> new SwordItem(Tiers.STONE, 5, -3f,
-                    new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
     }

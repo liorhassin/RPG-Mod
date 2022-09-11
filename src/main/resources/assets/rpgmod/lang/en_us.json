@@ -5,7 +5,11 @@
   "block.rpgmod.azurite_ore": "Azurite Ore",
   "block.rpgmod.adamantite_ore": "Adamantite Ore",
   "block.rpgmod.jadeite_ore": "Jadeite Ore",
-  "item.rpgmod.starter_dagger": "Starter Dagger",
+  "item.rpgmod.starter_knife": "Starter Knife",
   "item.rpgmod.beginner_broadsword": "Beginner Broadsword",
-  "item.rpgmod.beginner_battle_axe": "Beginner Battle Axe"
+  "item.rpgmod.beginner_battle_axe": "Beginner Battle Axe",
+  "key.category.rpgmod": "RPG Mod",
+  "key.rpgmod.guide_book": "Open guide book",
+  "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
+  "itemGroup.rpgmod_items_tab": "RPG Items"
 }
