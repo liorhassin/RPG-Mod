@@ -1,7 +1,5 @@
 package net.LiorNadav.rpgmod.networking.packet;
 
-
-import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnife;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;

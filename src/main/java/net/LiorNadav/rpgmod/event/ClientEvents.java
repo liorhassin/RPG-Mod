@@ -2,8 +2,6 @@ package net.LiorNadav.rpgmod.event;
 
 import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.util.KeyBinding;
-import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;

@@ -1,6 +1,5 @@
 package net.LiorNadav.rpgmod.networking.packet;
 
-
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
