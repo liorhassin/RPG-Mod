@@ -2,21 +2,17 @@ package net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife;
 
 import net.minecraft.nbt.CompoundTag;
 
-public class PlayerKnife {
+public class PlayerKnife{
     private int knifeLevel; //
     private int knifeExperience; //
-    private final int [] knifeExperienceRequirement = new int[10];
-    private final int MIN_LEVEL = 1;
-    private final int MAX_LEVEL = 10;
-
-    public float getKnifeLevel(){
-        return knifeLevel;
-    }
+    private final int [] knifeExperienceRequirement = {10,20,30,40,50,60,70,80,90,100,100,100,100,100,100,100,100,100,100,100,100,100,100};
+    private final int MIN_LEVEL = 0;
+    private final int MAX_LEVEL = 20;
 
     public void addExperience(int add){
-        if (knifeLevel < 10 && add > 0) {
+        if (knifeLevel < MAX_LEVEL && add > 0) {
             if (knifeExperience + add >= knifeExperienceRequirement[knifeLevel]) {
-                int remainingAdd = add - knifeExperienceRequirement[knifeLevel] - knifeExperience;
+                int remainingAdd = add - (knifeExperienceRequirement[knifeLevel] - knifeExperience);
                 addLevel(1);
                 addExperience(remainingAdd);
             }
@@ -47,6 +43,14 @@ public class PlayerKnife {
         for(int i = 0; i < MAX_LEVEL; i++){
             knifeExperienceRequirement[i] = startingExperience * (i + 1);
         }
+    }
+
+    public int getKnifeExperience() {
+        return knifeExperience;
+    }
+
+    public float getKnifeLevel(){
+        return knifeLevel;
     }
 
     public void copyFrom(PlayerKnife source){

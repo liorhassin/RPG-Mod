@@ -1,6 +1,9 @@
 package net.LiorNadav.rpgmod.event;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.networking.ModMessages;
+import net.LiorNadav.rpgmod.networking.packet.ExampleC2SPacket;
+import net.LiorNadav.rpgmod.networking.packet.KnifeLevelC2SPacket;
 import net.LiorNadav.rpgmod.util.KeyBinding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
