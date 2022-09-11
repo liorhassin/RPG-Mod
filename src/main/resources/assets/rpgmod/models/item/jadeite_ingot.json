@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "rpgmod:item/red_ingot"
+    "layer0": "rpgmod:item/jadeite_ingot"
   }
 }

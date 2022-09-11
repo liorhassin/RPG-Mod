@@ -2,9 +2,9 @@
   "type": "minecraft:smelting",
   "cookingtime": 200,
   "experience": 0.7,
-  "group": "blue_ingot",
+  "group": "jadeite_ingot",
   "ingredient": {
-    "item": "rpgmod:blue_ore"
+    "item": "rpgmod:jadeite_ore"
   },
-  "result": "rpgmod:blue_ingot"
+  "result": "rpgmod:jadeite_ingot"
 }

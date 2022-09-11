@@ -1,6 +1,7 @@
 {
   "values": [
-    "rpgmod:blue_ore",
-    "rpgmod:red_ore"
+    "rpgmod:azurite_ore",
+    "rpgmod:adamantite_ore",
+    "rpgmod:jadeite_ore"
   ]
 }

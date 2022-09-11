@@ -19,23 +19,33 @@ public class ModConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
             DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, RPGMod.MOD_ID);
 
-    //"STONE_ORE_REPLACEABLES" meaning "BLUE_ORE" will only be able to replace Stone blocks
-    public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_BLUE_ORES = Suppliers.memoize(() -> List.of(
-            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.BLUE_ORE.get().defaultBlockState()),
-            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.BLUE_ORE.get().defaultBlockState())));
+    //Ore spawn zones:
+    //----------------
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_AZURITE_ORES = Suppliers.memoize(() -> List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.AZURITE_ORE.get().defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.AZURITE_ORE.get().defaultBlockState())));
             //If we want ore to spawn in special type of block
             //OreConfiguration.target(new BlockMatchTest(Blocks.END_STONE), ModBlocks.BLUE_ORE.get().defaultBlockState()
 
-    public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_RED_ORES = Suppliers.memoize(()-> List.of(
-            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.RED_ORE.get().defaultBlockState()),
-            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.RED_ORE.get().defaultBlockState())));
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_ADAMANTITE_ORES = Suppliers.memoize(()-> List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.ADAMANTITE_ORE.get().defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.ADAMANTITE_ORE.get().defaultBlockState())));
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> BLUE_ORE = CONFIGURED_FEATURES.register("blue_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_BLUE_ORES.get(),4)));
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_JADEITE_ORES = Suppliers.memoize(()-> List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.JADEITE_ORE.get().defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.JADEITE_ORE.get().defaultBlockState())));
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> RED_ORE = CONFIGURED_FEATURES.register("red_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_RED_ORES.get(), 4)));
 
+    //Ore registry:
+    //-------------
+    public static final RegistryObject<ConfiguredFeature<?, ?>> AZURITE_ORE = CONFIGURED_FEATURES.register("azurite_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_AZURITE_ORES.get(),4)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ADAMANTITE_ORE = CONFIGURED_FEATURES.register("adamantite_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_ADAMANTITE_ORES.get(), 4)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> JADEITE_ORE = CONFIGURED_FEATURES.register("jadeite_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_JADEITE_ORES.get(), 4)));
     public static void register(IEventBus eventBus){
         CONFIGURED_FEATURES.register(eventBus);
     }
