@@ -5,9 +5,11 @@ import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.LiorNadav.rpgmod.networking.packet.KnifeLevelC2SPacket;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnife;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -44,11 +46,15 @@ public class ModEvents {
     //---------------------------------------General Events----------------------------------------------
     @SubscribeEvent
     public static void onEnemyHit(LivingHurtEvent event){
-        if (event.getSource().getEntity() instanceof Player){
-            event.getSource().getEntity().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                knifeExperience.addExperience((int)event.getAmount());
-                ModMessages.sendToServer(new KnifeLevelC2SPacket());
-            });
+        Entity player = event.getSource().getEntity();
+        if (player instanceof Player){
+            String mainItemName = ((Player) player).getMainHandItem().getItem().toString();
+            if (mainItemName.equals("starter_knife")){
+                event.getSource().getEntity().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                    knifeExperience.addExperience((int)event.getAmount());
+                    ModMessages.sendToServer(new KnifeLevelC2SPacket());
+                });
+            }
         }
         //.getSource will help determine which weapon actually hit/killed the mob
     }

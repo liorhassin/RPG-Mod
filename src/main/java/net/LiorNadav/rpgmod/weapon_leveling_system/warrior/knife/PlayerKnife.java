@@ -57,7 +57,7 @@ public class PlayerKnife{
         return knifeExperience;
     }
 
-    public float getKnifeLevel(){
+    public int getKnifeLevel(){
         return knifeLevel;
     }
 
