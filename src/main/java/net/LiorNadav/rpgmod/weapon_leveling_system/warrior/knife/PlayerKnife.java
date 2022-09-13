@@ -5,9 +5,22 @@ import net.minecraft.nbt.CompoundTag;
 public class PlayerKnife{
     private int knifeLevel; //
     private int knifeExperience; //
-    private final int [] knifeExperienceRequirement = {10,20,30,40,50,60,70,80,90,100,100,100,100,100,100,100,100,100,100,100,100,100,100};
+    private final int [] knifeExperienceRequirement;
     private final int MIN_LEVEL = 0;
-    private final int MAX_LEVEL = 20;
+    private final int MAX_LEVEL = 10;
+
+    public PlayerKnife(){
+        knifeExperienceRequirement = new int[MAX_LEVEL];
+        resetExperienceArray(knifeExperienceRequirement);
+    }
+
+    private void resetExperienceArray(int[] arr){
+        int amount = 10;
+        arr[0] = amount;
+        for(int i = 1; i < arr.length; i++){
+            arr[i] = arr[i - 1] + (int) (amount * (1 + ((double) i / 10)));
+        }
+    }
 
     public void addExperience(int add){
         if (knifeLevel < MAX_LEVEL && add > 0) {
@@ -45,21 +58,11 @@ public class PlayerKnife{
         }
     }
 
-    //Method to build array of experience required for each knife level.
-    public void buildExperienceRequirementArr(){
-        int startingExperience = 100;
-        for(int i = 0; i < MAX_LEVEL; i++){
-            knifeExperienceRequirement[i] = startingExperience * (i + 1);
-        }
-    }
-
     public int getKnifeExperience() {
         return knifeExperience;
     }
 
-    public int getKnifeLevel(){
-        return knifeLevel;
-    }
+    public int getKnifeLevel() { return knifeLevel; }
 
     public void copyFrom(PlayerKnife source){
         knifeLevel = source.knifeLevel;

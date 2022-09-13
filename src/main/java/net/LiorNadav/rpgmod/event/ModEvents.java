@@ -56,6 +56,13 @@ public class ModEvents {
                     });
                     break;
 
+                case "beginner_broadsword":
+                    player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                        knifeExperience.addExperience((int)event.getAmount() * 2);
+                        ModMessages.sendToServer(new KnifeLevelC2SPacket());
+                    });
+                    break;
+
                 case "apple":
                     player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                         knifeExperience.addExperience(5);

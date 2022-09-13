@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "rpgmod:starter_dagger"
+      "item": "rpgmod:starter_knife"
     },
     "X": {
       "item": "rpgmod:adamantite_ingot"
