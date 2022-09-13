@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.item.custom.BeginnerBroadSwordItem;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
@@ -13,6 +14,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, RPGMod.MOD_ID);
+    //-------------- Items ---------------
+
 
 
     //-------------- Ingots ---------------
@@ -29,7 +32,7 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
 
     public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
-            () -> new SwordItem(Tiers.STONE, 3, -2f,
+            () -> new BeginnerBroadSwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
 
     public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe",

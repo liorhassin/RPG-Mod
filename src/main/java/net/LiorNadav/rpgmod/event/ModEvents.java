@@ -8,7 +8,9 @@ import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProv
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -65,11 +67,12 @@ public class ModEvents {
 
                 case "apple":
                     player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                        knifeExperience.addExperience(5);
+                        knifeExperience.addExperience(1000);
                         ModMessages.sendToServer(new KnifeLevelC2SPacket());
                     });
                     break;
             }
         }
     }
+
 }

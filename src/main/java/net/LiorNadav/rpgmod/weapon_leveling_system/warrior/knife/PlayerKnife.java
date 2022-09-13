@@ -54,7 +54,6 @@ public class PlayerKnife{
 
     public void setKnifeExperience(int experience){
         if(experience >= 0){
-
             knifeExperience = experience;
         }
     }
