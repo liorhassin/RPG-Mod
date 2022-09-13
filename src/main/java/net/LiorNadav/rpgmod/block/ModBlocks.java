@@ -33,6 +33,10 @@ public class ModBlocks {
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
 
+    public static final RegistryObject<Block> PORTAL_BLOCK = registerBlock("portal_block",
+            ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
+
     public static final RegistryObject<Block> KAUPEN_PORTAL = registerBlockWithoutBlockItem("kaupen_portal",
             KJPortalBlock::new);
 
