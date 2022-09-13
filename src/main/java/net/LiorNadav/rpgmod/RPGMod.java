@@ -4,9 +4,10 @@ import com.mojang.logging.LogUtils;
 import net.LiorNadav.rpgmod.block.ModBlocks;
 import net.LiorNadav.rpgmod.item.ModItems;
 import net.LiorNadav.rpgmod.networking.ModMessages;
+import net.LiorNadav.rpgmod.villager.ModPOIs;
+import net.LiorNadav.rpgmod.world.dimension.ModDimensions;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
-import net.LiorNadav.rpgmod.world.structure.ModStructures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -34,8 +35,8 @@ public class RPGMod
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
-
-        ModStructures.register(modEventBus);
+        ModDimensions.register();
+        ModPOIs.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

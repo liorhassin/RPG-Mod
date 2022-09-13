@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.block;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.block.custom.KJPortalBlock;
 import net.LiorNadav.rpgmod.item.ModCreativeModeTab;
 import net.LiorNadav.rpgmod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -32,6 +33,9 @@ public class ModBlocks {
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
 
+    public static final RegistryObject<Block> KAUPEN_PORTAL = registerBlockWithoutBlockItem("kaupen_portal",
+            KJPortalBlock::new);
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn, tab);
@@ -45,5 +49,9 @@ public class ModBlocks {
 
     public static void register(IEventBus eventBus){
         BLOCKS.register(eventBus);
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
     }
 }

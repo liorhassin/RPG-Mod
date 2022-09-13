@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.item.custom.CatalystItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
@@ -31,9 +32,12 @@ public class ModItems {
             () -> new SwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
 
-    public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe",
-            () -> new SwordItem(Tiers.STONE, 5, -3f,
-                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
+    //public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe",
+     //       () -> new SwordItem(Tiers.STONE, 5, -3f,
+     //               new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS)));
+
+    public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe", CatalystItem::new);
+
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
     }
