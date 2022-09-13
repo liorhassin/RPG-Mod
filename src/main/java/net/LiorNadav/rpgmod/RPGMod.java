@@ -6,6 +6,7 @@ import net.LiorNadav.rpgmod.item.ModItems;
 import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
+import net.LiorNadav.rpgmod.world.structure.ModStructures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,7 +23,7 @@ public class RPGMod
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "rpgmod";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
     public RPGMod()
@@ -33,6 +34,8 @@ public class RPGMod
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
+
+        ModStructures.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
