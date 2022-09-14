@@ -26,6 +26,17 @@ public class ModItems {
     public static final RegistryObject<Item> JADEITE_INGOT = ITEMS.register("jadeite_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
+    //-------------- Dusts ---------------
+    public static final RegistryObject<Item> AZURITE_DUST = ITEMS.register("azurite_dust",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> ADAMANTITE_DUST = ITEMS.register("adamantite_dust",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> JADEITE_DUST = ITEMS.register("jadeite_dust",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> MIX_DUST = ITEMS.register("mix_dust",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+
+
     //----------- Weapons -------------
     public static final RegistryObject<Item> STARTER_KNIFE = ITEMS.register("starter_knife",
             () -> new SwordItem(Tiers.STONE, 3, -2f,

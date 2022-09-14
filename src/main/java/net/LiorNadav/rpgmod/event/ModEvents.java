@@ -15,7 +15,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -35,11 +34,31 @@ public class ModEvents {
     public static void addCustomTrades(VillagerTradesEvent event){
         if(event.getType() == ModVillagers.DARK_MAGE.get()) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-            ItemStack stack = new ItemStack(ModItems.AZURITE_INGOT.get(), 15);
+            ItemStack stack = new ItemStack(ModItems.AZURITE_DUST.get(), 1);
             int villagerLevel = 1;
 
             trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                    new ItemStack(Items.EMERALD, 5),
+                    new ItemStack(ModItems.AZURITE_INGOT.get(), 1),
+                    stack,10,8,0.02F));
+        }
+
+        if(event.getType() == ModVillagers.DARK_MAGE.get()) {
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            ItemStack stack = new ItemStack(ModItems.ADAMANTITE_DUST.get(), 1);
+            int villagerLevel = 1;
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(ModItems.ADAMANTITE_INGOT.get(), 1),
+                    stack,10,8,0.02F));
+        }
+
+        if(event.getType() == ModVillagers.DARK_MAGE.get()) {
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            ItemStack stack = new ItemStack(ModItems.JADEITE_DUST.get(), 1);
+            int villagerLevel = 1;
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(ModItems.JADEITE_INGOT.get(), 1),
                     stack,10,8,0.02F));
         }
     }
