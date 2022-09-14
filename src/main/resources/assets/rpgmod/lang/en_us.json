@@ -13,5 +13,6 @@
   "key.rpgmod.guide_book": "Open guide book",
   "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
   "itemGroup.rpgmod_items_tab": "RPG Items",
-  "item.rpgmod.warrior_starter_key": "Warrior Starter Key"
+  "item.rpgmod.warrior_starter_key": "Warrior Starter Key",
+  "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage"
 }
