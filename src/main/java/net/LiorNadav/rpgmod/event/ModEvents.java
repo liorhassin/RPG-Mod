@@ -2,8 +2,13 @@ package net.LiorNadav.rpgmod.event;
 
 import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.networking.ModMessages;
+import net.LiorNadav.rpgmod.networking.packet.BattleAxeLevelC2SPacket;
 import net.LiorNadav.rpgmod.networking.packet.BroadswordLevelC2SPacket;
 import net.LiorNadav.rpgmod.networking.packet.KnifeLevelC2SPacket;
+import net.LiorNadav.rpgmod.util.ModItemProperties;
+import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe.PlayerBattleAxe;
+import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe.PlayerBattleAxeProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadsword;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnife;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
@@ -19,8 +24,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = RPGMod.MOD_ID)
 public class ModEvents {
-
-    //------------------------------------------Knife Events----------------------------------------------
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event){
         if(!event.getObject().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).isPresent()){
@@ -28,6 +31,9 @@ public class ModEvents {
         }
         if(!event.getObject().getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).isPresent()){
             event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_broadsword"), new PlayerBroadswordProvider());
+        }
+        if(!event.getObject().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).isPresent()){
+            event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_battle_axe"), new PlayerBattleAxeProvider());
         }
     }
     @SubscribeEvent
@@ -43,14 +49,19 @@ public class ModEvents {
                     newStore.copyFrom(oldStore);
                 });
             });
+            event.getOriginal().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(oldStore -> {
+                event.getOriginal().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(newStore -> {
+                    newStore.copyFrom(oldStore);
+                });
+            });
         }
     }
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event){
         event.register(PlayerKnife.class);
+        event.register(PlayerBroadsword.class);
+        event.register(PlayerBattleAxe.class);
     }
-    //-----------------------------------------------------------------------------------------------------
-
     //---------------------------------------General Events----------------------------------------------
     @SubscribeEvent
     public static void onEnemyHit(LivingHurtEvent event){
@@ -72,6 +83,16 @@ public class ModEvents {
                             player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                                 broadswordExperience.addExperience((int)event.getAmount() * 2);
                                 ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                            });
+                        }
+                    });
+                    break;
+                case "beginner_battle_axe":
+                    player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                        if (knifeExperience.getKnifeLevel() == 10){
+                            player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
+                                battleAxeExperience.addExperience((int)event.getAmount() * 2);
+                                ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
                             });
                         }
                     });

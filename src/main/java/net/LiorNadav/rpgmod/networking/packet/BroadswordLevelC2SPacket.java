@@ -41,7 +41,7 @@ public class BroadswordLevelC2SPacket {
             //player.sendSystemMessage(Component.literal("Knife level: ").withStyle(ChatFormatting.DARK_GREEN));
 
             player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
-                player.sendSystemMessage(Component.literal("Sword Experience: "
+                player.sendSystemMessage(Component.literal("Sword experience: "
                         + broadswordExperience.getSwordExperience()
                         + ", Sword level: " + broadswordExperience.getSwordLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });

@@ -1,0 +1,6 @@
+{
+  "parent": "rpgmod:item/beginner_bow",
+  "textures": {
+    "layer0": "rpgmod:item/beginner_bow_pulling_2"
+  }
+}

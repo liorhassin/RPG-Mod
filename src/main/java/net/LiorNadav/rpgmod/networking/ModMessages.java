@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.networking;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.networking.packet.BattleAxeLevelC2SPacket;
 import net.LiorNadav.rpgmod.networking.packet.BroadswordLevelC2SPacket;
 import net.LiorNadav.rpgmod.networking.packet.KnifeLevelC2SPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +38,12 @@ public class ModMessages {
                 .decoder(BroadswordLevelC2SPacket::new)
                 .encoder(BroadswordLevelC2SPacket::toByte)
                 .consumerMainThread(BroadswordLevelC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(BattleAxeLevelC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(BattleAxeLevelC2SPacket::new)
+                .encoder(BattleAxeLevelC2SPacket::toByte)
+                .consumerMainThread(BattleAxeLevelC2SPacket::handle)
                 .add();
     }
 
