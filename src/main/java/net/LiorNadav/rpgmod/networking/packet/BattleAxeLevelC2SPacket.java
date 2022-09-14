@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.networking.packet;
 
-import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe.PlayerBattleAxeProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -12,14 +13,14 @@ import java.util.function.Supplier;
 
 //This is an example packet just to use as reference.
 //C2S meaning Client To Server.
-public class KnifeLevelC2SPacket {
+public class BattleAxeLevelC2SPacket {
 
-    public KnifeLevelC2SPacket(){
+    public BattleAxeLevelC2SPacket(){
 
     }
 
     //For now stays empty.
-    public KnifeLevelC2SPacket(FriendlyByteBuf buf){
+    public BattleAxeLevelC2SPacket(FriendlyByteBuf buf){
 
     }
 
@@ -40,10 +41,10 @@ public class KnifeLevelC2SPacket {
 
             //player.sendSystemMessage(Component.literal("Knife level: ").withStyle(ChatFormatting.DARK_GREEN));
 
-            player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                player.sendSystemMessage(Component.literal("Knife experience: "
-                        + knifeExperience.getKnifeExperience()
-                        + ", Knife level: " + knifeExperience.getKnifeLevel()).withStyle(ChatFormatting.DARK_GREEN));
+            player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(AxeExperience -> {
+                player.sendSystemMessage(Component.literal("Battle axe experience: "
+                        + AxeExperience.getAxeExperience()
+                        + ", Battle axe level: " + AxeExperience.getAxeLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });
         });
         return true;

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.LiorNadav.rpgmod.block.ModBlocks;
 import net.LiorNadav.rpgmod.item.ModItems;
 import net.LiorNadav.rpgmod.networking.ModMessages;
+import net.LiorNadav.rpgmod.util.ModItemProperties;
 import net.LiorNadav.rpgmod.villager.ModPOIs;
 import net.LiorNadav.rpgmod.villager.ModVillagers;
 import net.LiorNadav.rpgmod.world.dimension.ModDimensions;
@@ -55,7 +56,7 @@ public class RPGMod
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            ModItemProperties.addCustomItemProperties();
         }
     }
 }
