@@ -2,6 +2,10 @@
   "item.rpgmod.azurite_ingot": "Azurite Ingot",
   "item.rpgmod.adamantite_ingot": "Adamantite Ingot",
   "item.rpgmod.jadeite_ingot": "Jadeite Ingot",
+  "item.rpgmod.azurite_dust": "Azurite Dust",
+  "item.rpgmod.adamantite_dust": "Adamantite Dust",
+  "item.rpgmod.jadeite_dust": "Jadeite Dust",
+  "item.rpgmod.mix_dust": "Mix Dust",
   "block.rpgmod.azurite_ore": "Azurite Ore",
   "block.rpgmod.adamantite_ore": "Adamantite Ore",
   "block.rpgmod.jadeite_ore": "Jadeite Ore",
@@ -15,5 +19,6 @@
   "key.rpgmod.guide_book": "Open guide book",
   "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
   "itemGroup.rpgmod_items_tab": "RPG Items",
-  "item.rpgmod.warrior_starter_key": "Warrior Starter Key"
+  "item.rpgmod.warrior_starter_key": "Warrior Starter Key",
+  "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage"
 }
