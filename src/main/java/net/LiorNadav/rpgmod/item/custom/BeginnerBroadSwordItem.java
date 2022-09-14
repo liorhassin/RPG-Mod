@@ -9,9 +9,4 @@ public class BeginnerBroadSwordItem extends SwordItem {
     public BeginnerBroadSwordItem(Tier tier, int i, float v, Properties properties) {
         super(tier, i, v, properties);
     }
-
-    @Override
-    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
-        return super.canPerformAction(stack, toolAction);
-    }
 }
