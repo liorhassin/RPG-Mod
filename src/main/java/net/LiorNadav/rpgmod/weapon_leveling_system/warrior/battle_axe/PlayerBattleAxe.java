@@ -72,6 +72,7 @@ public class PlayerBattleAxe {
     public void copyFrom(PlayerBattleAxe source){
         axeLevel = source.axeLevel;
         axeExperience = source.axeExperience;
+        axeAdvancementFlag = source.axeAdvancementFlag;
     }
 
     public void saveNBTData (CompoundTag nbt){

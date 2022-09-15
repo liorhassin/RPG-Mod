@@ -72,6 +72,7 @@ public class PlayerBroadsword {
     public void copyFrom(PlayerBroadsword source){
         swordLevel = source.swordLevel;
         swordExperience = source.swordExperience;
+        swordAdvancementFlag = source.swordAdvancementFlag;
     }
 
     public void saveNBTData (CompoundTag nbt){

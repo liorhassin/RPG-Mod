@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 
 public class ModItemProperties {
     public static void addCustomItemProperties(){
-        //makeSlingshot(ModItems.STARTER_SLINGSHOT.get());
+        makeSlingshot(ModItems.STARTER_SLINGSHOT.get());
         makeBow(ModItems.BEGINNER_BOW.get());
     }
 

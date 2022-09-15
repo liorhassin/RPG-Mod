@@ -46,9 +46,9 @@ public class RPGMod
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             ModVillagers.registerPOIs();
-            ModMessages.register();
         });
-
+        ModMessages.register();
+        ModItemProperties.addCustomItemProperties();
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
