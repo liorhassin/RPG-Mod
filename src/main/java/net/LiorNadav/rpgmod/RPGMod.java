@@ -2,8 +2,14 @@ package net.LiorNadav.rpgmod;
 
 import com.mojang.logging.LogUtils;
 import net.LiorNadav.rpgmod.block.ModBlocks;
+import net.LiorNadav.rpgmod.block.entity.ModBlockEntities;
+import net.LiorNadav.rpgmod.fluid.ModFluidTypes;
+import net.LiorNadav.rpgmod.fluid.ModFluids;
 import net.LiorNadav.rpgmod.item.ModItems;
 import net.LiorNadav.rpgmod.networking.ModMessages;
+import net.LiorNadav.rpgmod.recipe.ModRecipes;
+import net.LiorNadav.rpgmod.screen.ModMenuTypes;
+import net.LiorNadav.rpgmod.screen.PurifierScreen;
 import net.LiorNadav.rpgmod.util.ModItemProperties;
 import net.LiorNadav.rpgmod.villager.ModPOIs;
 import net.LiorNadav.rpgmod.villager.ModVillagers;
@@ -12,6 +18,9 @@ import net.LiorNadav.rpgmod.world.entity.ModEntityType;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -42,6 +51,12 @@ public class RPGMod
         ModDimensions.register();
         ModPOIs.register(modEventBus);
         ModVillagers.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
+        ModFluids.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
         ModEntityType.register(modEventBus);
     }
@@ -51,5 +66,19 @@ public class RPGMod
             ModVillagers.registerPOIs();
         });
         ModMessages.register();
+        ModItemProperties.addCustomItemProperties();
+    }
+
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+
+            ModItemProperties.addCustomItemProperties();
+            MenuScreens.register(ModMenuTypes.PURIFIER_MENU.get(), PurifierScreen::new);
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
+        }
     }
 }

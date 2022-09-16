@@ -2,6 +2,7 @@
   "item.rpgmod.azurite_ingot": "Azurite Ingot",
   "item.rpgmod.adamantite_ingot": "Adamantite Ingot",
   "item.rpgmod.jadeite_ingot": "Jadeite Ingot",
+  "item.rpgmod.yellow_gem": "Yellow Gem",
   "item.rpgmod.azurite_dust": "Azurite Dust",
   "item.rpgmod.adamantite_dust": "Adamantite Dust",
   "item.rpgmod.jadeite_dust": "Jadeite Dust",
@@ -10,6 +11,7 @@
   "block.rpgmod.adamantite_ore": "Adamantite Ore",
   "block.rpgmod.jadeite_ore": "Jadeite Ore",
   "block.rpgmod.portal_block": "Portal Block",
+  "block.rpgmod.purifier": "Purifier",
   "item.rpgmod.starter_knife": "Starter Knife",
   "item.rpgmod.starter_slingshot": "Starter Slingshot",
   "item.rpgmod.beginner_bow": "Beginner Bow",
@@ -17,11 +19,16 @@
   "item.rpgmod.torch_arrow": "Torch Arrow",
   "item.rpgmod.beginner_crossbow": "Beginner Crossbow",
   "item.rpgmod.beginner_broadsword": "Beginner Broadsword",
+  "item.rpgmod.advanced_broadsword": "Advanced Broadsword",
   "item.rpgmod.beginner_battle_axe": "Beginner Battle Axe",
   "key.category.rpgmod": "RPG Mod",
   "key.rpgmod.guide_book": "Open guide book",
   "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
   "itemGroup.rpgmod_items_tab": "RPG Items",
   "item.rpgmod.warrior_starter_key": "Warrior Starter Key",
-  "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage"
+  "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage",
+  "item.rpgmod.red_ogre_heart": "Red Ogre Heart",
+  "item.rpgmod.purified_red_ogre_heart": "Purified Red Ogre Heart",
+  "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "rpgmod.tooltip.liquid.amount": "%s mB"
 }

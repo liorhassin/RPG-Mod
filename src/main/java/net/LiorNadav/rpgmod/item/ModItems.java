@@ -3,6 +3,9 @@ package net.LiorNadav.rpgmod.item;
 import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBattleAxeItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBroadSwordItem;
+import net.LiorNadav.rpgmod.fluid.ModFluids;
+import net.LiorNadav.rpgmod.item.custom.BeginnerBattleAxeItem;
+import net.LiorNadav.rpgmod.item.custom.BeginnerBroadSwordItem;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.TorchBow;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.TorchArrowItem;
@@ -26,6 +29,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> JADEITE_INGOT = ITEMS.register("jadeite_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> YELLOW_GEM = ITEMS.register("yellow_gem",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
     //-------------- Dusts ---------------
     public static final RegistryObject<Item> AZURITE_DUST = ITEMS.register("azurite_dust",
@@ -37,6 +42,11 @@ public class ModItems {
     public static final RegistryObject<Item> MIX_DUST = ITEMS.register("mix_dust",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
+    //-------------- Hearts ---------------
+    public static final RegistryObject<Item> RED_OGRE_HEART = ITEMS.register("red_ogre_heart",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> PURIFIED_RED_OGRE_HEART = ITEMS.register("purified_red_ogre_heart",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
     //----------- Weapons -------------
     public static final RegistryObject<Item> STARTER_KNIFE = ITEMS.register("starter_knife",
@@ -44,6 +54,10 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(100)));
 
     public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
+            () -> new BeginnerBroadSwordItem(Tiers.STONE, 3, -2f,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    public static final RegistryObject<Item> ADVANCED_BROADSWORD = ITEMS.register("advanced_broadsword",
             () -> new BeginnerBroadSwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
@@ -69,6 +83,10 @@ public class ModItems {
             ()-> new TorchArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 1.5F));
     //----------- Keys -------------
     public static final RegistryObject<Item> WARRIOR_STARTER_KEY = ITEMS.register("warrior_starter_key", WarriorStarterKey::new);
+
+    public static final RegistryObject<Item> SOAP_WATER_BUCKET = ITEMS.register("soap_water_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_SOAP_WATER,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS).craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
