@@ -34,5 +34,5 @@
   "fluid_type.rpgmod.soap_water_fluid": "Holy Water",
   "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "rpgmod.tooltip.liquid.amount": "%s mB",
-  "entity.rpgmod.chomper": "Red Ogre"
+  "entity.rpgmod.red_ogre": "Red Ogre"
 }

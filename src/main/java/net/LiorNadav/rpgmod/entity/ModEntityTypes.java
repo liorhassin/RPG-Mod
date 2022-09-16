@@ -15,9 +15,9 @@ public class ModEntityTypes {
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, RPGMod.MOD_ID);
 
     public static final RegistryObject<EntityType<RedOgreEntity>> RED_OGRE =
-            ENTITY_TYPES.register("chomper",
+            ENTITY_TYPES.register("red_ogre",
                     () -> EntityType.Builder.of(RedOgreEntity::new, MobCategory.MONSTER)
-                            .sized(0.4f, 1.5f)
+                            .sized(1.2f, 2.8f)
                             .build(new ResourceLocation(RPGMod.MOD_ID, "red_ogre").toString()));
 
 

@@ -5,8 +5,6 @@ import net.LiorNadav.rpgmod.item.custom.weapons.warrior.AdvancedBroadSwordItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.BeginnerBattleAxeItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.BeginnerBroadSwordItem;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
-import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBattleAxeItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBroadSwordItem;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.TorchBow;
