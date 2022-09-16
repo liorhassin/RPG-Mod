@@ -4,11 +4,15 @@ import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.AdvancedBroadSwordItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.BeginnerBattleAxeItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.BeginnerBroadSwordItem;
+import net.LiorNadav.rpgmod.entity.ModEntityTypes;
+import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBattleAxeItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBroadSwordItem;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.TorchBow;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.TorchArrowItem;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -42,10 +46,14 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
     //----------------------------- Hearts --------------------------------//
+
     public static final RegistryObject<Item> RED_OGRE_HEART = ITEMS.register("red_ogre_heart",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> PURIFIED_RED_OGRE_HEART = ITEMS.register("purified_red_ogre_heart",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> RED_OGRE_SPAWN_EGG = ITEMS.register("red_ogre_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.RED_OGRE, 0x22b341, 0x19732e,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
     //----------------------------- Weapons -------------------------------//
     public static final RegistryObject<Item> STARTER_KNIFE = ITEMS.register("starter_knife",
