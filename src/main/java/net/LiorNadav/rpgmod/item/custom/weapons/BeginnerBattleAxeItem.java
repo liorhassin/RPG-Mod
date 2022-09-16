@@ -1,4 +1,4 @@
-package net.LiorNadav.rpgmod.item.custom;
+package net.LiorNadav.rpgmod.item.custom.weapons;
 
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;

@@ -14,8 +14,10 @@ import net.LiorNadav.rpgmod.util.ModItemProperties;
 import net.LiorNadav.rpgmod.villager.ModPOIs;
 import net.LiorNadav.rpgmod.villager.ModVillagers;
 import net.LiorNadav.rpgmod.world.dimension.ModDimensions;
+import net.LiorNadav.rpgmod.world.entity.ModEntityType;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -56,6 +58,7 @@ public class RPGMod
         ModFluidTypes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        ModEntityType.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
