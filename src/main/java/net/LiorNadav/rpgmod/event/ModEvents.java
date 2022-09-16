@@ -137,6 +137,7 @@ public class ModEvents {
             String mainItemName = ((Player) player).getMainHandItem().getItem().toString();
             switch(mainItemName){
 
+                //---------------------------Starter Tier-------------------------------//
                 case "starter_knife":
                     player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                         knifeExperience.addExperience((int)event.getAmount());
@@ -149,6 +150,7 @@ public class ModEvents {
                         ModMessages.sendToServer(new SlingshotLevelC2SPacket());
                     });
                     break;
+                //---------------------------Beginner Tier-------------------------------//
                 case "beginner_broadsword":
                     player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                         if (knifeExperience.getKnifeLevel() == 10){
@@ -179,6 +181,59 @@ public class ModEvents {
                         }
                     });
                     break;
+
+                //---------------------------Advanced Tier-------------------------------//
+                case "advanced_broadsword":
+                    player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                        if (knifeExperience.getKnifeLevel() == 10){
+                            player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
+                                if (broadswordExperience.getTier() >= 1) {
+                                    broadswordExperience.addExperience((int) event.getAmount());
+                                    ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                }
+                            });
+                        }
+                    });
+                    break;
+
+                case "advanced_battle_axe":
+                    player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                        if (knifeExperience.getKnifeLevel() == 10){
+                            player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(battleAxeExperience -> {
+                                if (battleAxeExperience.getTier() >= 1) {
+                                    battleAxeExperience.addExperience((int) event.getAmount());
+                                    ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                }
+                            });
+                        }
+                    });
+                    break;
+                //---------------------------Superior Tier-------------------------------//
+                case "superior_broadsword":
+                    player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                        if (knifeExperience.getKnifeLevel() == 10){
+                            player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
+                                if (broadswordExperience.getTier() >= 2) {
+                                    broadswordExperience.addExperience((int) event.getAmount());
+                                    ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                }
+                            });
+                        }
+                    });
+                    break;
+                case "superior_battle_axe":
+                    player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                        if (knifeExperience.getKnifeLevel() == 10){
+                            player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(battleAxeExperience -> {
+                                if (battleAxeExperience.getTier() >= 2) {
+                                    battleAxeExperience.addExperience((int) event.getAmount());
+                                    ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                }
+                            });
+                        }
+                    });
+                    break;
+                //---------------------------Dev Tools-------------------------------//
                 case "apple":
                     player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                         knifeExperience.addExperience(1000);
@@ -187,6 +242,10 @@ public class ModEvents {
                     player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
                         slingshotExperience.addExperience(1000);
                         ModMessages.sendToServer(new SlingshotLevelC2SPacket());
+                    });
+                    player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
+                        broadswordExperience.addExperience(1000);
+                        ModMessages.sendToServer(new BroadswordLevelC2SPacket());
                     });
                     break;
                 default:

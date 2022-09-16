@@ -46,28 +46,13 @@ public class PlayerBattleAxe {
             axeExperience = 0;
         }
     }
-
-    public void setAxeLevel(int level){
-        if (level <= MAX_LEVEL[axeAdvancementFlag] && level >= MIN_LEVEL) {
-            axeLevel = level;
-            //Optional log output with level successfully set to level.
-        }
-        else{
-            //Log output with wrong level given, levels of knife can be set between 1-10.
-        }
-    }
-
-    public void setAxeExperience(int experience){
-        if(experience >= 0){
-            axeExperience = experience;
-        }
-    }
-
     public int getAxeExperience() {
         return axeExperience;
     }
 
     public int getAxeLevel() { return axeLevel; }
+
+    public int getTier() { return axeAdvancementFlag; }
 
     public void copyFrom(PlayerBattleAxe source){
         axeLevel = source.axeLevel;

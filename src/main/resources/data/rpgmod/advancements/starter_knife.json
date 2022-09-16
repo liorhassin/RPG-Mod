@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:starter_knife"
+    },
+    "title": "Path to great power",
+    "description": "Only the fearless come here!",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:rpgmod",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:obsidian"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "rpgmod:beginner_broadsword",
+      "rpgmod:beginner_battle_axe"
+    ]
+  }
+}

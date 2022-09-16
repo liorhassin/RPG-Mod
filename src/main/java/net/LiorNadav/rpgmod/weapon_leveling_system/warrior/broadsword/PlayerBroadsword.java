@@ -37,37 +37,22 @@ public class PlayerBroadsword {
         }
     }
 
-    public void addLevel(int level){
+    public void addLevel(int level) {
         if (level >= 0) {
             swordLevel = Math.min(swordLevel + level, MAX_LEVEL[swordAdvancementFlag]);
-            if (swordLevel >= MAX_LEVEL[swordAdvancementFlag]){
+            if (swordLevel >= MAX_LEVEL[swordAdvancementFlag]) {
                 swordAdvancementFlag = Math.min(2, swordAdvancementFlag + 1);
             }
             swordExperience = 0;
         }
     }
-
-    public void setSwordLevel(int level){
-        if (level <= MAX_LEVEL[swordAdvancementFlag] && level >= MIN_LEVEL) {
-            swordLevel = level;
-            //Optional log output with level successfully set to level.
-        }
-        else{
-            //Log output with wrong level given, levels of knife can be set between 1-10.
-        }
-    }
-
-    public void setSwordExperience(int experience){
-        if(experience >= 0){
-            swordExperience = experience;
-        }
-    }
-
     public int getSwordExperience() {
         return swordExperience;
     }
 
     public int getSwordLevel() { return swordLevel; }
+
+    public int getTier(){ return swordAdvancementFlag; }
 
     public void copyFrom(PlayerBroadsword source){
         swordLevel = source.swordLevel;
