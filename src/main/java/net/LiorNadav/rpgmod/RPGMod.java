@@ -8,8 +8,10 @@ import net.LiorNadav.rpgmod.util.ModItemProperties;
 import net.LiorNadav.rpgmod.villager.ModPOIs;
 import net.LiorNadav.rpgmod.villager.ModVillagers;
 import net.LiorNadav.rpgmod.world.dimension.ModDimensions;
+import net.LiorNadav.rpgmod.world.entity.ModEntityType;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,6 +43,7 @@ public class RPGMod
         ModPOIs.register(modEventBus);
         ModVillagers.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
+        ModEntityType.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -48,15 +51,5 @@ public class RPGMod
             ModVillagers.registerPOIs();
         });
         ModMessages.register();
-        ModItemProperties.addCustomItemProperties();
-    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            ModItemProperties.addCustomItemProperties();
-        }
     }
 }

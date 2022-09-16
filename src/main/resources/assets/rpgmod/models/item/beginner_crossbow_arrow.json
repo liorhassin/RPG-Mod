@@ -1,0 +1,6 @@
+{
+  "parent": "rpgmod:item/beginner_crossbow",
+  "textures": {
+    "layer0": "rpgmod:item/beginner_crossbow_arrow"
+  }
+}

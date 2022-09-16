@@ -1,16 +1,16 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
-import net.LiorNadav.rpgmod.item.custom.BeginnerBattleAxeItem;
-import net.LiorNadav.rpgmod.item.custom.BeginnerBroadSwordItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBattleAxeItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.BeginnerBroadSwordItem;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
+import net.LiorNadav.rpgmod.item.custom.weapons.archer.TorchBow;
+import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.TorchArrowItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Predicate;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -51,12 +51,22 @@ public class ModItems {
             () -> new BeginnerBattleAxeItem(Tiers.STONE, 5, -3f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
-    public static final RegistryObject<Item> BEGINNER_BOW = ITEMS.register("beginner_bow",
-            () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
-
     public static final RegistryObject<Item> STARTER_SLINGSHOT = ITEMS.register("starter_slingshot",
             () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(100)));
 
+    public static final RegistryObject<Item> BEGINNER_BOW = ITEMS.register("beginner_bow",
+            () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    public static final RegistryObject<Item> BEGINNER_CROSSBOW = ITEMS.register("beginner_crossbow",
+            () -> new CrossbowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    public static final RegistryObject<Item> TORCH_BOW = ITEMS.register("torch_bow",
+            () -> new TorchBow(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    //-------------------- Ammunition -------------------
+
+    public static final RegistryObject<Item> TORCH_ARROW = ITEMS.register("torch_arrow",
+            ()-> new TorchArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 1.5F));
     //----------- Keys -------------
     public static final RegistryObject<Item> WARRIOR_STARTER_KEY = ITEMS.register("warrior_starter_key", WarriorStarterKey::new);
 

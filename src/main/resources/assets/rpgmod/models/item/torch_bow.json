@@ -30,21 +30,21 @@
       "predicate": {
         "minecraft:pulling": 1
       },
-      "model": "rpgmod:item/beginner_bow_pulling_0"
+      "model": "rpgmod:item/torch_bow_pulling_0"
     },
     {
       "predicate": {
         "minecraft:pulling": 1,
         "minecraft:pull": 0.65
       },
-      "model": "rpgmod:item/beginner_bow_pulling_1"
+      "model": "rpgmod:item/torch_bow_pulling_1"
     },
     {
       "predicate": {
         "minecraft:pulling": 1,
         "minecraft:pull": 0.9
       },
-      "model": "rpgmod:item/beginner_bow_pulling_2"
+      "model": "rpgmod:item/torch_bow_pulling_2"
     }
   ]
 }
