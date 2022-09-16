@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:advanced_broadsword"
+    },
+    "title": "RPG Mod",
+    "description": "Great journey ahead!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "rpgmod:textures/block/azurite_ore.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:adamantite_ingot",
+              "rpgmod:azurite_ingot",
+              "rpgmod:jadeite_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

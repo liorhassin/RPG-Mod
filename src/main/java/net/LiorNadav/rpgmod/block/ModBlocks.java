@@ -25,6 +25,8 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, RPGMod.MOD_ID);
 
+
+    // ---------------------- Ores & Gems --------------------------
     public static final RegistryObject<Block> AZURITE_ORE = registerBlock("azurite_ore",
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
@@ -37,6 +39,7 @@ public class ModBlocks {
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
 
+    // ------------------- Special functionality blocks ----------------------
     public static final RegistryObject<Block> PORTAL_BLOCK = registerBlock("portal_block",
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
@@ -48,12 +51,16 @@ public class ModBlocks {
             ()-> new PurifierBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(4f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.RPG_MOD_ITEMS);
 
+    // -------------------- Other mod blocks ----------------------------
+
     public static final RegistryObject<LiquidBlock> SOAP_WATER_BLOCK = BLOCKS.register("soap_water_block",
             () -> new LiquidBlock(ModFluids.SOURCE_SOAP_WATER, BlockBehaviour.Properties.copy((Blocks.WATER))));
 
 
 
 
+
+    // -------------------------- Registry methods ------------------------
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn, tab);

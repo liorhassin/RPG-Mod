@@ -39,65 +39,65 @@ import java.util.List;
 public class ModEvents {
 
     @Mod.EventBusSubscriber(modid = RPGMod.MOD_ID)
-    public static class ForgeEvents{
+    public static class ForgeEvents {
         //------------------------------------------Trades----------------------------------------------
         @SubscribeEvent
-        public static void addCustomTrades(VillagerTradesEvent event){
-            if(event.getType() == ModVillagers.DARK_MAGE.get()) {
+        public static void addCustomTrades(VillagerTradesEvent event) {
+            if (event.getType() == ModVillagers.DARK_MAGE.get()) {
                 Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
                 ItemStack stack = new ItemStack(ModItems.AZURITE_DUST.get(), 1);
                 int villagerLevel = 1;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.AZURITE_INGOT.get(), 1),
-                        stack,10,8,0.02F));
+                        stack, 10, 8, 0.02F));
             }
 
-            if(event.getType() == ModVillagers.DARK_MAGE.get()) {
+            if (event.getType() == ModVillagers.DARK_MAGE.get()) {
                 Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
                 ItemStack stack = new ItemStack(ModItems.ADAMANTITE_DUST.get(), 1);
                 int villagerLevel = 1;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.ADAMANTITE_INGOT.get(), 1),
-                        stack,10,8,0.02F));
+                        stack, 10, 8, 0.02F));
             }
 
-            if(event.getType() == ModVillagers.DARK_MAGE.get()) {
+            if (event.getType() == ModVillagers.DARK_MAGE.get()) {
                 Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
                 ItemStack stack = new ItemStack(ModItems.JADEITE_DUST.get(), 1);
                 int villagerLevel = 1;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.JADEITE_INGOT.get(), 1),
-                        stack,10,8,0.02F));
+                        stack, 10, 8, 0.02F));
             }
         }
-
 
 
         //------------------------------------------Knife Events----------------------------------------------
         @SubscribeEvent
-        public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event){
-            if(!event.getObject().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).isPresent()){
+        public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
+            if (!event.getObject().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_knife_levels"), new PlayerKnifeProvider());
             }
-            if(!event.getObject().getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).isPresent()){
+            if (!event.getObject().getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_broadsword_levels"), new PlayerBroadswordProvider());
             }
-            if(!event.getObject().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).isPresent()){
+            if (!event.getObject().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_battle_axe_levels"), new PlayerBattleAxeProvider());
             }
-            if(!event.getObject().getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).isPresent()){
+            if (!event.getObject().getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_slingshot_levels"), new PlayerSlingshotProvider());
             }
-            if(!event.getObject().getCapability(PlayerBowProvider.PLAYER_BOW).isPresent()){
+            if (!event.getObject().getCapability(PlayerBowProvider.PLAYER_BOW).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_bow_levels"), new PlayerBowProvider());
             }
         }
+
         @SubscribeEvent
-        public static void onPlayerCloned(PlayerEvent.Clone event){
-            if (event.isWasDeath()){
+        public static void onPlayerCloned(PlayerEvent.Clone event) {
+            if (event.isWasDeath()) {
                 event.getOriginal().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(oldStore -> {
                     event.getOriginal().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
@@ -125,39 +125,43 @@ public class ModEvents {
                 });
             }
         }
+
         @SubscribeEvent
-        public static void onRegisterCapabilities(RegisterCapabilitiesEvent event){
+        public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
             event.register(PlayerKnife.class);
             event.register(PlayerBroadsword.class);
             event.register(PlayerBattleAxe.class);
             event.register(PlayerSlingshot.class);
             event.register(PlayerBow.class);
         }
+
         //---------------------------------------General Events----------------------------------------------
         @SubscribeEvent
-        public static void onEnemyHit(LivingHurtEvent event){
+        public static void onEnemyHit(LivingHurtEvent event) {
             Entity player = event.getSource().getEntity();
-            if (player instanceof Player){
+            if (player instanceof Player) {
                 String mainItemName = ((Player) player).getMainHandItem().getItem().toString();
-                switch(mainItemName){
+                switch (mainItemName) {
 
+                    //---------------------------Starter Tier-------------------------------//
                     case "starter_knife":
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                            knifeExperience.addExperience((int)event.getAmount());
+                            knifeExperience.addExperience((int) event.getAmount());
                             ModMessages.sendToServer(new KnifeLevelC2SPacket());
                         });
                         break;
                     case "starter_slingshot":
                         player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
-                            slingshotExperience.addExperience((int)event.getAmount());
+                            slingshotExperience.addExperience((int) event.getAmount());
                             ModMessages.sendToServer(new SlingshotLevelC2SPacket());
                         });
                         break;
+                    //---------------------------Beginner Tier-------------------------------//
                     case "beginner_broadsword":
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                            if (knifeExperience.getKnifeLevel() == 10){
+                            if (knifeExperience.getKnifeLevel() == 10) {
                                 player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
-                                    broadswordExperience.addExperience((int)event.getAmount());
+                                    broadswordExperience.addExperience((int) event.getAmount());
                                     ModMessages.sendToServer(new BroadswordLevelC2SPacket());
                                 });
                             }
@@ -165,9 +169,9 @@ public class ModEvents {
                         break;
                     case "beginner_battle_axe":
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                            if (knifeExperience.getKnifeLevel() == 10){
+                            if (knifeExperience.getKnifeLevel() == 10) {
                                 player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
-                                    battleAxeExperience.addExperience((int)event.getAmount());
+                                    battleAxeExperience.addExperience((int) event.getAmount());
                                     ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
                                 });
                             }
@@ -175,14 +179,67 @@ public class ModEvents {
                         break;
                     case "beginner_bow":
                         player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
-                            if (slingshotExperience.getSlingshotLevel() == 10){
+                            if (slingshotExperience.getSlingshotLevel() == 10) {
                                 player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
-                                    bowExperience.addExperience((int)event.getAmount());
+                                    bowExperience.addExperience((int) event.getAmount());
                                     ModMessages.sendToServer(new BowLevelC2SPacket());
                                 });
                             }
                         });
                         break;
+
+                    //---------------------------Advanced Tier-------------------------------//
+                    case "advanced_broadsword":
+                        player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                            if (knifeExperience.getKnifeLevel() == 10) {
+                                player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
+                                    if (broadswordExperience.getTier() >= 1) {
+                                        broadswordExperience.addExperience((int) event.getAmount());
+                                        ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                    }
+                                });
+                            }
+                        });
+                        break;
+
+                    case "advanced_battle_axe":
+                        player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                            if (knifeExperience.getKnifeLevel() == 10) {
+                                player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(battleAxeExperience -> {
+                                    if (battleAxeExperience.getTier() >= 1) {
+                                        battleAxeExperience.addExperience((int) event.getAmount());
+                                        ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                    }
+                                });
+                            }
+                        });
+                        break;
+                    //---------------------------Superior Tier-------------------------------//
+                    case "superior_broadsword":
+                        player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                            if (knifeExperience.getKnifeLevel() == 10) {
+                                player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
+                                    if (broadswordExperience.getTier() >= 2) {
+                                        broadswordExperience.addExperience((int) event.getAmount());
+                                        ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                    }
+                                });
+                            }
+                        });
+                        break;
+                    case "superior_battle_axe":
+                        player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
+                            if (knifeExperience.getKnifeLevel() == 10) {
+                                player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(battleAxeExperience -> {
+                                    if (battleAxeExperience.getTier() >= 2) {
+                                        battleAxeExperience.addExperience((int) event.getAmount());
+                                        ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                    }
+                                });
+                            }
+                        });
+                        break;
+                    //---------------------------Dev Tools-------------------------------//
                     case "apple":
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                             knifeExperience.addExperience(1000);
@@ -192,21 +249,25 @@ public class ModEvents {
                             slingshotExperience.addExperience(1000);
                             ModMessages.sendToServer(new SlingshotLevelC2SPacket());
                         });
+                        player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
+                            broadswordExperience.addExperience(1000);
+                            ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                        });
                         break;
                     default:
                         break;
-                }
+                }//
             }
         }
     }
 
-    @Mod.EventBusSubscriber(modid = RPGMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ModEventBusEvents{
+            @Mod.EventBusSubscriber(modid = RPGMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+            public static class ModEventBusEvents{
 
-        @SubscribeEvent
-        public static void entityAttributeEvent(EntityAttributeCreationEvent event){
-            event.put(ModEntityTypes.RED_OGRE.get(), RedOgreEntity.setAttributes());
+                @SubscribeEvent
+                public static void entityAttributeEvent(EntityAttributeCreationEvent event){
+                    event.put(ModEntityTypes.RED_OGRE.get(), RedOgreEntity.setAttributes());
+                }
+            }
+
         }
-    }
-
-}
