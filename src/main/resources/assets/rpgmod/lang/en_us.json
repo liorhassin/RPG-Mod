@@ -7,6 +7,7 @@
   "item.rpgmod.adamantite_dust": "Adamantite Dust",
   "item.rpgmod.jadeite_dust": "Jadeite Dust",
   "item.rpgmod.mix_dust": "Mix Dust",
+  "item.rpgmod.red_ogre_spawn_egg": "Red Ogre Spawn Egg",
   "block.rpgmod.azurite_ore": "Azurite Ore",
   "block.rpgmod.adamantite_ore": "Adamantite Ore",
   "block.rpgmod.jadeite_ore": "Jadeite Ore",
@@ -29,6 +30,9 @@
   "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage",
   "item.rpgmod.red_ogre_heart": "Red Ogre Heart",
   "item.rpgmod.purified_red_ogre_heart": "Purified Red Ogre Heart",
+  "item.rpgmod.soap_water_bucket": "Holy Water Bucket",
+  "fluid_type.rpgmod.soap_water_fluid": "Holy Water",
   "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
-  "rpgmod.tooltip.liquid.amount": "%s mB"
+  "rpgmod.tooltip.liquid.amount": "%s mB",
+  "entity.rpgmod.chomper": "Red Ogre"
 }
