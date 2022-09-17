@@ -3,9 +3,11 @@ package net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerBroadsword {
+
     private int swordLevel;
     private int swordExperience;
     private int swordAdvancementFlag; // 0,1,2
+    private boolean advancementSwitch;
     private final int [] swordExperienceRequirement;
     private final int MIN_LEVEL = 0;
     private final int [] MAX_LEVEL = {30,60,100};
@@ -14,6 +16,7 @@ public class PlayerBroadsword {
         swordExperienceRequirement = new int[100];
         resetExperienceArray(swordExperienceRequirement);
         swordAdvancementFlag = 0;
+        advancementSwitch = false;
     }
 
     private void resetExperienceArray(int[] arr){
@@ -25,7 +28,10 @@ public class PlayerBroadsword {
     }
 
     public void addExperience(int add){
-        if (swordLevel < MAX_LEVEL[swordAdvancementFlag] && add > 0) {
+        if(advancementSwitch){
+            advancementSwitch = false;
+        }
+        else if (swordLevel < MAX_LEVEL[swordAdvancementFlag] && add > 0) {
             if (swordExperience + add >= swordExperienceRequirement[swordLevel]) {
                 int remainingAdd = add - (swordExperienceRequirement[swordLevel] - swordExperience);
                 addLevel(1);
@@ -42,6 +48,7 @@ public class PlayerBroadsword {
             swordLevel = Math.min(swordLevel + level, MAX_LEVEL[swordAdvancementFlag]);
             if (swordLevel >= MAX_LEVEL[swordAdvancementFlag]) {
                 swordAdvancementFlag = Math.min(2, swordAdvancementFlag + 1);
+                advancementSwitch = true;
             }
             swordExperience = 0;
         }
