@@ -1,6 +1,6 @@
 package net.LiorNadav.rpgmod.item;
 
-import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.item.custom.weapons.mage.ModWand;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
@@ -91,6 +91,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> TORCH_BOW = ITEMS.register("torch_bow",
             () -> new TorchBow(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    public static final RegistryObject<Item> WAND = ITEMS.register("wand",
+            () -> new ModWand(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     //-------------------- Ammunition -------------------//
 

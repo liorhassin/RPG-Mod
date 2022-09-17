@@ -38,6 +38,8 @@
   "item.rpgmod.advanced_battle_axe": "Advanced Battle Axe",
   "item.rpgmod.superior_battle_axe": "Superior Battle Axe",
 
+  "item.rpgmod.wand": "Wand",
+
   "key.category.rpgmod": "RPG Mod",
   "key.rpgmod.guide_book": "Open guide book",
   "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
@@ -51,7 +53,7 @@
   "fluid_type.rpgmod.soap_water_fluid": "Holy Water",
   "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "rpgmod.tooltip.liquid.amount": "%s mB",
-  
+
   "entity.rpgmod.red_ogre": "Red Ogre",
   "entity.rpgmod.chomper": "Red Ogre"
 }
