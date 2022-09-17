@@ -19,6 +19,7 @@ import net.LiorNadav.rpgmod.world.dimension.ModDimensions;
 import net.LiorNadav.rpgmod.world.entity.ModEntityType;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
+import net.LiorNadav.rpgmod.world.structure.ModStructures;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -63,6 +64,7 @@ public class RPGMod
         GeckoLib.initialize();
         MinecraftForge.EVENT_BUS.register(this);
         ModEntityType.register(modEventBus);
+        ModStructures.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

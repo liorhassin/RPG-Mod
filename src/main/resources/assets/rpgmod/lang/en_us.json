@@ -52,6 +52,6 @@
   "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "rpgmod.tooltip.liquid.amount": "%s mB",
   
-  "entity.rpgmod.red_ogre": "Red Ogre"
+  "entity.rpgmod.red_ogre": "Red Ogre",
   "entity.rpgmod.chomper": "Red Ogre"
 }

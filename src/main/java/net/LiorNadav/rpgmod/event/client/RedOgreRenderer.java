@@ -24,7 +24,7 @@ public class RedOgreRenderer extends GeoEntityRenderer<RedOgreEntity> {
 
     @Override
     public RenderType getRenderType(RedOgreEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
-        stack.scale(3f, 3f, 3f);
+        stack.scale(5f, 5f, 5f);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }
