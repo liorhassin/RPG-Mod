@@ -1,6 +1,5 @@
 package net.LiorNadav.rpgmod.item;
 
-import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.item.custom.weapons.mage.ModWand;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
