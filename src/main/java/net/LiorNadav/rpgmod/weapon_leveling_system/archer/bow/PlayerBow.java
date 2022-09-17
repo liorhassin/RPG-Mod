@@ -6,6 +6,7 @@ public class PlayerBow {
     private int bowLevel;
     private int bowExperience;
     private int bowAdvancementFlag; // 0,1,2
+    private boolean advancementSwitch;
     private final int [] bowExperienceRequirement;
     private final int MIN_LEVEL = 0;
     private final int [] MAX_LEVEL = {30,60,100};
@@ -14,6 +15,7 @@ public class PlayerBow {
         bowExperienceRequirement = new int[100];
         resetExperienceArray(bowExperienceRequirement);
         bowAdvancementFlag = 0;
+        advancementSwitch = false;
     }
 
     private void resetExperienceArray(int[] arr){
@@ -25,6 +27,9 @@ public class PlayerBow {
     }
 
     public void addExperience(int add){
+        if(advancementSwitch){
+            advancementSwitch = false;
+        }
         if (bowLevel < MAX_LEVEL[bowAdvancementFlag] && add > 0) {
             if (bowExperience + add >= bowExperienceRequirement[bowLevel]) {
                 int remainingAdd = add - (bowExperienceRequirement[bowLevel] - bowExperience);
@@ -42,24 +47,9 @@ public class PlayerBow {
             bowLevel = Math.min(bowLevel + level, MAX_LEVEL[bowAdvancementFlag]);
             if (bowLevel >= MAX_LEVEL[bowAdvancementFlag]){
                 bowAdvancementFlag = Math.min(2, bowAdvancementFlag + 1);
+                advancementSwitch = true;
             }
             bowExperience = 0;
-        }
-    }
-
-    public void setBowLevel(int level){
-        if (level <= MAX_LEVEL[bowAdvancementFlag] && level >= MIN_LEVEL) {
-            bowLevel = level;
-            //Optional log output with level successfully set to level.
-        }
-        else{
-            //Log output with wrong level given, levels of knife can be set between 1-10.
-        }
-    }
-
-    public void setBowExperience(int experience){
-        if(experience >= 0){
-            bowExperience = experience;
         }
     }
 
@@ -68,6 +58,8 @@ public class PlayerBow {
     }
 
     public int getBowLevel() { return bowLevel; }
+
+    public int getTier() {return bowAdvancementFlag; }
 
     public void copyFrom(PlayerBow source){
         bowLevel = source.bowLevel;
