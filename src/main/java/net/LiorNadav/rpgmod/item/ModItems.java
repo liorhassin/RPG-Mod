@@ -1,9 +1,7 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
-import net.LiorNadav.rpgmod.item.custom.weapons.warrior.AdvancedBroadSwordItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.warrior.BeginnerBattleAxeItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.warrior.BeginnerBroadSwordItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
@@ -58,6 +56,9 @@ public class ModItems {
             () -> new SwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(100)));
 
+    public static final RegistryObject<Item> STARTER_SLINGSHOT = ITEMS.register("starter_slingshot",
+            () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(100)));
+
     public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
             () -> new BeginnerBroadSwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
@@ -66,12 +67,21 @@ public class ModItems {
             () -> new AdvancedBroadSwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
 
+    public static final RegistryObject<Item> SUPERIOR_BROADSWORD = ITEMS.register("superior_broadsword",
+            () -> new SuperiorBroadSwordItem(Tiers.STONE, 3, -2f,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
+
     public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe",
             () -> new BeginnerBattleAxeItem(Tiers.STONE, 5, -3f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
-    public static final RegistryObject<Item> STARTER_SLINGSHOT = ITEMS.register("starter_slingshot",
-            () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(100)));
+    public static final RegistryObject<Item> ADVANCED_BATTLE_AXE = ITEMS.register("advanced_battle_axe",
+            () -> new AdvancedBattleAxeItem(Tiers.STONE, 5, -3f,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
+
+    public static final RegistryObject<Item> SUPERIOR_BATTLE_AXE = ITEMS.register("superior_battle_axe",
+            () -> new SuperiorBattleAxeItem(Tiers.STONE, 5, -3f,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
     public static final RegistryObject<Item> BEGINNER_BOW = ITEMS.register("beginner_bow",
             () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));

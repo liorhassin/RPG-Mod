@@ -6,6 +6,7 @@ public class PlayerBattleAxe {
     private int axeLevel;
     private int axeExperience;
     private int axeAdvancementFlag; // 0,1,2
+    private boolean advancementSwitch;
     private final int [] axeExperienceRequirement;
     private final int MIN_LEVEL = 0;
     private final int [] MAX_LEVEL = {30,60,100};
@@ -14,6 +15,7 @@ public class PlayerBattleAxe {
         axeExperienceRequirement = new int[100];
         resetExperienceArray(axeExperienceRequirement);
         axeAdvancementFlag = 0;
+        advancementSwitch = false;
     }
 
     private void resetExperienceArray(int[] arr){
@@ -25,7 +27,10 @@ public class PlayerBattleAxe {
     }
 
     public void addExperience(int add){
-        if (axeLevel < MAX_LEVEL[axeAdvancementFlag] && add > 0) {
+        if(advancementSwitch){
+            advancementSwitch = false;
+        }
+        else if(axeLevel < MAX_LEVEL[axeAdvancementFlag] && add > 0) {
             if (axeExperience + add >= axeExperienceRequirement[axeLevel]) {
                 int remainingAdd = add - (axeExperienceRequirement[axeLevel] - axeExperience);
                 addLevel(1);
@@ -42,6 +47,7 @@ public class PlayerBattleAxe {
             axeLevel = Math.min(axeLevel + level, MAX_LEVEL[axeAdvancementFlag]);
             if (axeLevel >= MAX_LEVEL[axeAdvancementFlag]){
                 axeAdvancementFlag = Math.min(2, axeAdvancementFlag + 1);
+                advancementSwitch = true;
             }
             axeExperience = 0;
         }

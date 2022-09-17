@@ -2,37 +2,56 @@
   "item.rpgmod.azurite_ingot": "Azurite Ingot",
   "item.rpgmod.adamantite_ingot": "Adamantite Ingot",
   "item.rpgmod.jadeite_ingot": "Jadeite Ingot",
+
   "item.rpgmod.yellow_gem": "Yellow Gem",
   "item.rpgmod.azurite_dust": "Azurite Dust",
   "item.rpgmod.adamantite_dust": "Adamantite Dust",
   "item.rpgmod.jadeite_dust": "Jadeite Dust",
   "item.rpgmod.mix_dust": "Mix Dust",
+
   "item.rpgmod.red_ogre_spawn_egg": "Red Ogre Spawn Egg",
+  "item.rpgmod.red_ogre_heart": "Red Ogre Heart",
+  "item.rpgmod.purified_red_ogre_heart": "Purified Red Ogre Heart",
+
   "block.rpgmod.azurite_ore": "Azurite Ore",
   "block.rpgmod.adamantite_ore": "Adamantite Ore",
   "block.rpgmod.jadeite_ore": "Jadeite Ore",
+
   "block.rpgmod.portal_block": "Portal Block",
+
   "block.rpgmod.purifier": "Purifier",
+
   "item.rpgmod.starter_knife": "Starter Knife",
   "item.rpgmod.starter_slingshot": "Starter Slingshot",
+
   "item.rpgmod.beginner_bow": "Beginner Bow",
+  "item.rpgmod.beginner_crossbow": "Beginner Crossbow",
+
   "item.rpgmod.torch_bow": "Torch Bow",
   "item.rpgmod.torch_arrow": "Torch Arrow",
-  "item.rpgmod.beginner_crossbow": "Beginner Crossbow",
+
   "item.rpgmod.beginner_broadsword": "Beginner Broadsword",
   "item.rpgmod.advanced_broadsword": "Advanced Broadsword",
+  "item.rpgmod.superior_broadsword": "Superior Broadsword",
+
   "item.rpgmod.beginner_battle_axe": "Beginner Battle Axe",
+  "item.rpgmod.advanced_battle_axe": "Advanced Battle Axe",
+  "item.rpgmod.superior_battle_axe": "Superior Battle Axe",
+
   "key.category.rpgmod": "RPG Mod",
   "key.rpgmod.guide_book": "Open guide book",
   "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
   "itemGroup.rpgmod_items_tab": "RPG Items",
+
   "item.rpgmod.warrior_starter_key": "Warrior Starter Key",
+
   "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage",
-  "item.rpgmod.red_ogre_heart": "Red Ogre Heart",
-  "item.rpgmod.purified_red_ogre_heart": "Purified Red Ogre Heart",
+
   "item.rpgmod.soap_water_bucket": "Holy Water Bucket",
   "fluid_type.rpgmod.soap_water_fluid": "Holy Water",
   "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "rpgmod.tooltip.liquid.amount": "%s mB",
-  "entity.rpgmod.red_ogre": "Red Ogre"
+
+  "entity.rpgmod.red_ogre": "Red Ogre",
+  "entity.rpgmod.chomper": "Red Ogre"
 }
