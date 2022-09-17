@@ -28,7 +28,7 @@ public class TorchArrowEntity extends Arrow {
         HitResult.Type hitType = result.getType();
         if (hitType == HitResult.Type.BLOCK){
             setToTorch((BlockHitResult)result);
-            this.remove(Entity.RemovalReason.KILLED);
+            this.remove(Entity.RemovalReason.DISCARDED);
         }
     }
 
@@ -66,8 +66,7 @@ public class TorchArrowEntity extends Arrow {
     @Override
     protected void doPostHurtEffects(LivingEntity entity) {
         super.doPostHurtEffects(entity);
-
-        entity.setSecondsOnFire(15);
-        entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 300, 0));
+        entity.setSecondsOnFire(10);
+        entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 200, 0));
     }
 }
