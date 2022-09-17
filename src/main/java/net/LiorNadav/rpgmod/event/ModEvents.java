@@ -12,29 +12,31 @@ import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBow;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBowProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshot;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshotProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerManaProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWand;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWandProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe.PlayerBattleAxe;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe.PlayerBattleAxeProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadsword;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnife;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
@@ -82,20 +84,31 @@ public class ModEvents {
         //------------------------------------------Knife Events----------------------------------------------
         @SubscribeEvent
         public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
+
+            //------------------Player weapon system------------------//
             if (!event.getObject().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_knife_levels"), new PlayerKnifeProvider());
             }
+            if (!event.getObject().getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).isPresent()) {
+                event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_slingshot_levels"), new PlayerSlingshotProvider());
+            }
+            if (!event.getObject().getCapability(PlayerWandProvider.PLAYER_WAND).isPresent()) {
+                event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_wand_levels"), new PlayerWandProvider());
+            }
+
             if (!event.getObject().getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_broadsword_levels"), new PlayerBroadswordProvider());
             }
             if (!event.getObject().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_battle_axe_levels"), new PlayerBattleAxeProvider());
             }
-            if (!event.getObject().getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).isPresent()) {
-                event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_slingshot_levels"), new PlayerSlingshotProvider());
-            }
             if (!event.getObject().getCapability(PlayerBowProvider.PLAYER_BOW).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_bow_levels"), new PlayerBowProvider());
+            }
+
+            //------------------Player general capabilities------------------//
+            if (!event.getObject().getCapability(PlayerManaProvider.PLAYER_MANA).isPresent()) {
+                event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_mana"), new PlayerManaProvider());
             }
         }
 
@@ -127,6 +140,16 @@ public class ModEvents {
                         newStore.copyFrom(oldStore);
                     });
                 });
+                event.getOriginal().getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(oldStore -> {
+                    event.getOriginal().getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(newStore -> {
+                        newStore.copyFrom(oldStore);
+                    });
+                });
+                event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(oldStore -> {
+                    event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(newStore -> {
+                        newStore.copyFrom(oldStore);
+                    });
+                });
             }
         }
 
@@ -137,6 +160,8 @@ public class ModEvents {
             event.register(PlayerBattleAxe.class);
             event.register(PlayerSlingshot.class);
             event.register(PlayerBow.class);
+            event.register(PlayerWand.class);
+            event.register(net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerMana.class);
         }
 
         //---------------------------------------General Events----------------------------------------------
@@ -259,6 +284,16 @@ public class ModEvents {
                     default:
                         break;
                 }
+            }
+        }
+        @SubscribeEvent
+        public static void onPlayerTick(TickEvent.PlayerTickEvent event){
+            if (event.side == LogicalSide.SERVER) {
+                event.player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
+                    if (mana.getMana() < 100 && event.player.getRandom().nextFloat() < 0.05f){
+                        mana.addMana(1);
+                    }
+                });
             }
         }
     }
