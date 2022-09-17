@@ -9,7 +9,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -35,6 +37,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class RedOgreEntity extends Monster implements IAnimatable {
 
+    private static final float ATTACK_DMG = 13f;
     private AnimationFactory factory = new AnimationFactory(this);
     private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(),
             BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
@@ -47,9 +50,9 @@ public class RedOgreEntity extends Monster implements IAnimatable {
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 200.0D)
-                .add(Attributes.ATTACK_DAMAGE, 13.0f)
+                .add(Attributes.ATTACK_DAMAGE, ATTACK_DMG)
                 .add(Attributes.ATTACK_SPEED, 1.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.4f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
     }
     @Override
     protected void registerGoals() {
@@ -66,18 +69,18 @@ public class RedOgreEntity extends Monster implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chomper.walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.red_ogre.walk", true));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chomper.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.red_ogre.idle", true));
         return PlayState.CONTINUE;
     }
 
     private PlayState attackPredicate(AnimationEvent event){
         if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
             event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chomper.attack", false));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.red_ogre.attack", false));
             this.swinging = false;
         }
         return PlayState.CONTINUE;
@@ -89,6 +92,30 @@ public class RedOgreEntity extends Monster implements IAnimatable {
                 0, this::predicate));
         data.addAnimationController(new AnimationController(this, "attackController",
                 0, this::attackPredicate));
+    }
+
+    @Override
+    // Hit like Iron Golem
+    public boolean doHurtTarget(Entity pEntity) {
+        this.level.broadcastEntityEvent(this, (byte)4);
+        float f = ATTACK_DMG;
+        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
+        boolean flag = pEntity.hurt(DamageSource.mobAttack(this), f1);
+        if (flag) {
+            double d2;
+            if (pEntity instanceof LivingEntity) {
+                LivingEntity livingentity = (LivingEntity)pEntity;
+                d2 = livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+            } else {
+                d2 = 0.0D;
+            }
+
+            double d0 = d2;
+            double d1 = Math.max(0.0D, 1.0D - d0);
+            pEntity.setDeltaMovement(pEntity.getDeltaMovement().add(0.0D, (double)0.4F * d1, 0.0D));
+            this.doEnchantDamageEffects(this, pEntity);
+        }
+        return super.doHurtTarget(pEntity);
     }
 
     @Override

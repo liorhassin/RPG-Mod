@@ -19,12 +19,12 @@ public class RedOgreRenderer extends GeoEntityRenderer<RedOgreEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(RedOgreEntity instance) {
-        return new ResourceLocation(RPGMod.MOD_ID, "textures/entity/chomper_texture.png");
+        return new ResourceLocation(RPGMod.MOD_ID, "textures/entity/red_ogre_texture.png");
     }
 
     @Override
     public RenderType getRenderType(RedOgreEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
-        stack.scale(1f, 1f, 1f);
+        stack.scale(3f, 3f, 3f);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }
