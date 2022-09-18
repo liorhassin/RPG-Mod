@@ -13,14 +13,14 @@ import net.minecraft.world.level.Level;
 
 import java.util.function.Predicate;
 
-public class TorchBow extends ModBow{
-    public TorchBow(Properties properties) {
+public class SuperiorBowItem extends ModBow{
+    public SuperiorBowItem(Properties properties) {
         super(properties);
     }
 
     protected double getArrowDamage(ItemStack bowStack, AbstractArrow arrowEntity) {
         int powerLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, bowStack);
-            return (double)powerLevel * 0.5D + 0.5D;
+            return (double)powerLevel * 1.5D + 2D;
     }
 
     @Override

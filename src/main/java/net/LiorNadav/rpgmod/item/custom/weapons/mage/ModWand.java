@@ -9,6 +9,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
@@ -36,8 +37,8 @@ public class ModWand extends BowItem {
                     entityLiving.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
                         if (mana.getMana() > 20){
                             //DragonFireball arrowEntity = new DragonFireball(level, player, player.getX(), player.getY(), player.getZ());
-                            LargeFireball fireballEntity = new LargeFireball(level, player, 0, 0, 0, 0);
-                            fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 3.0f, 1.0F);
+                            LargeFireball fireballEntity = new LargeFireball(level, player, 0, -0.1f, 0, 0);
+                            fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.5F, velocity * 3.0f, 1.0F);
 
                             bowStack.hurtAndBreak(1, player, (player1) -> {
                                 player1.broadcastBreakEvent(player.getUsedItemHand());
@@ -48,23 +49,23 @@ public class ModWand extends BowItem {
                         }
                     });
                 }
-
                 level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-                }
             }
         }
+    }
 
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
         if (entity instanceof Player) {
-
             entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 100), entity);
-
-
-
                 //player.awardStat(Stats.ITEM_USED.get(this));
             }
         return false;
+    }
+
+    @Override
+    public int getDefaultProjectileRange() {
+        return 25;
     }
 
     @Override

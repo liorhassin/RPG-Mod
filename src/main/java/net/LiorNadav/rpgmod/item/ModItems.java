@@ -1,12 +1,14 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerBowItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerCrossbowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.mage.ModWand;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
-import net.LiorNadav.rpgmod.item.custom.weapons.archer.TorchBow;
+import net.LiorNadav.rpgmod.item.custom.weapons.archer.TorchBowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.TorchArrowItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -85,13 +87,13 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
     public static final RegistryObject<Item> BEGINNER_BOW = ITEMS.register("beginner_bow",
-            () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+            () -> new BeginnerBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     public static final RegistryObject<Item> BEGINNER_CROSSBOW = ITEMS.register("beginner_crossbow",
-            () -> new CrossbowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+            () -> new BeginnerCrossbowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     public static final RegistryObject<Item> TORCH_BOW = ITEMS.register("torch_bow",
-            () -> new TorchBow(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+            () -> new TorchBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     public static final RegistryObject<Item> WAND = ITEMS.register("wand",
             () -> new ModWand(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
