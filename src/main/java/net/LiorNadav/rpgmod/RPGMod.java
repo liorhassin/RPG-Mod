@@ -71,20 +71,5 @@ public class RPGMod
             ModVillagers.registerPOIs();
         });
         ModMessages.register();
-        ModItemProperties.addCustomItemProperties();
-    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-
-            ModItemProperties.addCustomItemProperties();
-            MenuScreens.register(ModMenuTypes.PURIFIER_MENU.get(), PurifierScreen::new);
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
-            EntityRenderers.register(ModEntityTypes.RED_OGRE.get(), RedOgreRenderer::new);
-        }
     }
 }

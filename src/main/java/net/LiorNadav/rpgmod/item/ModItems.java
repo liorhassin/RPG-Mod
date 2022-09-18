@@ -4,6 +4,7 @@ import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerBowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerCrossbowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.mage.ModWand;
+import net.LiorNadav.rpgmod.item.custom.weapons.mage.StarterWand;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
@@ -62,6 +63,9 @@ public class ModItems {
     public static final RegistryObject<Item> STARTER_SLINGSHOT = ITEMS.register("starter_slingshot",
             () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(100)));
 
+    public static final RegistryObject<Item> WAND = ITEMS.register("wand",
+            () -> new StarterWand(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
     public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
             () -> new BeginnerBroadSwordItem(Tiers.STONE, 3, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
@@ -94,9 +98,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> TORCH_BOW = ITEMS.register("torch_bow",
             () -> new TorchBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
-
-    public static final RegistryObject<Item> WAND = ITEMS.register("wand",
-            () -> new ModWand(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     //-------------------- Ammunition -------------------//
 
