@@ -2,6 +2,9 @@ package net.LiorNadav.rpgmod.item.custom.weapons.archer;
 
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
+import net.LiorNadav.rpgmod.entities.projectiles.TorchArrowEntity;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
@@ -23,6 +26,86 @@ import java.util.function.Predicate;
 public class ModCrossbow extends CrossbowItem{
     public ModCrossbow(Properties pProperties) {
         super(pProperties);
+    }
+
+    @Override
+    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
+        int i = this.getUseDuration(pStack) - pTimeLeft;
+        float f = getPowerForTime(i, pStack);
+        if (f >= 1.0F && !isCharged(pStack) && tryLoadProjectiles(pEntityLiving, pStack)) {
+            setCharged(pStack, true);
+            SoundSource soundsource = pEntityLiving instanceof Player ? SoundSource.PLAYERS : SoundSource.HOSTILE;
+            pLevel.playSound((Player)null, pEntityLiving.getX(), pEntityLiving.getY(), pEntityLiving.getZ(), SoundEvents.CROSSBOW_LOADING_END, soundsource, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
+        }
+
+    }
+    private static float getPowerForTime(int pUseTime, ItemStack pCrossbowStack) {
+        float f = (float)pUseTime / (float)getChargeDuration(pCrossbowStack);
+        if (f > 1.0F) {
+            f = 1.0F;
+        }
+
+        return f;
+    }
+
+    private static boolean tryLoadProjectiles(LivingEntity pShooter, ItemStack pCrossbowStack) {
+        int i = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, pCrossbowStack);
+        int j = i == 0 ? 1 : 3;
+        boolean flag = pShooter instanceof Player && ((Player)pShooter).getAbilities().instabuild;
+        ItemStack itemstack = pShooter.getProjectile(pCrossbowStack);
+        ItemStack itemstack1 = itemstack.copy();
+
+        for(int k = 0; k < j; ++k) {
+            if (k > 0) {
+                itemstack = itemstack1.copy();
+            }
+
+            if (itemstack.isEmpty() && flag) {
+                itemstack = new ItemStack(Items.ARROW);
+                itemstack1 = itemstack.copy();
+            }
+
+            if (!loadProjectile(pShooter, pCrossbowStack, itemstack, k > 0, flag)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean loadProjectile(LivingEntity pShooter, ItemStack pCrossbowStack, ItemStack pAmmoStack, boolean pHasAmmo, boolean pIsCreative) {
+        if (pAmmoStack.isEmpty()) {
+            return false;
+        } else {
+            boolean flag = pIsCreative && pAmmoStack.getItem() instanceof ArrowItem;
+            ItemStack itemstack;
+            if (!flag && !pIsCreative && !pHasAmmo) {
+                itemstack = pAmmoStack.split(1);
+                if (pAmmoStack.isEmpty() && pShooter instanceof Player) {
+                    ((Player)pShooter).getInventory().removeItem(pAmmoStack);
+                }
+            } else {
+                itemstack = pAmmoStack.copy();
+            }
+
+            addChargedProjectile(pCrossbowStack, itemstack);
+            return true;
+        }
+    }
+
+    private static void addChargedProjectile(ItemStack pCrossbowStack, ItemStack pAmmoStack) {
+        CompoundTag compoundtag = pCrossbowStack.getOrCreateTag();
+        ListTag listtag;
+        if (compoundtag.contains("ChargedProjectiles", 9)) {
+            listtag = compoundtag.getList("ChargedProjectiles", 10);
+        } else {
+            listtag = new ListTag();
+        }
+
+        CompoundTag compoundtag1 = new CompoundTag();
+        pAmmoStack.save(compoundtag1);
+        listtag.add(compoundtag1);
+        compoundtag.put("ChargedProjectiles", listtag);
     }
 
     protected void shootProjectile(Level pLevel, LivingEntity pShooter, InteractionHand pHand, ItemStack pCrossbowStack, ItemStack pAmmoStack, float pSoundPitch, boolean pIsCreativeMode, float pVelocity, float pInaccuracy, float pProjectileAngle) {

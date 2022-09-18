@@ -33,7 +33,7 @@ public class ModBow extends BowItem {
             timeDrawn = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(bowStack, level, player, timeDrawn, !ammoStack.isEmpty() || hasInfinity);
             if (timeDrawn < 0) return;
 
-            timeDrawn += timeLeft;
+            //timeDrawn += timeLeft;
             if (!ammoStack.isEmpty() || hasInfinity) {
                 boolean isTippedArrow = ammoStack.getItem() == Items.SPECTRAL_ARROW || ammoStack.getItem() == Items.TIPPED_ARROW;
                 if (ammoStack.isEmpty()) {
