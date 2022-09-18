@@ -16,7 +16,6 @@ import net.LiorNadav.rpgmod.util.ModItemProperties;
 import net.LiorNadav.rpgmod.villager.ModPOIs;
 import net.LiorNadav.rpgmod.villager.ModVillagers;
 import net.LiorNadav.rpgmod.world.dimension.ModDimensions;
-import net.LiorNadav.rpgmod.world.entity.ModEntityType;
 import net.LiorNadav.rpgmod.world.feature.ModConfiguredFeatures;
 import net.LiorNadav.rpgmod.world.feature.ModPlacedFeatures;
 import net.LiorNadav.rpgmod.world.structure.ModStructures;
@@ -24,6 +23,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -63,7 +63,6 @@ public class RPGMod
         ModEntityTypes.register(modEventBus);
         GeckoLib.initialize();
         MinecraftForge.EVENT_BUS.register(this);
-        ModEntityType.register(modEventBus);
         ModStructures.register(modEventBus);
     }
 
@@ -76,7 +75,7 @@ public class RPGMod
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {

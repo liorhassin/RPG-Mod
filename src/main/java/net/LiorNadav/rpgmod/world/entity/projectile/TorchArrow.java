@@ -1,7 +1,7 @@
 package net.LiorNadav.rpgmod.world.entity.projectile;
 
+import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.item.ModItems;
-import net.LiorNadav.rpgmod.world.entity.ModEntityType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -20,7 +20,7 @@ public class TorchArrow extends AbstractArrow {
     }
 
     public TorchArrow(LivingEntity entity, Level level, Item referenceItem) {
-        super(ModEntityType.TORCH_ARROW.get(), entity, level);
+        super(ModEntityTypes.TORCH_ARROW.get(), entity, level);
         this.referenceItem = referenceItem;
     }
 
