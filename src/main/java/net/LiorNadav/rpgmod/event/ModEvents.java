@@ -12,6 +12,7 @@ import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBow;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBowProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshot;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshotProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerMana;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerManaProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWand;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWandProvider;
@@ -160,7 +161,7 @@ public class ModEvents {
             event.register(PlayerSlingshot.class);
             event.register(PlayerBow.class);
             event.register(PlayerWand.class);
-            event.register(net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerMana.class);
+            event.register(PlayerMana.class);
         }
 
         //---------------------------------------General Events----------------------------------------------
@@ -185,6 +186,14 @@ public class ModEvents {
                             if (slingshotExperience.getSlingshotLevel() != 10) {
                                 slingshotExperience.addExperience((int) event.getAmount());
                                 ModMessages.sendToServer(new SlingshotLevelC2SPacket());
+                            }
+                        });
+                        break;
+                    case "starter_wand":
+                        player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
+                            if (wandExperience.getWandLevel() != 10) {
+                                wandExperience.addExperience((int) event.getAmount());
+                                ModMessages.sendToServer(new WandLevelC2SPacket());
                             }
                         });
                         break;

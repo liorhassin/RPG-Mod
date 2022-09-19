@@ -2,7 +2,6 @@ package net.LiorNadav.rpgmod.item.custom.weapons.archer;
 
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
-import net.LiorNadav.rpgmod.entities.projectiles.TorchArrowEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.sounds.SoundEvents;

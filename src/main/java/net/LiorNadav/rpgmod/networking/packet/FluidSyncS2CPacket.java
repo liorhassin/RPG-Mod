@@ -24,7 +24,7 @@ public class FluidSyncS2CPacket {
         this.pos = buf.readBlockPos();
     }
 
-    public void toBytes(FriendlyByteBuf buf) {
+    public void toByte(FriendlyByteBuf buf) {
         buf.writeFluidStack(fluidStack);
         buf.writeBlockPos(pos);
     }
