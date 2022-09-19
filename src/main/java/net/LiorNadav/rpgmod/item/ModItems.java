@@ -3,13 +3,11 @@ package net.LiorNadav.rpgmod.item;
 import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerBowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerCrossbowItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.mage.ModWand;
 import net.LiorNadav.rpgmod.item.custom.weapons.mage.StarterWand;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
 import net.LiorNadav.rpgmod.item.custom.WarriorStarterKey;
-import net.LiorNadav.rpgmod.item.custom.weapons.archer.TorchBowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.TorchArrowItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -95,9 +93,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> BEGINNER_CROSSBOW = ITEMS.register("beginner_crossbow",
             () -> new BeginnerCrossbowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
-
-    public static final RegistryObject<Item> TORCH_BOW = ITEMS.register("torch_bow",
-            () -> new TorchBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     //-------------------- Ammunition -------------------//
 

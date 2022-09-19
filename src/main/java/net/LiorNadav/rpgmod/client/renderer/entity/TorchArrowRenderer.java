@@ -10,12 +10,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class TorchArrowRenderer extends ArrowRenderer<TorchArrow> {
+    public static final ResourceLocation TEXTURE = new ResourceLocation(RPGMod.MOD_ID, "textures/entity/ammunition/torch_arrow.png");
     public TorchArrowRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
     public ResourceLocation getTextureLocation(TorchArrow arrow) {
-        return new ResourceLocation(RPGMod.MOD_ID, "textures/entity/ammunition/torch_arrow.png");
+        return TEXTURE;
     }
 }

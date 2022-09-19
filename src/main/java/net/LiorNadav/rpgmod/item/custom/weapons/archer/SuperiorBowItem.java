@@ -1,6 +1,6 @@
 package net.LiorNadav.rpgmod.item.custom.weapons.archer;
 
-import net.LiorNadav.rpgmod.entities.projectiles.TorchArrowEntity;
+
 import net.LiorNadav.rpgmod.item.ModItems;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -35,9 +35,7 @@ public class SuperiorBowItem extends ModBow{
 
     @Override
     protected AbstractArrow createArrow(Level level, ItemStack ammoStack, Player player) {
-        if(ammoStack.getItem() == ModItems.TORCH_ARROW.get()) {
-            return new TorchArrowEntity(level, player);
-        }
+
         return new Arrow(level,player);
     }
 }

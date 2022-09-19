@@ -16,15 +16,16 @@ public class ModEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, RPGMod.MOD_ID);
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, RPGMod.MOD_ID);
-
-    //public static final EntityType<Arrow> ARROW = register("arrow", EntityType.Builder.<Arrow>of(Arrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
-
-    public static final RegistryObject<EntityType<TorchArrow>> TORCH_ARROW = ENTITIES.register("torch_arrow",
+    /*
+    public static final RegistryObject<EntityType<TorchArrow>> TORCH_ARROW = ENTITY_TYPES.register("torch_arrow",
             ()-> EntityType.Builder.<TorchArrow>of(TorchArrow::new, MobCategory.MISC).sized(0.5F,0.5F)
                     .clientTrackingRange(4).updateInterval(20)
                     .build(new ResourceLocation(RPGMod.MOD_ID, "torch_arrow").toString()));
+     */
+
+    public static final RegistryObject<EntityType<TorchArrow>> TORCH_ARROW = ENTITY_TYPES.register("explosive_arrow",
+            () -> EntityType.Builder.of((EntityType.EntityFactory<TorchArrow>) TorchArrow::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F).build("explosive_arrow"));
 
     public static final RegistryObject<EntityType<RedOgreEntity>> RED_OGRE =
             ENTITY_TYPES.register("red_ogre",
@@ -35,7 +36,6 @@ public class ModEntityTypes {
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
-        ENTITIES.register(eventBus);
     }
 }
 
