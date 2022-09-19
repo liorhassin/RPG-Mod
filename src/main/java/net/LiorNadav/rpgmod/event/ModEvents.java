@@ -51,32 +51,21 @@ public class ModEvents {
         public static void addCustomTrades(VillagerTradesEvent event) {
             if (event.getType() == ModVillagers.DARK_MAGE.get()) {
                 Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-                ItemStack stack = new ItemStack(ModItems.AZURITE_DUST.get(), 1);
-                int villagerLevel = 1;
+                ItemStack firstTrade = new ItemStack(ModItems.AZURITE_DUST.get(), 1);
+                ItemStack secondTrade = new ItemStack(ModItems.ADAMANTITE_DUST.get(), 1);
+                ItemStack thirdTrade = new ItemStack(ModItems.JADEITE_DUST.get(), 1);
 
-                trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                trades.get(1).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.AZURITE_INGOT.get(), 1),
-                        stack, 10, 8, 0.02F));
-            }
+                        firstTrade, 10, 8, 0.02F));
 
-            if (event.getType() == ModVillagers.DARK_MAGE.get()) {
-                Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-                ItemStack stack = new ItemStack(ModItems.ADAMANTITE_DUST.get(), 1);
-                int villagerLevel = 1;
-
-                trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                trades.get(2).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.ADAMANTITE_INGOT.get(), 1),
-                        stack, 10, 8, 0.02F));
-            }
+                        secondTrade, 10, 8, 0.02F));
 
-            if (event.getType() == ModVillagers.DARK_MAGE.get()) {
-                Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-                ItemStack stack = new ItemStack(ModItems.JADEITE_DUST.get(), 1);
-                int villagerLevel = 1;
-
-                trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                trades.get(3).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.JADEITE_INGOT.get(), 1),
-                        stack, 10, 8, 0.02F));
+                        thirdTrade, 10, 8, 0.02F));
             }
         }
 
