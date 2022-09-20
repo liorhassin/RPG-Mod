@@ -55,6 +55,9 @@ public class ModItems {
     public static final RegistryObject<Item> RED_OGRE_SPAWN_EGG = ITEMS.register("red_ogre_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.RED_OGRE, 0x22b341, 0x19732e,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> ZOMBIE_RPG_SPAWN_EGG = ITEMS.register("zombie_rpg_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.ZOMBIE_RPG, 0x22b341, 0x19732e,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
     //----------------------------- Weapons -------------------------------//
     public static final RegistryObject<Item> STARTER_KNIFE = ITEMS.register("starter_knife",

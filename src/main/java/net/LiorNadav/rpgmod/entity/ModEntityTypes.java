@@ -2,6 +2,7 @@ package net.LiorNadav.rpgmod.entity;
 
 import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.entity.custom.RedOgreEntity;
+import net.LiorNadav.rpgmod.entity.custom.ZombieRPGEntity;
 import net.LiorNadav.rpgmod.world.entity.projectile.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -58,6 +59,12 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.of(RedOgreEntity::new, MobCategory.MONSTER)
                             .sized(2.3f, 4.5f)
                             .build(new ResourceLocation(RPGMod.MOD_ID, "red_ogre").toString()));
+
+    public static final RegistryObject<EntityType<ZombieRPGEntity>> ZOMBIE_RPG =
+            ENTITY_TYPES.register("zombie_rpg",
+                    () -> EntityType.Builder.of(ZombieRPGEntity::new, MobCategory.MONSTER)
+                            .sized(1, 1.8f)
+                            .build(new ResourceLocation(RPGMod.MOD_ID, "zombie_rpg").toString()));
 
 
     public static void register(IEventBus eventBus) {

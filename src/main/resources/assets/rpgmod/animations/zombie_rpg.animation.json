@@ -1,0 +1,220 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.zombie_rpg.walk": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"zombie": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, -0.1, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"legs": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0.1, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [38, 0, 0]
+						},
+						"0.5": {
+							"vector": [-28, 0, 0]
+						},
+						"1.0": {
+							"vector": [38, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0.4, 0]
+						},
+						"0.5": {
+							"vector": [0, 0.4, -0.2]
+						},
+						"1.0": {
+							"vector": [0, 0.4, 0]
+						}
+					}
+				},
+				"left_leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [-27, 0, 0]
+						},
+						"0.5": {
+							"vector": [37, 0, 0]
+						},
+						"1.0": {
+							"vector": [-27, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, -0.3]
+						},
+						"0.5": {
+							"vector": [0, 0.4, 0.2]
+						},
+						"1.0": {
+							"vector": [0, 0, -0.3]
+						}
+					}
+				},
+				"right_arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-98, 0, 0]
+						},
+						"0.5": {
+							"vector": [-75.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [-98, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0.1, -0.6, -0.4]
+						},
+						"0.5": {
+							"vector": [0.1, -0.6, -0.6]
+						},
+						"1.0": {
+							"vector": [0.1, -0.6, -0.4]
+						}
+					}
+				},
+				"left_arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-72, 0, 0]
+						},
+						"0.5": {
+							"vector": [-98, 0, 0]
+						},
+						"1.0": {
+							"vector": [-72, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, -0.6, -0.4]
+						},
+						"0.5": {
+							"vector": [0, -0.3, -1.1]
+						},
+						"1.0": {
+							"vector": [0, -0.6, -0.4]
+						}
+					}
+				}
+			}
+		},
+		"animation.zombie_rpg.idle": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"body": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, -0.1, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"arms": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, -0.1, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"head": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, -0.1, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.zombie_rpg.attack": {
+			"animation_length": 0.5,
+			"bones": {
+				"right_arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [-54, 0, 0]
+						},
+						"0.25": {
+							"vector": [-139, 0, 0]
+						},
+						"0.375": {
+							"vector": [-69, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0, -0.4, -0.5]
+						},
+						"0.25": {
+							"vector": [0, -0.2, -1.2]
+						},
+						"0.375": {
+							"vector": [0, -0.6, -0.6]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
