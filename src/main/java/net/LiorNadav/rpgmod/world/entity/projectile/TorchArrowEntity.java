@@ -20,16 +20,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
-public class TorchArrow extends AbstractArrow {
-    public TorchArrow(EntityType<TorchArrow> pEntityType, Level pLevel) {
+public class TorchArrowEntity extends AbstractArrow {
+    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    public TorchArrow(EntityType<TorchArrow> pEntityType, double pX, double pY, double pZ, Level pLevel) {
+    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, double pX, double pY, double pZ, Level pLevel) {
         super(pEntityType, pX, pY, pZ, pLevel);
     }
 
-    public TorchArrow(EntityType<TorchArrow> pEntityType, LivingEntity pShooter, Level pLevel) {
+    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
         super(pEntityType, pShooter, pLevel);
     }
 
@@ -41,9 +41,10 @@ public class TorchArrow extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
+        super.onHitEntity(result);
+        this.setBaseDamage(1);
         if (result.getEntity() instanceof LivingEntity) {
             LivingEntity living = (LivingEntity)result.getEntity();
-            super.onHitEntity(result);
             living.setSecondsOnFire(8);
             living.addEffect(new MobEffectInstance(MobEffects.GLOWING, 200, 0));
         }
@@ -51,8 +52,8 @@ public class TorchArrow extends AbstractArrow {
 
     @Override
     protected void onHitBlock(BlockHitResult pResult) {
-        setToTorch(pResult);
         super.onHitBlock(pResult);
+        setToTorch(pResult);
         this.remove(Entity.RemovalReason.DISCARDED);
     }
 

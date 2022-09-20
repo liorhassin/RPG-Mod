@@ -27,8 +27,13 @@
   "item.rpgmod.beginner_bow": "Beginner Bow",
   "item.rpgmod.beginner_crossbow": "Beginner Crossbow",
 
-  "item.rpgmod.torch_bow": "Torch Bow",
   "item.rpgmod.torch_arrow": "Torch Arrow",
+  "item.rpgmod.explosive_arrow": "Explosive Arrow",
+  "item.rpgmod.frost_arrow": "Frost Arrow",
+  "item.rpgmod.iron_arrow": "Iron Arrow",
+  "item.rpgmod.gold_arrow": "Gold Arrow",
+  "item.rpgmod.diamond_arrow": "Diamond Arrow",
+  "item.rpgmod.emerald_arrow": "Emerald Arrow",
 
   "item.rpgmod.beginner_broadsword": "Beginner Broadsword",
   "item.rpgmod.advanced_broadsword": "Advanced Broadsword",
