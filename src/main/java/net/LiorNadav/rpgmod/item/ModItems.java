@@ -2,13 +2,9 @@ package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.item.custom.Tablet;
-import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerBowItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerCrossbowItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.archer.*;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.*;
-import net.LiorNadav.rpgmod.item.custom.weapons.mage.AdvancedWandItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.mage.BeginnerWandItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.mage.StarterWandItem;
-import net.LiorNadav.rpgmod.item.custom.weapons.mage.SuperiorWandItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.mage.*;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
@@ -106,11 +102,32 @@ public class ModItems {
     public static final RegistryObject<Item> SUPERIOR_WAND = ITEMS.register("superior_wand",
             () -> new SuperiorWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
+    public static final RegistryObject<Item> BEGINNER_SPELLBOOK = ITEMS.register("beginner_spellbook",
+            () -> new BeginnerSpellbookItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    public static final RegistryObject<Item> ADVANCED_SPELLBOOK = ITEMS.register("advanced_spellbook",
+            () -> new AdvancedSpellbookItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
+
+    public static final RegistryObject<Item> SUPERIOR_SPELLBOOK = ITEMS.register("superior_spellbook",
+            () -> new SuperiorSpellbookItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
+
     public static final RegistryObject<Item> BEGINNER_BOW = ITEMS.register("beginner_bow",
             () -> new BeginnerBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
+    public static final RegistryObject<Item> ADVANCED_BOW = ITEMS.register("advanced_bow",
+            () -> new AdvancedBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
+
+    public static final RegistryObject<Item> SUPERIOR_BOW = ITEMS.register("superior_bow",
+            () -> new SuperiorBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
+
     public static final RegistryObject<Item> BEGINNER_CROSSBOW = ITEMS.register("beginner_crossbow",
             () -> new BeginnerCrossbowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    public static final RegistryObject<Item> ADVANCED_CROSSBOW = ITEMS.register("advanced_crossbow",
+            () -> new AdvancedCrossbowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
+
+    public static final RegistryObject<Item> SUPERIOR_CROSSBOW = ITEMS.register("superior_crossbow",
+            () -> new SuperiorCrossbowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
     //-------------------- Ammunition -------------------//
 
