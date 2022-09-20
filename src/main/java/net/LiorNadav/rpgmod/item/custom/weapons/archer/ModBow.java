@@ -1,5 +1,6 @@
 package net.LiorNadav.rpgmod.item.custom.weapons.archer;
 
+import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBowProvider;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;

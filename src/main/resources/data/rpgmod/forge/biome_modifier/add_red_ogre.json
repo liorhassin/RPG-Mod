@@ -1,0 +1,10 @@
+{
+  "type": "rpgmod:entities",
+  "biomes": "#forge:is_plains",
+  "entity": {
+    "type": "rpgmod:red_ogre",
+    "weight": 80,
+    "minCount": 2,
+    "maxCount": 4
+  }
+}

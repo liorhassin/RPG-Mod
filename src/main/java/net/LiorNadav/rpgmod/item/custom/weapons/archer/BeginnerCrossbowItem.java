@@ -3,7 +3,7 @@ package net.LiorNadav.rpgmod.item.custom.weapons.archer;
 
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.item.ModItems;
-import net.LiorNadav.rpgmod.world.entity.projectile.TorchArrow;
+import net.LiorNadav.rpgmod.world.entity.projectile.TorchArrowEntity;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -36,7 +36,7 @@ public class BeginnerCrossbowItem extends ModCrossbow{
     @Override
     protected AbstractArrow createArrow(Level level, ItemStack ammoStack, Player player) {
         if(ammoStack.getItem() == ModItems.TORCH_ARROW.get()) {
-            return new TorchArrow(ModEntityTypes.TORCH_ARROW.get(), player, level);
+            return new TorchArrowEntity(ModEntityTypes.TORCH_ARROW.get(), player, level);
         }
         return new Arrow(level,player);
     }
