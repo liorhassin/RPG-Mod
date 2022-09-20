@@ -9,9 +9,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
 public class ModFireballSkill extends LargeFireball {
-    private int customExplosivePower;
-    private boolean explosiveGrief;
-    private boolean explosiveFire;
+    private final int customExplosivePower;
+    private final boolean explosiveGrief;
+    private final boolean explosiveFire;
 
     public ModFireballSkill(EntityType<? extends LargeFireball> pEntityType, Level pLevel, int customExplosivePower,
                             boolean explosiveGrief, boolean explosiveFire) {
