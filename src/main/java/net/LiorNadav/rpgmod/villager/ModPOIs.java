@@ -16,7 +16,7 @@ public class ModPOIs {
     public static final RegistryObject<PoiType> KAUPEN_PORTAL =
             POI.register("kaupen_portal", () -> new PoiType(
                     ImmutableSet.copyOf(ModBlocks.KAUPEN_PORTAL.get().getStateDefinition().getPossibleStates())
-                    , 0, 1));
+                    , 1, 1));
 
 
     public static void register(IEventBus eventBus) {

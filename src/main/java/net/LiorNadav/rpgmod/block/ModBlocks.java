@@ -56,6 +56,10 @@ public class ModBlocks {
             ()-> new PurifierBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(4f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.RPG_MOD_ITEMS);
 
+    public static final RegistryObject<Block> VILLAGER_BLOCK = registerBlock("villager_block",
+            ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(4f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.RPG_MOD_ITEMS);
+
     // -------------------- Other mod blocks ----------------------------
 
     public static final RegistryObject<LiquidBlock> SOAP_WATER_BLOCK = BLOCKS.register("soap_water_block",

@@ -20,20 +20,24 @@ public class ModVillagers {
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS =
             DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, RPGMod.MOD_ID);
 
-    public static final RegistryObject<PoiType> PORTAL_BLOCK_POI = POI_TYPES.register("portal_block_poi",
-            () -> new PoiType(ImmutableSet.copyOf(ModBlocks.PORTAL_BLOCK.get().getStateDefinition().getPossibleStates()),
-                    1, 1));
+    //-------------------- Custom POI types -------------------------------//
+
+    public static final RegistryObject<PoiType> VILLAGER_BLOCK_POI = POI_TYPES.register("villager_block_poi",
+            () -> new PoiType(ImmutableSet.copyOf(ModBlocks.VILLAGER_BLOCK.get().getStateDefinition().getPossibleStates()),
+                    1, 12));
+
+    //----------------------- Custom Villagers ---------------------------//
 
     public static final RegistryObject<VillagerProfession> DARK_MAGE = VILLAGER_PROFESSIONS.register("dark_mage",
-            () -> new VillagerProfession("dark_mage", x -> x.get() == PORTAL_BLOCK_POI.get(),
-                    x -> x.get() == PORTAL_BLOCK_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
+            () -> new VillagerProfession("dark_mage", x -> x.get() == VILLAGER_BLOCK_POI.get(),
+                    x -> x.get() == VILLAGER_BLOCK_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
                     SoundEvents.VILLAGER_WORK_ARMORER));
 
 
     public static void registerPOIs() {
         try {
             ObfuscationReflectionHelper.findMethod(PoiType.class,
-                    "registerBlockStates", PoiType.class).invoke(null, PORTAL_BLOCK_POI.get());
+                    "registerBlockStates", PoiType.class).invoke(null, VILLAGER_BLOCK_POI.get());
         } catch (InvocationTargetException | IllegalAccessException exception) {
             exception.printStackTrace();
         }

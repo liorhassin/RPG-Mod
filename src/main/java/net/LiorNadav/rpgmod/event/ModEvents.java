@@ -55,15 +55,15 @@ public class ModEvents {
                 ItemStack secondTrade = new ItemStack(ModItems.ADAMANTITE_DUST.get(), 1);
                 ItemStack thirdTrade = new ItemStack(ModItems.JADEITE_DUST.get(), 1);
 
-                trades.get(1).add((trader, rand) -> new MerchantOffer(
+                trades.get(2).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.AZURITE_INGOT.get(), 1),
                         firstTrade, 10, 8, 0.02F));
 
-                trades.get(2).add((trader, rand) -> new MerchantOffer(
+                trades.get(1).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.ADAMANTITE_INGOT.get(), 1),
                         secondTrade, 10, 8, 0.02F));
 
-                trades.get(3).add((trader, rand) -> new MerchantOffer(
+                trades.get(1).add((trader, rand) -> new MerchantOffer(
                         new ItemStack(ModItems.JADEITE_INGOT.get(), 1),
                         thirdTrade, 10, 8, 0.02F));
             }
