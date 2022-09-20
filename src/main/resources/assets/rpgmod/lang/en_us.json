@@ -18,6 +18,7 @@
   "block.rpgmod.jadeite_ore": "Jadeite Ore",
 
   "block.rpgmod.portal_block": "Portal Block",
+  "block.rpgmod.spawner": "Spanwer",
 
   "block.rpgmod.purifier": "Purifier",
 
@@ -58,6 +59,6 @@
   "fluid_type.rpgmod.soap_water_fluid": "Holy Water",
   "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "rpgmod.tooltip.liquid.amount": "%s mB",
-  
+
   "entity.rpgmod.red_ogre": "Red Ogre"
 }
