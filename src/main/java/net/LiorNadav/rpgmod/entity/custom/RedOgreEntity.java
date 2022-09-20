@@ -1,5 +1,6 @@
 package net.LiorNadav.rpgmod.entity.custom;
 
+import net.LiorNadav.rpgmod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.bossevents.CustomBossEvent;
@@ -20,6 +21,7 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
@@ -49,7 +51,7 @@ public class RedOgreEntity extends Monster implements IAnimatable {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 200.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.ATTACK_DAMAGE, ATTACK_DMG)
                 .add(Attributes.ATTACK_SPEED, 1.0f)
                 .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
@@ -161,12 +163,13 @@ public class RedOgreEntity extends Monster implements IAnimatable {
         super.stopSeenByPlayer(pPlayer);
         this.bossEvent.removePlayer(pPlayer);
     }
-/*
+
     @Override
-    public boolean hurt(DamageSource pSource, float pAmount) {
-        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-        return super.hurt(pSource, pAmount);
-    }*/
-
-
+    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
+        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
+        ItemEntity itemEntity = this.spawnAtLocation(ModItems.RED_OGRE_HEART.get());
+        if (itemEntity != null) {
+            itemEntity.setExtendedLifetime();
+        }
+    }
 }

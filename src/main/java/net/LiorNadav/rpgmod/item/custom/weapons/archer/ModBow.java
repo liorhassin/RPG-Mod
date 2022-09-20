@@ -1,5 +1,6 @@
 package net.LiorNadav.rpgmod.item.custom.weapons.archer;
 
+import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBowProvider;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -33,7 +34,7 @@ public class ModBow extends BowItem {
             timeDrawn = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(bowStack, level, player, timeDrawn, !ammoStack.isEmpty() || hasInfinity);
             if (timeDrawn < 0) return;
 
-            timeDrawn += timeLeft;
+            //timeDrawn += timeLeft;
             if (!ammoStack.isEmpty() || hasInfinity) {
                 boolean isTippedArrow = ammoStack.getItem() == Items.SPECTRAL_ARROW || ammoStack.getItem() == Items.TIPPED_ARROW;
                 if (ammoStack.isEmpty()) {

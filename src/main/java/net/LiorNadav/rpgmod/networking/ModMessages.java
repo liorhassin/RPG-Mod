@@ -58,8 +58,14 @@ public class ModMessages {
 
         net.messageBuilder(FluidSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(FluidSyncS2CPacket::new)
-                .encoder(FluidSyncS2CPacket::toBytes)
+                .encoder(FluidSyncS2CPacket::toByte)
                 .consumerMainThread(FluidSyncS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(WandLevelC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(WandLevelC2SPacket::new)
+                .encoder(WandLevelC2SPacket::toByte)
+                .consumerMainThread(WandLevelC2SPacket::handle)
                 .add();
     }
 
