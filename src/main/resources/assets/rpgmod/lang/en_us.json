@@ -44,7 +44,13 @@
   "item.rpgmod.advanced_battle_axe": "Advanced Battle Axe",
   "item.rpgmod.superior_battle_axe": "Superior Battle Axe",
 
-  "item.rpgmod.wand": "Wand",
+  "item.rpgmod.starter_wand": "Apprentice Wand",
+  "item.rpgmod.beginner_wand": "Initiate Wand",
+  "item.rpgmod.advanced_wand": "Master Wand",
+  "item.rpgmod.superior_wand": "Archmage Wand",
+  "item.rpgmod.beginner_spellbook": "Disciple Spellbook",
+  "item.rpgmod.advanced_spellbook": "Master Spellbook",
+  "item.rpgmod.superior_spellbook": "Archmage Spellbook",
 
   "key.category.rpgmod": "RPG Mod",
   "key.rpgmod.guide_book": "Open guide book",

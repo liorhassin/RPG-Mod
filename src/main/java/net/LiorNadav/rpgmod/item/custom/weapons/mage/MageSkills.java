@@ -8,25 +8,28 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 
 
 public class MageSkills {
 
-    public static void fireball(ItemStack bowStack, Level level, LivingEntity player) {
+    public static void fireball(ItemStack bowStack, Level level, LivingEntity player, int explosivePower,
+                                boolean explosiveGrief, boolean explosiveFire, float tierSpeed, int manaCost) {
         float velocity = 0.5f;
         if (!level.isClientSide) {
             player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
                 if (mana.getMana() >= 15) {
                     //DragonFireball arrowEntity = new DragonFireball(level, player, player.getX(), player.getY(), player.getZ());
-                    LargeFireball fireballEntity = new LargeFireball(level, player, 0, -0.0000000001f, 0, 0);
-                    fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 1.5f, velocity * 3.0f, 1.0f);
+                    ModFireballSkill fireballEntity = new ModFireballSkill(level, player, 0, 0, 0, 0, explosivePower, explosiveGrief, explosiveFire);
+                    fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0f, velocity * tierSpeed, 1.0f);
 
                     bowStack.hurtAndBreak(1, player, (player1) -> {
                         player1.broadcastBreakEvent(player.getUsedItemHand());
                     });
                     level.addFreshEntity(fireballEntity);
-                    mana.subMana(15);
+
+                    mana.subMana(manaCost);
                     player.sendSystemMessage(Component.literal("Current mana: " + mana.getMana()));
                 }
             });

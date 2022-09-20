@@ -6,7 +6,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -43,14 +45,14 @@ public class ExplosiveArrowEntity extends AbstractArrow {
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         this.setBaseDamage(2);
-        this.level.explode(this, this.getX(), this.getY(), this.getZ(), 2.0f, false, Explosion.BlockInteraction.NONE);
+        this.level.explode(this, this.getX(), this.getY(), this.getZ(), 2.5f, false, Explosion.BlockInteraction.NONE);
     }
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
         this.setBaseDamage(2);
-        this.level.explode(this, this.getX(), this.getY(), this.getZ(), 2.0f, false, Explosion.BlockInteraction.NONE);
+        this.level.explode(this, this.getX(), this.getY(), this.getZ(), 2.5f, false, Explosion.BlockInteraction.NONE);
     }
 
     @Override

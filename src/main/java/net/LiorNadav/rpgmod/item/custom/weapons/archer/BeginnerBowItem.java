@@ -37,6 +37,9 @@ public class BeginnerBowItem extends ModBow{
             else if(ammoStack.getItem() == ModItems.TORCH_ARROW.get()){
                 return ammoStack.getItem() == ModItems.TORCH_ARROW.get();
             }
+            else if(ammoStack.getItem() == ModItems.EXPLOSIVE_ARROW.get()){
+                return ammoStack.getItem() == ModItems.EXPLOSIVE_ARROW.get();
+            }
             return ammoStack.getItem() == Items.ARROW;
         };
     }
@@ -48,6 +51,9 @@ public class BeginnerBowItem extends ModBow{
         }
         else if(ammoStack.getItem() == ModItems.TORCH_ARROW.get()) {
             return new TorchArrowEntity(ModEntityTypes.TORCH_ARROW.get(), player, level);
+        }
+        else if(ammoStack.getItem() == ModItems.EXPLOSIVE_ARROW.get()) {
+            return new ExplosiveArrowEntity(ModEntityTypes.EXPLOSIVE_ARROW.get(), player, level);
         }
         return new Arrow(level,player);
     }

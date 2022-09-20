@@ -7,14 +7,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class StarterWand extends Item {
-    public StarterWand(Properties pProperties) {
+public class StarterWandItem extends Item {
+    public StarterWandItem(Properties pProperties) {
         super(pProperties);
     }
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if(hand == InteractionHand.MAIN_HAND) {
-            MageSkills.fireball(player.getMainHandItem(), level, player);
+            MageSkills.fireball(player.getMainHandItem(), level, player, 1, false, false, 3, 20);
         }
         return super.use(level, player, hand);
     }

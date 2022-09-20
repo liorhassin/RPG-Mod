@@ -4,7 +4,10 @@ import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerBowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerCrossbowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.*;
-import net.LiorNadav.rpgmod.item.custom.weapons.mage.StarterWand;
+import net.LiorNadav.rpgmod.item.custom.weapons.mage.AdvancedWandItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.mage.BeginnerWandItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.mage.StarterWandItem;
+import net.LiorNadav.rpgmod.item.custom.weapons.mage.SuperiorWandItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.warrior.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
@@ -61,8 +64,8 @@ public class ModItems {
     public static final RegistryObject<Item> STARTER_SLINGSHOT = ITEMS.register("starter_slingshot",
             () -> new BowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(100)));
 
-    public static final RegistryObject<Item> WAND = ITEMS.register("wand",
-            () -> new StarterWand(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+    public static final RegistryObject<Item> STARTER_WAND = ITEMS.register("starter_wand",
+            () -> new StarterWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
             () -> new BeginnerBroadSwordItem(Tiers.STONE, 3, -2f,
@@ -87,6 +90,15 @@ public class ModItems {
     public static final RegistryObject<Item> SUPERIOR_BATTLE_AXE = ITEMS.register("superior_battle_axe",
             () -> new SuperiorBattleAxeItem(Tiers.STONE, 11, -3f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
+
+    public static final RegistryObject<Item> BEGINNER_WAND = ITEMS.register("beginner_wand",
+            () -> new BeginnerWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+
+    public static final RegistryObject<Item> ADVANCED_WAND = ITEMS.register("advanced_wand",
+            () -> new AdvancedWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
+
+    public static final RegistryObject<Item> SUPERIOR_WAND = ITEMS.register("superior_wand",
+            () -> new SuperiorWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
     public static final RegistryObject<Item> BEGINNER_BOW = ITEMS.register("beginner_bow",
             () -> new BeginnerBowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
