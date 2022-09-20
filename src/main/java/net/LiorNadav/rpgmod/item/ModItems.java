@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.item.custom.Tablet;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerBowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.BeginnerCrossbowItem;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.*;
@@ -58,6 +59,8 @@ public class ModItems {
     public static final RegistryObject<Item> ZOMBIE_RPG_SPAWN_EGG = ITEMS.register("zombie_rpg_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.ZOMBIE_RPG, 0x22b341, 0x19732e,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> TABLET = ITEMS.register("tablet",
+            () -> new Tablet(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS).stacksTo(1)));
 
     //----------------------------- Weapons -------------------------------//
     public static final RegistryObject<Item> STARTER_KNIFE = ITEMS.register("starter_knife",

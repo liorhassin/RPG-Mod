@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "rpgmod:azurite_ingot"
+    },
+    {
+      "item": "rpgmod:adamantite_ingot"
+    },
+    {
+      "item": "rpgmod:jadeite_ingot"
+    }
+  ],
+  "result": {
+    "item": "rpgmod:tablet",
+    "count": 1
+  }
+}
