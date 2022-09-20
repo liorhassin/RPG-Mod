@@ -11,10 +11,16 @@ import net.LiorNadav.rpgmod.networking.packet.*;
 import net.LiorNadav.rpgmod.villager.ModVillagers;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBow;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBowProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.archer.crossbow.PlayerCrossbow;
+import net.LiorNadav.rpgmod.weapon_leveling_system.archer.crossbow.PlayerCrossbowProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshot;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshotProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerMana;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerManaProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.spellbook.PlayerSpellbook;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.spellbook.PlayerSpellbookProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.staff.PlayerStaff;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.staff.PlayerStaffProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWand;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWandProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe.PlayerBattleAxe;
@@ -23,6 +29,7 @@ import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroa
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnife;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -95,6 +102,15 @@ public class ModEvents {
             if (!event.getObject().getCapability(PlayerBowProvider.PLAYER_BOW).isPresent()) {
                 event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_bow_levels"), new PlayerBowProvider());
             }
+            if (!event.getObject().getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).isPresent()) {
+                event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_crossbow_levels"), new PlayerCrossbowProvider());
+            }
+            if (!event.getObject().getCapability(PlayerStaffProvider.PLAYER_STAFF).isPresent()) {
+                event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_staff_levels"), new PlayerStaffProvider());
+            }
+            if (!event.getObject().getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).isPresent()) {
+                event.addCapability(new ResourceLocation(RPGMod.MOD_ID, "properties_spellbook_levels"), new PlayerSpellbookProvider());
+            }
 
             //------------------Player general capabilities------------------//
             if (!event.getObject().getCapability(PlayerManaProvider.PLAYER_MANA).isPresent()) {
@@ -140,6 +156,24 @@ public class ModEvents {
                         newStore.copyFrom(oldStore);
                     });
                 });
+
+                event.getOriginal().getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(oldStore -> {
+                    event.getOriginal().getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(newStore -> {
+                        newStore.copyFrom(oldStore);
+                    });
+                });
+
+                event.getOriginal().getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(oldStore -> {
+                    event.getOriginal().getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(newStore -> {
+                        newStore.copyFrom(oldStore);
+                    });
+                });
+
+                event.getOriginal().getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(oldStore -> {
+                    event.getOriginal().getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(newStore -> {
+                        newStore.copyFrom(oldStore);
+                    });
+                });
             }
         }
 
@@ -148,9 +182,15 @@ public class ModEvents {
             event.register(PlayerKnife.class);
             event.register(PlayerBroadsword.class);
             event.register(PlayerBattleAxe.class);
+
             event.register(PlayerSlingshot.class);
             event.register(PlayerBow.class);
+            event.register(PlayerCrossbow.class);
+
             event.register(PlayerWand.class);
+            event.register(PlayerSpellbook.class);
+            event.register(PlayerStaff.class);
+
             event.register(PlayerMana.class);
         }
 
@@ -166,24 +206,30 @@ public class ModEvents {
                     case "starter_knife":
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                             if(knifeExperience.getKnifeLevel() != 10) {
+                                if(knifeExperience.getKnifeExperience() + (int)event.getAmount() >= knifeExperience.getExperienceArray(knifeExperience.getKnifeLevel())){
+                                    ModMessages.sendToServer(new KnifeLevelC2SPacket());
+                                }
                                 knifeExperience.addExperience((int) event.getAmount());
-                                ModMessages.sendToServer(new KnifeLevelC2SPacket());
                             }
                         });
                         break;
                     case "starter_slingshot":
                         player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
                             if (slingshotExperience.getSlingshotLevel() != 10) {
+                                if(slingshotExperience.getSlingshotExperience() + (int)event.getAmount() >= slingshotExperience.getExperienceArray(slingshotExperience.getSlingshotLevel())){
+                                    ModMessages.sendToServer(new SlingshotLevelC2SPacket());
+                                }
                                 slingshotExperience.addExperience((int) event.getAmount());
-                                ModMessages.sendToServer(new SlingshotLevelC2SPacket());
                             }
                         });
                         break;
                     case "starter_wand":
                         player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
                             if (wandExperience.getWandLevel() != 10) {
+                                if(wandExperience.getWandExperience() + (int)event.getAmount() >= wandExperience.getExperienceArray(wandExperience.getWandLevel())){
+                                    ModMessages.sendToServer(new WandLevelC2SPacket());
+                                }
                                 wandExperience.addExperience((int) event.getAmount());
-                                ModMessages.sendToServer(new WandLevelC2SPacket());
                             }
                         });
                         break;
@@ -193,8 +239,10 @@ public class ModEvents {
                             if (knifeExperience.getKnifeLevel() == 10) {
                                 player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                                     if (broadswordExperience.getSwordLevel() >= 0 && broadswordExperience.getTier() == 0) {
+                                        if(broadswordExperience.getSwordExperience() + (int)event.getAmount() >= broadswordExperience.getExperienceArray(broadswordExperience.getSwordLevel())){
+                                            ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                        }
                                         broadswordExperience.addExperience((int) event.getAmount());
-                                        ModMessages.sendToServer(new BroadswordLevelC2SPacket());
                                     }
                                 });
                             }
@@ -205,20 +253,68 @@ public class ModEvents {
                             if (knifeExperience.getKnifeLevel() == 10) {
                                 player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
                                     if (battleAxeExperience.getAxeLevel() >= 0 && battleAxeExperience.getTier() == 0) {
+                                        if(battleAxeExperience.getAxeExperience() + (int)event.getAmount() >= battleAxeExperience.getExperienceArray(battleAxeExperience.getAxeLevel())){
+                                            ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                        }
                                         battleAxeExperience.addExperience((int) event.getAmount());
-                                        ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
                                     }
                                 });
                             }
                         });
                         break;
+
                     case "beginner_bow":
                         player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
                             if (slingshotExperience.getSlingshotLevel() == 10) {
                                 player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
                                     if (bowExperience.getBowLevel() >= 0 && bowExperience.getTier() == 0) {
+                                        if(bowExperience.getBowExperience() + (int)event.getAmount() >= bowExperience.getExperienceArray(bowExperience.getBowLevel())){
+                                            ModMessages.sendToServer(new BowLevelC2SPacket());
+                                        }
                                         bowExperience.addExperience((int) event.getAmount());
-                                        ModMessages.sendToServer(new BowLevelC2SPacket());
+                                    }
+                                });
+                            }
+                        });
+                        break;
+                    case "beginner_crossbow":
+                        player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
+                            if (slingshotExperience.getSlingshotLevel() == 10) {
+                                player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
+                                    if (crossbowExperience.getCrossbowLevel() >= 0 && crossbowExperience.getTier() == 0) {
+                                        if(crossbowExperience.getCrossbowExperience() + (int)event.getAmount() >= crossbowExperience.getExperienceArray(crossbowExperience.getCrossbowLevel())){
+                                            ModMessages.sendToServer(new CrossbowLevelC2SPacket());
+                                        }
+                                        crossbowExperience.addExperience((int) event.getAmount());
+                                    }
+                                });
+                            }
+                        });
+                        break;
+
+                    case "beginner_staff":
+                        player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
+                            if (wandExperience.getWandLevel() == 10) {
+                                player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
+                                    if (staffExperience.getStaffLevel() >= 0 && staffExperience.getTier() == 0) {
+                                        if(staffExperience.getStaffExperience() + (int)event.getAmount() >= staffExperience.getExperienceArray(staffExperience.getStaffLevel())){
+                                            ModMessages.sendToServer(new StaffLevelC2SPacket());
+                                        }
+                                        staffExperience.addExperience((int) event.getAmount());
+                                    }
+                                });
+                            }
+                        });
+                        break;
+                    case "beginner_spellbook":
+                        player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
+                            if (wandExperience.getWandLevel() == 10) {
+                                player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
+                                    if (spellbookExperience.getSpellbookLevel() >= 0 && spellbookExperience.getTier() == 0) {
+                                        if(spellbookExperience.getSpellbookExperience() + (int)event.getAmount() >= spellbookExperience.getExperienceArray(spellbookExperience.getSpellbookLevel())){
+                                            ModMessages.sendToServer(new SpellbookLevelC2SPacket());
+                                        }
+                                        spellbookExperience.addExperience((int) event.getAmount());
                                     }
                                 });
                             }
@@ -229,17 +325,62 @@ public class ModEvents {
                     case "advanced_broadsword":
                         player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                             if (broadswordExperience.getSwordLevel() >= 30 && broadswordExperience.getTier() == 1) {
+                                if(broadswordExperience.getSwordExperience() + (int)event.getAmount() >= broadswordExperience.getExperienceArray(broadswordExperience.getSwordLevel())){
+                                    ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                }
                                 broadswordExperience.addExperience((int) event.getAmount());
-                                ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                            }
+                        });
+                        break;
+                    case "advanced_battle_axe":
+                        player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
+                            if (battleAxeExperience.getAxeLevel() >= 30 && battleAxeExperience.getTier() == 1) {
+                                if(battleAxeExperience.getAxeExperience() + (int)event.getAmount() >= battleAxeExperience.getExperienceArray(battleAxeExperience.getAxeLevel())){
+                                    ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                }
+                                battleAxeExperience.addExperience((int) event.getAmount());
                             }
                         });
                         break;
 
-                    case "advanced_battle_axe":
-                        player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
-                            if (battleAxeExperience.getAxeLevel() >= 30 && battleAxeExperience.getTier() == 1) {
-                                battleAxeExperience.addExperience((int) event.getAmount());
-                                ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                    case "advanced_bow":
+                        player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
+                            if (bowExperience.getBowLevel() >= 30 && bowExperience.getTier() == 1) {
+                                if(bowExperience.getBowExperience() + (int)event.getAmount() >= bowExperience.getExperienceArray(bowExperience.getBowLevel())){
+                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                }
+                                bowExperience.addExperience((int) event.getAmount());
+                            }
+                        });
+                        break;
+                    case "advanced_crossbow":
+                        player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
+                            if (crossbowExperience.getCrossbowLevel() >= 30 && crossbowExperience.getTier() == 1) {
+                                if(crossbowExperience.getCrossbowExperience() + (int)event.getAmount() >= crossbowExperience.getExperienceArray(crossbowExperience.getCrossbowLevel())){
+                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                }
+                                crossbowExperience.addExperience((int) event.getAmount());
+                            }
+                        });
+                        break;
+
+                    case "advanced_staff":
+                        player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
+                            if (staffExperience.getStaffLevel() >= 30 && staffExperience.getTier() == 1) {
+                                if(staffExperience.getStaffExperience() + (int)event.getAmount() >= staffExperience.getExperienceArray(staffExperience.getStaffLevel())){
+                                    ModMessages.sendToServer(new StaffLevelC2SPacket());
+                                }
+                                staffExperience.addExperience((int) event.getAmount());
+                            }
+                        });
+                        break;
+                    case "advanced_spellbook":
+                        player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
+                            if (spellbookExperience.getSpellbookLevel() >= 30 && spellbookExperience.getTier() == 1) {
+                                if(spellbookExperience.getSpellbookExperience() + (int)event.getAmount() >= spellbookExperience.getExperienceArray(spellbookExperience.getSpellbookLevel())){
+                                    ModMessages.sendToServer(new SpellbookLevelC2SPacket());
+                                }
+                                spellbookExperience.addExperience((int) event.getAmount());
                             }
                         });
                         break;
@@ -247,16 +388,62 @@ public class ModEvents {
                     case "superior_broadsword":
                         player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                             if (broadswordExperience.getSwordLevel() >= 60 && broadswordExperience.getTier() == 2) {
+                                if(broadswordExperience.getSwordExperience() + (int)event.getAmount() >= broadswordExperience.getExperienceArray(broadswordExperience.getSwordLevel())){
+                                    ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                }
                                 broadswordExperience.addExperience((int) event.getAmount());
-                                ModMessages.sendToServer(new BroadswordLevelC2SPacket());
                             }
                         });
                         break;
                     case "superior_battle_axe":
                         player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
                             if (battleAxeExperience.getAxeLevel() >= 60 && battleAxeExperience.getTier() == 2) {
+                                if(battleAxeExperience.getAxeExperience() + (int)event.getAmount() >= battleAxeExperience.getExperienceArray(battleAxeExperience.getAxeLevel())){
+                                    ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                }
                                 battleAxeExperience.addExperience((int) event.getAmount());
-                                ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                            }
+                        });
+                        break;
+
+                    case "superior_bow":
+                        player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
+                            if (bowExperience.getBowLevel() >= 60 && bowExperience.getTier() == 2) {
+                                if(bowExperience.getBowExperience() + (int)event.getAmount() >= bowExperience.getExperienceArray(bowExperience.getBowLevel())){
+                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                }
+                                bowExperience.addExperience((int) event.getAmount());
+                            }
+                        });
+                        break;
+                    case "superior_crossbow":
+                        player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
+                            if (crossbowExperience.getCrossbowLevel() >= 60 && crossbowExperience.getTier() == 2) {
+                                if(crossbowExperience.getCrossbowExperience() + (int)event.getAmount() >= crossbowExperience.getExperienceArray(crossbowExperience.getCrossbowLevel())){
+                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                }
+                                crossbowExperience.addExperience((int) event.getAmount());
+                            }
+                        });
+                        break;
+
+                    case "superior_staff":
+                        player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
+                            if (staffExperience.getStaffLevel() >= 60 && staffExperience.getTier() == 2) {
+                                if(staffExperience.getStaffExperience() + (int)event.getAmount() >= staffExperience.getExperienceArray(staffExperience.getStaffLevel())){
+                                    ModMessages.sendToServer(new StaffLevelC2SPacket());
+                                }
+                                staffExperience.addExperience((int) event.getAmount());
+                            }
+                        });
+                        break;
+                    case "superior_spellbook":
+                        player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
+                            if (spellbookExperience.getSpellbookLevel() >= 60 && spellbookExperience.getTier() == 2) {
+                                if(spellbookExperience.getSpellbookExperience() + (int)event.getAmount() >= spellbookExperience.getExperienceArray(spellbookExperience.getSpellbookLevel())){
+                                    ModMessages.sendToServer(new SpellbookLevelC2SPacket());
+                                }
+                                spellbookExperience.addExperience((int) event.getAmount());
                             }
                         });
                         break;
@@ -264,19 +451,36 @@ public class ModEvents {
                     case "apple":
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                             knifeExperience.addExperience(10000);
-                            ModMessages.sendToServer(new KnifeLevelC2SPacket());
                         });
                         player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
                             slingshotExperience.addExperience(10000);
-                            ModMessages.sendToServer(new SlingshotLevelC2SPacket());
                         });
+                        player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
+                            wandExperience.addExperience(10000);
+                            //
+                        });
+
                         player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                             broadswordExperience.addExperience(10000);
-                            ModMessages.sendToServer(new BroadswordLevelC2SPacket());
                         });
                         player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
                             battleAxeExperience.addExperience(10000);
-                            ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                        });
+                        player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
+                            bowExperience.addExperience(10000);
+                            //
+                        });
+                        player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
+                            crossbowExperience.addExperience(10000);
+                            //
+                        });
+                        player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
+                            staffExperience.addExperience(10000);
+                            //
+                        });
+                        player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
+                            spellbookExperience.addExperience(10000);
+                            //
                         });
                         break;
                     default:

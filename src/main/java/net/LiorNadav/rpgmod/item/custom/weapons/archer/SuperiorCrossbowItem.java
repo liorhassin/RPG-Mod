@@ -44,6 +44,9 @@ public class SuperiorCrossbowItem extends ModCrossbow {
             else if(ammoStack.getItem() == ModItems.FROST_ARROW.get()){
                 return ammoStack.getItem() == ModItems.FROST_ARROW.get();
             }
+            else if (ammoStack.getItem() == Items.FIREWORK_ROCKET){
+                return ammoStack.is(Items.FIREWORK_ROCKET);
+            }
             return ammoStack.getItem() == Items.ARROW;
         };
     }

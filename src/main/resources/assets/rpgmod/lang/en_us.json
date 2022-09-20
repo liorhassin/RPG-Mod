@@ -28,7 +28,11 @@
   "item.rpgmod.starter_slingshot": "Starter Slingshot",
 
   "item.rpgmod.beginner_bow": "Beginner Bow",
+  "item.rpgmod.advanced_bow": "Advanced Bow",
+  "item.rpgmod.superior_bow": "Superior Bow",
   "item.rpgmod.beginner_crossbow": "Beginner Crossbow",
+  "item.rpgmod.advanced_crossbow": "Advanced Crossbow",
+  "item.rpgmod.superior_crossbow": "Superior Crossbow",
 
   "item.rpgmod.torch_arrow": "Torch Arrow",
   "item.rpgmod.explosive_arrow": "Explosive Arrow",

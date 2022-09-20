@@ -29,11 +29,8 @@ public class SlingshotLevelC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel level = player.getLevel();
-
             player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
-                player.sendSystemMessage(Component.literal("Slingshot experience: "
-                        + slingshotExperience.getSlingshotExperience()
-                        + ", Slingshot level: " + slingshotExperience.getSlingshotLevel()).withStyle(ChatFormatting.DARK_GREEN));
+                player.sendSystemMessage(Component.literal("Slingshot leveled up, Current level: " + slingshotExperience.getSlingshotLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });
         });
         return true;

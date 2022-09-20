@@ -1,6 +1,8 @@
 package net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand;
 
+import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 
 public class PlayerWand {
     private int wandLevel; //
@@ -63,6 +65,10 @@ public class PlayerWand {
     }
 
     public int getWandLevel() { return wandLevel; }
+
+    public int getExperienceArray(int current){
+        return wandExperienceRequirement[current];
+    }
 
     public void copyFrom(PlayerWand source){
         wandLevel = source.wandLevel;

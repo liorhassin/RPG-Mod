@@ -29,11 +29,8 @@ public class BroadswordLevelC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel level = player.getLevel();
-
             player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
-                player.sendSystemMessage(Component.literal("Sword experience: "
-                        + broadswordExperience.getSwordExperience()
-                        + ", Sword level: " + broadswordExperience.getSwordLevel()).withStyle(ChatFormatting.DARK_GREEN));
+                player.sendSystemMessage(Component.literal("Broadsword leveled up, Current level: " + broadswordExperience.getSwordLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });
         });
         return true;

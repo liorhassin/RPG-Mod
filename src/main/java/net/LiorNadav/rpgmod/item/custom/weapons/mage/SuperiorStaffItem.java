@@ -7,8 +7,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class SuperiorWandItem extends Item {
-    public SuperiorWandItem(Properties pProperties) {
+public class SuperiorStaffItem extends Item {
+    public SuperiorStaffItem(Properties pProperties) {
         super(pProperties);
     }
     @Override

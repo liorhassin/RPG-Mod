@@ -1,6 +1,8 @@
 package net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife;
 
+import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 
 public class PlayerKnife{
     private int knifeLevel; //
@@ -34,36 +36,21 @@ public class PlayerKnife{
             }
         }
     }
-
     public void addLevel(int level){
         if (level >= 0) {
             knifeLevel = Math.min(knifeLevel + level, MAX_LEVEL);
             knifeExperience = 0;
         }
     }
-
-    public void setKnifeLevel(int level){
-        if (level <= MAX_LEVEL && level >= MIN_LEVEL) {
-            knifeLevel = level;
-            //Optional log output with level successfully set to level.
-        }
-        else{
-            //Log output with wrong level given, levels of knife can be set between 1-10.
-        }
-    }
-
-    public void setKnifeExperience(int experience){
-        if(experience >= 0){
-            knifeExperience = experience;
-        }
-    }
-
     public int getKnifeExperience() {
         return knifeExperience;
     }
 
     public int getKnifeLevel() { return knifeLevel; }
 
+    public int getExperienceArray(int current){
+        return knifeExperienceRequirement[current];
+    }
     public void copyFrom(PlayerKnife source){
         knifeLevel = source.knifeLevel;
         knifeExperience = source.knifeExperience;
