@@ -67,6 +67,12 @@ public class ModMessages {
                 .encoder(WandLevelC2SPacket::toByte)
                 .consumerMainThread(WandLevelC2SPacket::handle)
                 .add();
+
+        net.messageBuilder(AllWeaponsLevelC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(AllWeaponsLevelC2SPacket::new)
+                .encoder(AllWeaponsLevelC2SPacket::toByte)
+                .consumerMainThread(AllWeaponsLevelC2SPacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG message){
