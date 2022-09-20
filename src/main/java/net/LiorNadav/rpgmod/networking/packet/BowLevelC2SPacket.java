@@ -29,11 +29,8 @@ public class BowLevelC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel level = player.getLevel();
-
             player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
-                player.sendSystemMessage(Component.literal("Bow experience: "
-                        + bowExperience.getBowExperience()
-                        + ", Bow level: " + bowExperience.getBowLevel()).withStyle(ChatFormatting.DARK_GREEN));
+                player.sendSystemMessage(Component.literal("Bow leveled up, Current level: " + bowExperience.getBowLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });
         });
         return true;

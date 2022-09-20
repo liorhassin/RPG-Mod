@@ -1,6 +1,8 @@
 package net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot;
 
+import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 
 public class PlayerSlingshot {
     private int slingshotLevel; //
@@ -63,6 +65,10 @@ public class PlayerSlingshot {
     }
 
     public int getSlingshotLevel() { return slingshotLevel; }
+
+    public int getExperienceArray(int current){
+        return slingshotExperienceRequirement[current];
+    }
 
     public void copyFrom(PlayerSlingshot source){
         slingshotLevel = source.slingshotLevel;

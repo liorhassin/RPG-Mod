@@ -1,6 +1,8 @@
 package net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword;
 
+import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 
 public class PlayerBroadsword {
 
@@ -60,6 +62,10 @@ public class PlayerBroadsword {
     public int getSwordLevel() { return swordLevel; }
 
     public int getTier(){ return swordAdvancementFlag; }
+
+    public int getExperienceArray(int current){
+        return swordExperienceRequirement[current];
+    }
 
     public void copyFrom(PlayerBroadsword source){
         swordLevel = source.swordLevel;

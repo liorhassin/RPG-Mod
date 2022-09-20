@@ -1,0 +1,6 @@
+{
+  "parent": "rpgmod:item/superior_bow",
+  "textures": {
+    "layer0": "rpgmod:item/superior_bow_pulling_0"
+  }
+}

@@ -26,9 +26,14 @@
 
   "item.rpgmod.starter_knife": "Starter Knife",
   "item.rpgmod.starter_slingshot": "Starter Slingshot",
+  "item.rpgmod.starter_wand": "Starter Wand",
 
   "item.rpgmod.beginner_bow": "Beginner Bow",
+  "item.rpgmod.advanced_bow": "Advanced Bow",
+  "item.rpgmod.superior_bow": "Superior Bow",
   "item.rpgmod.beginner_crossbow": "Beginner Crossbow",
+  "item.rpgmod.advanced_crossbow": "Advanced Crossbow",
+  "item.rpgmod.superior_crossbow": "Superior Crossbow",
 
   "item.rpgmod.torch_arrow": "Torch Arrow",
   "item.rpgmod.explosive_arrow": "Explosive Arrow",
@@ -46,10 +51,9 @@
   "item.rpgmod.advanced_battle_axe": "Advanced Battle Axe",
   "item.rpgmod.superior_battle_axe": "Superior Battle Axe",
 
-  "item.rpgmod.starter_wand": "Apprentice Wand",
-  "item.rpgmod.beginner_wand": "Initiate Wand",
-  "item.rpgmod.advanced_wand": "Master Wand",
-  "item.rpgmod.superior_wand": "Archmage Wand",
+  "item.rpgmod.beginner_staff": "Initiate Staff",
+  "item.rpgmod.advanced_staff": "Master Staff",
+  "item.rpgmod.superior_staff": "Archmage Staff",
   "item.rpgmod.beginner_spellbook": "Disciple Spellbook",
   "item.rpgmod.advanced_spellbook": "Master Spellbook",
   "item.rpgmod.superior_spellbook": "Archmage Spellbook",

@@ -29,11 +29,8 @@ public class KnifeLevelC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel level = player.getLevel();
-
             player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
-                player.sendSystemMessage(Component.literal("Knife experience: "
-                        + knifeExperience.getKnifeExperience()
-                        + ", Knife level: " + knifeExperience.getKnifeLevel()).withStyle(ChatFormatting.DARK_GREEN));
+                player.sendSystemMessage(Component.literal("Knife leveled up, Current level: " + knifeExperience.getKnifeLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });
         });
         return true;

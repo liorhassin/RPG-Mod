@@ -93,14 +93,14 @@ public class ModItems {
             () -> new SuperiorBattleAxeItem(Tiers.STONE, 11, -3f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
-    public static final RegistryObject<Item> BEGINNER_WAND = ITEMS.register("beginner_wand",
-            () -> new BeginnerWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
+    public static final RegistryObject<Item> BEGINNER_STAFF = ITEMS.register("beginner_staff",
+            () -> new BeginnerStaffItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
-    public static final RegistryObject<Item> ADVANCED_WAND = ITEMS.register("advanced_wand",
-            () -> new AdvancedWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
+    public static final RegistryObject<Item> ADVANCED_STAFF = ITEMS.register("advanced_staff",
+            () -> new AdvancedStaffItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
 
-    public static final RegistryObject<Item> SUPERIOR_WAND = ITEMS.register("superior_wand",
-            () -> new SuperiorWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
+    public static final RegistryObject<Item> SUPERIOR_STAFF = ITEMS.register("superior_staff",
+            () -> new SuperiorStaffItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
     public static final RegistryObject<Item> BEGINNER_SPELLBOOK = ITEMS.register("beginner_spellbook",
             () -> new BeginnerSpellbookItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));

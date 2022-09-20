@@ -29,11 +29,8 @@ public class WandLevelC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel level = player.getLevel();
-
             player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
-                player.sendSystemMessage(Component.literal("Wand experience: "
-                        + wandExperience.getWandExperience()
-                        + ", Wand level: " + wandExperience.getWandLevel()).withStyle(ChatFormatting.DARK_GREEN));
+                player.sendSystemMessage(Component.literal("Wand leveled up, Current level: " + wandExperience.getWandLevel()).withStyle(ChatFormatting.DARK_GREEN));
             });
         });
         return true;

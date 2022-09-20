@@ -11,7 +11,11 @@ public class ModItemProperties {
     public static void addCustomItemProperties(){
         makeSlingshot(ModItems.STARTER_SLINGSHOT.get());
         makeBow(ModItems.BEGINNER_BOW.get());
+        makeBow(ModItems.ADVANCED_BOW.get());
+        makeBow(ModItems.SUPERIOR_BOW.get());
         makeCrossbow(ModItems.BEGINNER_CROSSBOW.get());
+        makeCrossbow(ModItems.ADVANCED_CROSSBOW.get());
+        makeCrossbow(ModItems.SUPERIOR_CROSSBOW.get());
     }
 
     public static void makeBow(Item item){

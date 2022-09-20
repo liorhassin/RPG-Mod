@@ -1,6 +1,8 @@
 package net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow;
 
+import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 
 public class PlayerBow {
     private int bowLevel;
@@ -60,6 +62,10 @@ public class PlayerBow {
     public int getBowLevel() { return bowLevel; }
 
     public int getTier() {return bowAdvancementFlag; }
+
+    public int getExperienceArray(int current){
+        return bowExperienceRequirement[current];
+    }
 
     public void copyFrom(PlayerBow source){
         bowLevel = source.bowLevel;

@@ -1,6 +1,8 @@
 package net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe;
 
+import net.LiorNadav.rpgmod.networking.ModMessages;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 
 public class PlayerBattleAxe {
     private int axeLevel;
@@ -60,6 +62,9 @@ public class PlayerBattleAxe {
 
     public int getTier() { return axeAdvancementFlag; }
 
+    public int getExperienceArray(int current){
+        return axeExperienceRequirement[current];
+    }
     public void copyFrom(PlayerBattleAxe source){
         axeLevel = source.axeLevel;
         axeExperience = source.axeExperience;

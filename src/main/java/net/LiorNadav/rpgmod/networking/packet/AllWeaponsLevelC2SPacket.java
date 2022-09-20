@@ -1,7 +1,10 @@
 package net.LiorNadav.rpgmod.networking.packet;
 
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.bow.PlayerBowProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.archer.crossbow.PlayerCrossbowProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshotProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.spellbook.PlayerSpellbookProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.staff.PlayerStaffProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWandProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.battle_axe.PlayerBattleAxeProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
@@ -52,6 +55,7 @@ public class AllWeaponsLevelC2SPacket {
                         + AxeExperience.getAxeExperience()
                         + ", Battle axe level: " + AxeExperience.getAxeLevel() + "\n");
             });
+
             str.append("\nArcher Class\n");
             player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
                 str.append("Slingshot experience: "
@@ -63,11 +67,27 @@ public class AllWeaponsLevelC2SPacket {
                         + bowExperience.getBowExperience()
                         + ", Bow level: " + bowExperience.getBowLevel() + "\n");
             });
+            player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
+                str.append("Crossbow experience: "
+                        + crossbowExperience.getCrossbowExperience()
+                        + ", Crossbow level: " + crossbowExperience.getCrossbowLevel() + "\n");
+            });
+
             str.append("\nMage Class\n");
             player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
                 str.append("Wand experience: "
                         + wandExperience.getWandExperience()
                         + ", Wand level: " + wandExperience.getWandLevel() + "\n");
+            });
+            player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
+                str.append("Staff experience: "
+                        + staffExperience.getStaffExperience()
+                        + ", Staff level: " + staffExperience.getStaffLevel() + "\n");
+            });
+            player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
+                str.append("Spellbook experience: "
+                        + spellbookExperience.getSpellbookExperience()
+                        + ", Spellbook level: " + spellbookExperience.getSpellbookLevel() + "\n");
             });
             player.sendSystemMessage(Component.literal(str.toString()).withStyle(ChatFormatting.DARK_GREEN));
         });
