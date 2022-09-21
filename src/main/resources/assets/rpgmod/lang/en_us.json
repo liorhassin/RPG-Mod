@@ -2,8 +2,10 @@
   "item.rpgmod.azurite_ingot": "Azurite Ingot",
   "item.rpgmod.adamantite_ingot": "Adamantite Ingot",
   "item.rpgmod.jadeite_ingot": "Jadeite Ingot",
+  "item.rpgmod.topaz": "Topaz",
+  "block.rpgmod.topaz_ore": "Topaz Ore",
+  "block.rpgmod.topaz_block": "Topaz Block",
 
-  "item.rpgmod.yellow_gem": "Yellow Gem",
   "item.rpgmod.azurite_dust": "Azurite Dust",
   "item.rpgmod.adamantite_dust": "Adamantite Dust",
   "item.rpgmod.jadeite_dust": "Jadeite Dust",

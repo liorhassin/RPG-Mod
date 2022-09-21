@@ -30,7 +30,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> JADEITE_INGOT = ITEMS.register("jadeite_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
-    public static final RegistryObject<Item> YELLOW_GEM = ITEMS.register("yellow_gem",
+    public static final RegistryObject<Item> YELLOW_GEM = ITEMS.register("topaz",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
 
     //-------------- Dusts ---------------//

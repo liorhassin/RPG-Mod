@@ -40,6 +40,14 @@ public class ModBlocks {
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
 
+    public static final RegistryObject<Block> TOPAZ_ORE = registerBlock("topaz_ore",
+            ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
+
+    public static final RegistryObject<Block> TOPAZ_BLOCK = registerBlock("topaz_block",
+            ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(4f).requiresCorrectToolForDrops()), ModCreativeModeTab.RPG_MOD_ITEMS);
+
     // ------------------- Special functionality blocks ----------------------
     public static final RegistryObject<Block> PORTAL_BLOCK = registerBlock("portal_block",
             ()-> new Block(BlockBehaviour.Properties.of(Material.STONE)

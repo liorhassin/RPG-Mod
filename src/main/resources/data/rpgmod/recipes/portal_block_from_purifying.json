@@ -1,0 +1,15 @@
+{
+  "type": "rpgmod:purifying",
+  "ingredients": [
+    {
+      "item": "minecraft:stone"
+    }
+  ],
+  "fluid": {
+   "FluidName": "rpgmod:soap_water_fluid",
+   "Amount": 250
+  },
+  "output": {
+    "item": "rpgmod:portal_block"
+  }
+}

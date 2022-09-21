@@ -39,7 +39,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class RedOgreEntity extends Monster implements IAnimatable {
 
-    private static final float ATTACK_DMG = 13f;
+    private static final float ATTACK_DMG = 8f;
     private AnimationFactory factory = new AnimationFactory(this);
     private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(),
             BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
@@ -51,7 +51,7 @@ public class RedOgreEntity extends Monster implements IAnimatable {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 5.0D)
+                .add(Attributes.MAX_HEALTH, 200.0D)
                 .add(Attributes.ATTACK_DAMAGE, ATTACK_DMG)
                 .add(Attributes.ATTACK_SPEED, 1.0f)
                 .add(Attributes.MOVEMENT_SPEED, 0.3f).build();

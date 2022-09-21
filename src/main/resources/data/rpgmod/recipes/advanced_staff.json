@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "rpgmod:beginner_broadsword"
+      "item": "rpgmod:beginner_staff"
     },
     "Y": {
       "item": "rpgmod:purified_red_ogre_heart"
@@ -12,11 +12,11 @@
     }
   },
   "pattern": [
-    "Z",
-    "Y",
-    "X"
+    "  Z",
+    " X ",
+    "Y  "
   ],
   "result": {
-    "item": "rpgmod:advanced_broadsword"
+    "item": "rpgmod:advanced_staff"
   }
 }
