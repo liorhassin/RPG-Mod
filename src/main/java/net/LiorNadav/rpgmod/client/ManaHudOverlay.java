@@ -22,14 +22,14 @@ public class ManaHudOverlay {
         RenderSystem.setShaderTexture(0, EMPTY_MANA);
         for(int i = 10; i<=100;i+=10){
             if (ClientManaData.getPlayerMana() <= i) {
-                GuiComponent.blit(poseStack, x + (i/10 * 8), y, 0, 0, 15, 15, 15, 15);
+                GuiComponent.blit(poseStack, x + (i/10 * 8), y, 0, 0, 15, 14, 15, 15);
             }
         }
 
         RenderSystem.setShaderTexture(0, FILLED_MANA);
         for(int i = 10; i<=100;i+=10){
             if (ClientManaData.getPlayerMana() >= i){
-                GuiComponent.blit(poseStack, x + (i/10 * 8), y, 0, 0, 15, 15, 15, 15);
+                GuiComponent.blit(poseStack, x + (i/10 * 8), y, 0, 0, 15, 14, 15, 15);
             }
             else{
                 break;
