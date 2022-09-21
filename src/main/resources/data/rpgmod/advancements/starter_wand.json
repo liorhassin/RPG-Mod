@@ -1,10 +1,10 @@
 {
   "display": {
     "icon": {
-      "item": "rpgmod:starter_knife"
+      "item": "rpgmod:starter_wand"
     },
     "title": "Path to great power",
-    "description": "Construct your first warrior weapon!",
+    "description": "Construct your first mage weapon!",
     "background": "rpgmod:item/advancement_background",
     "frame": "task",
     "show_toast": true,
@@ -18,7 +18,7 @@
         "items": [
           {
             "items": [
-              "rpgmod:starter_knife"
+              "rpgmod:starter_wand"
             ]
           }
         ]
@@ -27,8 +27,8 @@
   },
   "rewards": {
     "recipes": [
-      "rpgmod:beginner_broadsword",
-      "rpgmod:beginner_battle_axe"
+      "rpgmod:beginner_staff",
+      "rpgmod:beginner_spellbook"
     ]
   }
 }

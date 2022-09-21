@@ -1,16 +1,16 @@
 {
   "display": {
     "icon": {
-      "item": "rpgmod:starter_knife"
+      "item": "rpgmod:advanced_broadsword"
     },
     "title": "Path to great power",
-    "description": "Construct your first warrior weapon!",
+    "description": "Construct your second sword!",
     "background": "rpgmod:item/advancement_background",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
   },
-  "parent": "rpgmod:rpgmod",
+  "parent": "rpgmod:beginner_broadsword",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -18,7 +18,7 @@
         "items": [
           {
             "items": [
-              "rpgmod:starter_knife"
+              "rpgmod:advanced_broadsword"
             ]
           }
         ]
@@ -27,8 +27,7 @@
   },
   "rewards": {
     "recipes": [
-      "rpgmod:beginner_broadsword",
-      "rpgmod:beginner_battle_axe"
+      "rpgmod:superior_broadsword"
     ]
   }
 }
