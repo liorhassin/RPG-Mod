@@ -14,7 +14,7 @@ public class StarterWandItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if(hand == InteractionHand.MAIN_HAND) {
-            MageSkills.fireball(player.getMainHandItem(), level, player, 1, false, false, 3, 20);
+            MageSkills.fireball(player.getMainHandItem(), level, player, 1, false, false, 3, 25);
         }
         return super.use(level, player, hand);
     }

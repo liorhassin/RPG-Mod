@@ -31,6 +31,7 @@ import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnife;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
@@ -40,6 +41,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -494,8 +496,20 @@ public class ModEvents {
                 event.player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
                     if (mana.getMana() < 100 && event.player.getRandom().nextFloat() < 0.05f){
                         mana.addMana(1);
+                        ModMessages.sendToPlayer(new ManaDataSyncS2CPacket(mana.getMana()), (ServerPlayer) event.player);
                     }
                 });
+            }
+        }
+
+        @SubscribeEvent
+        public static void onPlayerJoinWorld(EntityJoinLevelEvent event){
+            if(!event.getLevel().isClientSide()){
+                if(event.getEntity() instanceof ServerPlayer player){
+                    player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
+                        ModMessages.sendToPlayer(new ManaDataSyncS2CPacket(mana.getMana()), player);
+                    });
+                }
             }
         }
     }
