@@ -4,6 +4,8 @@ import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.client.renderer.entity.*;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
 import net.LiorNadav.rpgmod.entity.custom.ZombieRPGEntity;
+import net.LiorNadav.rpgmod.event.client.BlueOgreRenderer;
+import net.LiorNadav.rpgmod.event.client.GreenOgreRenderer;
 import net.LiorNadav.rpgmod.event.client.RedOgreRenderer;
 import net.LiorNadav.rpgmod.event.client.ZombieRPGRenderer;
 import net.LiorNadav.rpgmod.fluid.ModFluids;
@@ -36,6 +38,8 @@ public class ClientModEventSubscriber {
         ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
         EntityRenderers.register(ModEntityTypes.RED_OGRE.get(), RedOgreRenderer::new);
+        EntityRenderers.register(ModEntityTypes.GREEN_OGRE.get(), GreenOgreRenderer::new);
+        EntityRenderers.register(ModEntityTypes.BLUE_OGRE.get(), BlueOgreRenderer::new);
         EntityRenderers.register(ModEntityTypes.ZOMBIE_RPG.get(), ZombieRPGRenderer::new);
     }
 }

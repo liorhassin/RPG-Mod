@@ -1,7 +1,9 @@
 package net.LiorNadav.rpgmod.item;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.item.custom.ArcherStarterKey;
 import net.LiorNadav.rpgmod.item.custom.Tablet;
+import net.LiorNadav.rpgmod.item.custom.MageStarterKey;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.*;
 import net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition.*;
 import net.LiorNadav.rpgmod.item.custom.weapons.mage.*;
@@ -49,11 +51,29 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> PURIFIED_RED_OGRE_HEART = ITEMS.register("purified_red_ogre_heart",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+
+    public static final RegistryObject<Item> GREEN_OGRE_HEART = ITEMS.register("green_ogre_heart",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> PURIFIED_GREEN_OGRE_HEART = ITEMS.register("purified_green_ogre_heart",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+
+    public static final RegistryObject<Item> BLUE_OGRE_HEART = ITEMS.register("blue_ogre_heart",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> PURIFIED_BLUE_OGRE_HEART = ITEMS.register("purified_blue_ogre_heart",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+
     public static final RegistryObject<Item> RED_OGRE_SPAWN_EGG = ITEMS.register("red_ogre_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.RED_OGRE, 0x22b341, 0x19732e,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> GREEN_OGRE_SPAWN_EGG = ITEMS.register("green_ogre_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.GREEN_OGRE, 0x22b341, 0x19732e,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+    public static final RegistryObject<Item> BLUE_OGRE_SPAWN_EGG = ITEMS.register("blue_ogre_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.BLUE_OGRE, 0x22b341, 0x19732e,
+                    new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> ZOMBIE_RPG_SPAWN_EGG = ITEMS.register("zombie_rpg_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.ZOMBIE_RPG, 0x22b341, 0x19732e,
+
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
     public static final RegistryObject<Item> TABLET = ITEMS.register("tablet",
             () -> new Tablet(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS).stacksTo(1)));
@@ -154,6 +174,10 @@ public class ModItems {
 
     //----------- Keys -------------
     public static final RegistryObject<Item> WARRIOR_STARTER_KEY = ITEMS.register("warrior_starter_key", WarriorStarterKey::new);
+
+    public static final RegistryObject<Item> ARCHER_STARTER_KEY = ITEMS.register("archer_starter_key", ArcherStarterKey::new);
+
+    public static final RegistryObject<Item> MAGE_STARTER_KEY = ITEMS.register("mage_starter_key", MageStarterKey::new);
 
     public static final RegistryObject<Item> SOAP_WATER_BUCKET = ITEMS.register("soap_water_bucket",
             () -> new BucketItem(ModFluids.SOURCE_SOAP_WATER,
