@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "&": {
+      "item": "rpgmod:jadeite_ingot"
+    },
+    "~": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "#&#",
+    "~&~",
+    " # "
+  ],
+  "result": {
+    "item": "rpgmod:beginner_crossbow"
+  }
+}

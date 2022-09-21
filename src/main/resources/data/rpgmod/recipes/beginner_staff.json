@@ -5,15 +5,15 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "rpgmod:adamantite_ingot"
+      "item": "rpgmod:azurite_ingot"
     }
   },
   "pattern": [
-    "XX",
-    " X",
-    " #"
+    "  X",
+    " X ",
+    "#  "
   ],
   "result": {
-    "item": "rpgmod:beginner_battle_axe"
+    "item": "rpgmod:beginner_staff"
   }
 }

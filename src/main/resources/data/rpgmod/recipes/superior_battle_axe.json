@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "rpgmod:beginner_broadsword"
+      "item": "rpgmod:advanced_battle_axe"
     },
     "Y": {
       "item": "rpgmod:purified_red_ogre_heart"
     },
     "Z": {
-      "item": "rpgmod:topaz"
+      "item": "rpgmod:topaz_block"
     }
   },
   "pattern": [
@@ -17,6 +17,6 @@
     "X"
   ],
   "result": {
-    "item": "rpgmod:advanced_broadsword"
+    "item": "rpgmod:superior_battle_axe"
   }
 }

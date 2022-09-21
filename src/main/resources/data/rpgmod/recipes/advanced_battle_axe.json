@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "rpgmod:beginner_broadsword"
+      "item": "rpgmod:beginner_battle_axe"
     },
     "Y": {
       "item": "rpgmod:purified_red_ogre_heart"
@@ -17,6 +17,6 @@
     "X"
   ],
   "result": {
-    "item": "rpgmod:advanced_broadsword"
+    "item": "rpgmod:advanced_battle_axe"
   }
 }

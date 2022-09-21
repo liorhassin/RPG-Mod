@@ -2,21 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "rpgmod:beginner_broadsword"
+      "item": "rpgmod:advanced_crossbow"
     },
     "Y": {
       "item": "rpgmod:purified_red_ogre_heart"
     },
     "Z": {
-      "item": "rpgmod:topaz"
+      "item": "rpgmod:topaz_block"
     }
   },
   "pattern": [
-    "Z",
-    "Y",
-    "X"
+    "ZXY"
   ],
   "result": {
-    "item": "rpgmod:advanced_broadsword"
+    "item": "rpgmod:superior_crossbow"
   }
 }

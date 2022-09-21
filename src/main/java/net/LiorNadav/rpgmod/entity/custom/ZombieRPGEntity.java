@@ -1,6 +1,9 @@
 package net.LiorNadav.rpgmod.entity.custom;
 
 import net.LiorNadav.rpgmod.item.ModItems;
+import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshot;
+import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshotProvider;
+import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWandProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
 import net.minecraft.core.BlockPos;
@@ -127,6 +130,16 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
             Player player = (Player) pSource.getEntity();
             player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeLevel -> {
                 if (knifeLevel.getKnifeLevel() >= 10){
+                    canDrop[0] = true;
+                }
+            });
+            player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotLevel -> {
+                if (slingshotLevel.getSlingshotLevel() >= 10){
+                    canDrop[0] = true;
+                }
+            });
+            player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandLevel -> {
+                if (wandLevel.getWandLevel() >= 10){
                     canDrop[0] = true;
                 }
             });
