@@ -13,8 +13,14 @@
 
   "item.rpgmod.zombie_rpg_spawn_egg": "Red Zombie Spawn Egg",
   "item.rpgmod.red_ogre_spawn_egg": "Red Ogre Spawn Egg",
+  "item.rpgmod.green_ogre_spawn_egg": "Green Ogre Spawn Egg",
+  "item.rpgmod.blue_ogre_spawn_egg": "Blue Ogre Spawn Egg",
   "item.rpgmod.red_ogre_heart": "Red Ogre Heart",
   "item.rpgmod.purified_red_ogre_heart": "Purified Red Ogre Heart",
+  "item.rpgmod.green_ogre_heart": "Green Ogre Heart",
+  "item.rpgmod.purified_green_ogre_heart": "Purified Green Ogre Heart",
+  "item.rpgmod.blue_ogre_heart": "Blue Ogre Heart",
+  "item.rpgmod.purified_blue_ogre_heart": "Purified Blue Ogre Heart",
 
   "block.rpgmod.azurite_ore": "Azurite Ore",
   "block.rpgmod.adamantite_ore": "Adamantite Ore",
@@ -66,6 +72,8 @@
   "itemGroup.rpgmod_items_tab": "RPG Items",
 
   "item.rpgmod.warrior_starter_key": "Warrior Starter Key",
+  "item.rpgmod.archer_starter_key": "Archer Starter Key",
+  "item.rpgmod.mage_starter_key": "Mage Starter Key",
   "item.rpgmod.tablet": "Tablet",
 
   "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage",
@@ -76,5 +84,7 @@
   "rpgmod.tooltip.liquid.amount": "%s mB",
 
   "entity.rpgmod.zombie_rpg": "Red Zombie",
-  "entity.rpgmod.red_ogre": "Red Ogre"
+  "entity.rpgmod.red_ogre": "Red Ogre",
+  "entity.rpgmod.green_ogre": "Green Ogre",
+  "entity.rpgmod.blue_ogre": "Blue Ogre"
 }

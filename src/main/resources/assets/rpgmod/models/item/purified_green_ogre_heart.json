@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rpgmod:item/purified_green_ogre_heart"
+  }
+}
