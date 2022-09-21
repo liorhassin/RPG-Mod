@@ -1,11 +1,6 @@
 package net.LiorNadav.rpgmod.entity.custom;
 
 import net.LiorNadav.rpgmod.item.ModItems;
-import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshot;
-import net.LiorNadav.rpgmod.weapon_leveling_system.archer.slingshot.PlayerSlingshotProvider;
-import net.LiorNadav.rpgmod.weapon_leveling_system.mage.wand.PlayerWandProvider;
-import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
-import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.bossevents.CustomBossEvent;
@@ -42,21 +37,24 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class ZombieRPGEntity extends Monster implements IAnimatable {
+public class BlueOgreEntity extends Monster implements IAnimatable {
 
-    private static final float ATTACK_DMG = 3f;
+    private static final float ATTACK_DMG = 8f;
     private AnimationFactory factory = new AnimationFactory(this);
+    private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(),
+            BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
 
-    public ZombieRPGEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public BlueOgreEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        new CustomBossEvent(new ResourceLocation(""), this.getDisplayName());
     }
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.MAX_HEALTH, 200.0D)
                 .add(Attributes.ATTACK_DAMAGE, ATTACK_DMG)
                 .add(Attributes.ATTACK_SPEED, 1.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.4f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
     }
     @Override
     protected void registerGoals() {
@@ -73,18 +71,18 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.zombie_rpg.walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.blue_ogre.walk", true));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.zombie_rpg.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.blue_ogre.idle", true));
         return PlayState.CONTINUE;
     }
 
     private PlayState attackPredicate(AnimationEvent event){
         if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
             event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.zombie_rpg.attack", false));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.blue_ogre.attack", false));
             this.swinging = false;
         }
         return PlayState.CONTINUE;
@@ -92,10 +90,34 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "zombiecontroller",
+        data.addAnimationController(new AnimationController(this, "blueogrecontroller",
                 0, this::predicate));
-        data.addAnimationController(new AnimationController(this, "zombieattackController",
+        data.addAnimationController(new AnimationController(this, "blueogreattackController",
                 0, this::attackPredicate));
+    }
+
+    @Override
+    // Hit like Iron Golem
+    public boolean doHurtTarget(Entity pEntity) {
+        this.level.broadcastEntityEvent(this, (byte)4);
+        float f = ATTACK_DMG;
+        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
+        boolean flag = pEntity.hurt(DamageSource.mobAttack(this), f1);
+        if (flag) {
+            double d2;
+            if (pEntity instanceof LivingEntity) {
+                LivingEntity livingentity = (LivingEntity)pEntity;
+                d2 = livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+            } else {
+                d2 = 0.0D;
+            }
+
+            double d0 = d2;
+            double d1 = Math.max(0.0D, 1.0D - d0);
+            pEntity.setDeltaMovement(pEntity.getDeltaMovement().add(0.0D, (double)0.4F * d1, 0.0D));
+            this.doEnchantDamageEffects(this, pEntity);
+        }
+        return super.doHurtTarget(pEntity);
     }
 
     @Override
@@ -112,6 +134,7 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
         return SoundEvents.DOLPHIN_HURT;
     }
 
@@ -123,47 +146,30 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
         return 0.2F;
     }
 
+    /**
+     * Add the given player to the list of players tracking this entity. For instance, a player may track a boss in order
+     * to view its associated boss bar.
+     */
+    public void startSeenByPlayer(ServerPlayer pPlayer) {
+        super.startSeenByPlayer(pPlayer);
+        this.bossEvent.addPlayer(pPlayer);
+    }
+
+    /**
+     * Removes the given player from the list of players tracking this entity. See for
+     * more information on tracking.
+     */
+    public void stopSeenByPlayer(ServerPlayer pPlayer) {
+        super.stopSeenByPlayer(pPlayer);
+        this.bossEvent.removePlayer(pPlayer);
+    }
+
     @Override
     protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
-        boolean[] canDrop = new boolean[3];
-        if(pSource.getEntity() instanceof Player){
-            Player player = (Player) pSource.getEntity();
-            player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeLevel -> {
-                if (knifeLevel.getKnifeLevel() >= 10){
-                    canDrop[0] = true;
-                }
-            });
-            player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotLevel -> {
-                if (slingshotLevel.getSlingshotLevel() >= 10){
-                    canDrop[1] = true;
-                }
-            });
-            player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandLevel -> {
-                if (wandLevel.getWandLevel() >= 10){
-                    canDrop[2] = true;
-                }
-            });
-            if(canDrop[0]){
-                ItemEntity itemEntity = this.spawnAtLocation(ModItems.WARRIOR_STARTER_KEY.get());
-                if (itemEntity != null) {
-                    itemEntity.setExtendedLifetime();
-                }
-            }
-
-            if(canDrop[1]){
-                ItemEntity itemEntity = this.spawnAtLocation(ModItems.ARCHER_STARTER_KEY.get());
-                if (itemEntity != null) {
-                    itemEntity.setExtendedLifetime();
-                }
-            }
-
-            if(canDrop[2]){
-                ItemEntity itemEntity = this.spawnAtLocation(ModItems.MAGE_STARTER_KEY.get());
-                if (itemEntity != null) {
-                    itemEntity.setExtendedLifetime();
-                }
-            }
-        }
         super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
+        ItemEntity itemEntity = this.spawnAtLocation(ModItems.BLUE_OGRE_HEART.get());
+        if (itemEntity != null) {
+            itemEntity.setExtendedLifetime();
+        }
     }
 }

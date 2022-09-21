@@ -1,6 +1,8 @@
 package net.LiorNadav.rpgmod.entity;
 
 import net.LiorNadav.rpgmod.RPGMod;
+import net.LiorNadav.rpgmod.entity.custom.BlueOgreEntity;
+import net.LiorNadav.rpgmod.entity.custom.GreenOgreEntity;
 import net.LiorNadav.rpgmod.entity.custom.RedOgreEntity;
 import net.LiorNadav.rpgmod.entity.custom.ZombieRPGEntity;
 import net.LiorNadav.rpgmod.world.entity.projectile.*;
@@ -59,6 +61,18 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.of(RedOgreEntity::new, MobCategory.MONSTER)
                             .sized(2.3f, 4.5f)
                             .build(new ResourceLocation(RPGMod.MOD_ID, "red_ogre").toString()));
+
+    public static final RegistryObject<EntityType<GreenOgreEntity>> GREEN_OGRE =
+            ENTITY_TYPES.register("green_ogre",
+                    () -> EntityType.Builder.of(GreenOgreEntity::new, MobCategory.MONSTER)
+                            .sized(2.3f, 4.5f)
+                            .build(new ResourceLocation(RPGMod.MOD_ID, "green_ogre").toString()));
+
+    public static final RegistryObject<EntityType<BlueOgreEntity>> BLUE_OGRE =
+            ENTITY_TYPES.register("blue_ogre",
+                    () -> EntityType.Builder.of(BlueOgreEntity::new, MobCategory.MONSTER)
+                            .sized(2.3f, 4.5f)
+                            .build(new ResourceLocation(RPGMod.MOD_ID, "blue_ogre").toString()));
 
     public static final RegistryObject<EntityType<ZombieRPGEntity>> ZOMBIE_RPG =
             ENTITY_TYPES.register("zombie_rpg",

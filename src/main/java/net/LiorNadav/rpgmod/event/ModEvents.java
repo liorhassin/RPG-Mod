@@ -3,6 +3,8 @@ package net.LiorNadav.rpgmod.event;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.LiorNadav.rpgmod.RPGMod;
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
+import net.LiorNadav.rpgmod.entity.custom.BlueOgreEntity;
+import net.LiorNadav.rpgmod.entity.custom.GreenOgreEntity;
 import net.LiorNadav.rpgmod.entity.custom.RedOgreEntity;
 import net.LiorNadav.rpgmod.entity.custom.ZombieRPGEntity;
 import net.LiorNadav.rpgmod.item.ModItems;
@@ -519,6 +521,8 @@ public class ModEvents {
         @SubscribeEvent
         public static void entityAttributeEvent(EntityAttributeCreationEvent event){
             event.put(ModEntityTypes.RED_OGRE.get(), RedOgreEntity.setAttributes());
+            event.put(ModEntityTypes.GREEN_OGRE.get(), GreenOgreEntity.setAttributes());
+            event.put(ModEntityTypes.BLUE_OGRE.get(), BlueOgreEntity.setAttributes());
             event.put(ModEntityTypes.ZOMBIE_RPG.get(), ZombieRPGEntity.setAttributes());
         }
     }
