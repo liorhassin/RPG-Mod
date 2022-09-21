@@ -22,7 +22,7 @@ public class MageSkills {
                 if (mana.getMana() >= 15) {
                     //DragonFireball arrowEntity = new DragonFireball(level, player, player.getX(), player.getY(), player.getZ());
                     ModFireballSkill fireballEntity = new ModFireballSkill(level, player, 0, 0, 0, 0, explosivePower, explosiveGrief, explosiveFire);
-                    fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), player.getXRot(), velocity * tierSpeed, 1.0f);
+                    fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, velocity * tierSpeed, 3.0f);
                     bowStack.hurtAndBreak(1, player, (player1) -> {
                         player1.broadcastBreakEvent(player.getUsedItemHand());
                     });
