@@ -123,56 +123,54 @@ public class ModEvents {
         @SubscribeEvent
         public static void onPlayerCloned(PlayerEvent.Clone event) {
             if (event.isWasDeath()) {
+                event.getOriginal().reviveCaps();
+                event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(oldStore -> {
+                    event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(newStore -> {
+                        newStore.copyFrom(oldStore);
+                    });
+                });
                 event.getOriginal().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
                 event.getOriginal().getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
                 event.getOriginal().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
                 event.getOriginal().getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
                 event.getOriginal().getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
                 event.getOriginal().getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
-                event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(newStore -> {
-                        newStore.copyFrom(oldStore);
-                    });
-                });
-
                 event.getOriginal().getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
-
                 event.getOriginal().getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
-
                 event.getOriginal().getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(oldStore -> {
-                    event.getOriginal().getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(newStore -> {
+                    event.getEntity().getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(newStore -> {
                         newStore.copyFrom(oldStore);
                     });
                 });
