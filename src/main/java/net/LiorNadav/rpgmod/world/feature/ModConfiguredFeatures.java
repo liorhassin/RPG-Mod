@@ -35,17 +35,24 @@ public class ModConfiguredFeatures {
             OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.JADEITE_ORE.get().defaultBlockState()),
             OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.JADEITE_ORE.get().defaultBlockState())));
 
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_TOPAZ_ORES = Suppliers.memoize(()-> List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.TOPAZ_ORE.get().defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.TOPAZ_ORE.get().defaultBlockState())));
+
 
     //Ore registry:
     //-------------
     public static final RegistryObject<ConfiguredFeature<?, ?>> AZURITE_ORE = CONFIGURED_FEATURES.register("azurite_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_AZURITE_ORES.get(),4)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_AZURITE_ORES.get(),6)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ADAMANTITE_ORE = CONFIGURED_FEATURES.register("adamantite_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_ADAMANTITE_ORES.get(), 4)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_ADAMANTITE_ORES.get(), 6)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> JADEITE_ORE = CONFIGURED_FEATURES.register("jadeite_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_JADEITE_ORES.get(), 4)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_JADEITE_ORES.get(), 6)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> TOPAZ_ORE = CONFIGURED_FEATURES.register("topaz_ore",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_TOPAZ_ORES.get(), 4)));
     public static void register(IEventBus eventBus){
         CONFIGURED_FEATURES.register(eventBus);
     }
