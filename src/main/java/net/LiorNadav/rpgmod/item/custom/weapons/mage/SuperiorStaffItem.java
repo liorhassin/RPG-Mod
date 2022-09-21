@@ -14,7 +14,7 @@ public class SuperiorStaffItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if(hand == InteractionHand.MAIN_HAND) {
-            MageSkills.fireball(player.getMainHandItem(), level, player, 6, false, true, 6, 10);
+            MageSkills.fireball(player.getMainHandItem(), level, player, 6, false, true, 5, 10);
         }
         return super.use(level, player, hand);
     }
