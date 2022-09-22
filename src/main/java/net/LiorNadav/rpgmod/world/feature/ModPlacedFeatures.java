@@ -18,18 +18,23 @@ public class ModPlacedFeatures {
     //------------------------------------
     public static final RegistryObject<PlacedFeature> AZURITE_ORE_PLACED = PLACED_FEATURES.register("azurite_ore_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.AZURITE_ORE.getHolder().get(),
-                    commonOrePlacement(12, // VeinsPerChunk
+                    commonOrePlacement(15, // VeinsPerChunk
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(200)))));
 
     public static final RegistryObject<PlacedFeature> ADAMANTITE_ORE_PLACED = PLACED_FEATURES.register("adamantite_ore_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.ADAMANTITE_ORE.getHolder().get(),
-                    commonOrePlacement(12, // VeinsPerChunk
+                    commonOrePlacement(15, // VeinsPerChunk
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(200)))));
 
     public static final RegistryObject<PlacedFeature> JADEITE_ORE_PLACED = PLACED_FEATURES.register("jadeite_ore_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.JADEITE_ORE.getHolder().get(),
-                    commonOrePlacement(12, // VeinsPerChunk
+                    commonOrePlacement(15, // VeinsPerChunk
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(200)))));
+
+    public static final RegistryObject<PlacedFeature> TOPAZ_ORE_PLACED = PLACED_FEATURES.register("topaz_ore_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.TOPAZ_ORE.getHolder().get(),
+                    commonOrePlacement(10, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(100)))));
 
 
     //Taken from minecraft OrePlacement File , 3 private methods changed to public.

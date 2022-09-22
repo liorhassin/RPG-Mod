@@ -41,7 +41,6 @@ public class DiamondArrowEntity extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
-        this.setBaseDamage(7);
     }
 
     @Override

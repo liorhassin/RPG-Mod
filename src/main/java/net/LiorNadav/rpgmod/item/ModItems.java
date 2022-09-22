@@ -152,25 +152,25 @@ public class ModItems {
     //-------------------- Ammunition -------------------//
 
     public static final RegistryObject<Item> TORCH_ARROW = ITEMS.register("torch_arrow",
-            ()-> new TorchArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+            ()-> new TorchArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 2f));
 
     public static final RegistryObject<Item> EXPLOSIVE_ARROW = ITEMS.register("explosive_arrow",
-            ()-> new ExplosiveArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+            ()-> new ExplosiveArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 2f));
 
     public static final RegistryObject<Item> FROST_ARROW = ITEMS.register("frost_arrow",
-            ()-> new FrostArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+            ()-> new FrostArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 5f));
 
     public static final RegistryObject<Item> IRON_ARROW = ITEMS.register("iron_arrow",
-            ()-> new IronArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+            ()-> new IronArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 5f));
 
     public static final RegistryObject<Item> GOLD_ARROW = ITEMS.register("gold_arrow",
-            ()-> new GoldArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+            ()-> new GoldArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 7f));
 
     public static final RegistryObject<Item> DIAMOND_ARROW = ITEMS.register("diamond_arrow",
-            ()-> new DiamondArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+            ()-> new DiamondArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 10f));
 
     public static final RegistryObject<Item> EMERALD_ARROW = ITEMS.register("emerald_arrow",
-            ()-> new EmeraldArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS)));
+            ()-> new EmeraldArrowItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_ITEMS), 13f));
 
     //----------- Keys -------------
     public static final RegistryObject<Item> WARRIOR_STARTER_KEY = ITEMS.register("warrior_starter_key", WarriorStarterKey::new);

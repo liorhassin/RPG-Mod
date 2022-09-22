@@ -1,14 +1,11 @@
 package net.LiorNadav.rpgmod.item.custom.weapons.mage;
 
 import net.LiorNadav.rpgmod.weapon_leveling_system.mage.PlayerManaProvider;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 
 
@@ -22,13 +19,14 @@ public class MageSkills {
                 if (mana.getMana() >= 15) {
                     //DragonFireball arrowEntity = new DragonFireball(level, player, player.getX(), player.getY(), player.getZ());
                     ModFireballSkill fireballEntity = new ModFireballSkill(level, player, 0, 0, 0, 0, explosivePower, explosiveGrief, explosiveFire);
-                    fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, velocity * tierSpeed, 3.0f);
+                    fireballEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), player.getXRot(), velocity * tierSpeed, 1.0f);
                     bowStack.hurtAndBreak(1, player, (player1) -> {
                         player1.broadcastBreakEvent(player.getUsedItemHand());
                     });
+                    // change fireball to spawn above player.
+                    fireballEntity.moveTo(player.getX(), player.getY()+2f, player.getZ(), player.getYRot(), player.getXRot());
                     level.addFreshEntity(fireballEntity);
                     mana.subMana(manaCost);
-                    player.sendSystemMessage(Component.literal("Current mana: " + mana.getMana()));
                 }
             });
         }

@@ -127,41 +127,67 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
     protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
         boolean[] canDrop = new boolean[3];
         if(pSource.getEntity() instanceof Player){
+            String mainItemName = ((Player) pSource.getEntity()).getMainHandItem().getItem().toString();
             Player player = (Player) pSource.getEntity();
-            player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeLevel -> {
-                if (knifeLevel.getKnifeLevel() >= 10){
-                    canDrop[0] = true;
-                }
-            });
-            player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotLevel -> {
-                if (slingshotLevel.getSlingshotLevel() >= 10){
-                    canDrop[1] = true;
-                }
-            });
-            player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandLevel -> {
-                if (wandLevel.getWandLevel() >= 10){
-                    canDrop[2] = true;
-                }
-            });
-            if(canDrop[0]){
-                ItemEntity itemEntity = this.spawnAtLocation(ModItems.WARRIOR_STARTER_KEY.get());
-                if (itemEntity != null) {
-                    itemEntity.setExtendedLifetime();
-                }
-            }
-
-            if(canDrop[1]){
-                ItemEntity itemEntity = this.spawnAtLocation(ModItems.ARCHER_STARTER_KEY.get());
-                if (itemEntity != null) {
-                    itemEntity.setExtendedLifetime();
-                }
-            }
-
-            if(canDrop[2]){
-                ItemEntity itemEntity = this.spawnAtLocation(ModItems.MAGE_STARTER_KEY.get());
-                if (itemEntity != null) {
-                    itemEntity.setExtendedLifetime();
-                }
+            switch(mainItemName) {
+                case "beginner_broadsword":
+                case "advanced_broadsword":
+                case "superior_broadsword":
+                case "beginner_battle_axe":
+                case "advanced_battle_axe":
+                case "superior_battle_axe":
+                    player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeLevel -> {
+                        if (knifeLevel.getKnifeLevel() >= 10) {
+                            canDrop[0] = true;
+                        }
+                    });
+                    if (canDrop[0]) {
+                        ItemEntity itemEntity = this.spawnAtLocation(ModItems.WARRIOR_STARTER_KEY.get());
+                        this.spawnAtLocation(ModItems.MAGE_STARTER_KEY.get());
+                        if (itemEntity != null) {
+                            itemEntity.setExtendedLifetime();
+                        }
+                    }
+                    break;
+                case "beginner_bow":
+                case "advanced_bow":
+                case "superior_bow":
+                case "beginner_crossbow":
+                case "advanced_crossbow":
+                case "superior_crossbow":
+                    player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotLevel -> {
+                        if (slingshotLevel.getSlingshotLevel() >= 10) {
+                            canDrop[0] = true;
+                        }
+                    });
+                    if (canDrop[0]) {
+                        ItemEntity itemEntity = this.spawnAtLocation(ModItems.ARCHER_STARTER_KEY.get());
+                        this.spawnAtLocation(ModItems.MAGE_STARTER_KEY.get());
+                        if (itemEntity != null) {
+                            itemEntity.setExtendedLifetime();
+                        }
+                    }
+                    break;
+                case "beginner_staff":
+                case "advanced_staff":
+                case "superior_staff":
+                case "beginner_spellbook":
+                case "advanced_spellbook":
+                case "superior_spellbook":
+                    player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandLevel -> {
+                        if (wandLevel.getWandLevel() >= 10) {
+                            canDrop[0] = true;
+                        }
+                    });
+                    if (canDrop[0]) {
+                        ItemEntity itemEntity = this.spawnAtLocation(ModItems.MAGE_STARTER_KEY.get());
+                        if (itemEntity != null) {
+                            itemEntity.setExtendedLifetime();
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
         super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
