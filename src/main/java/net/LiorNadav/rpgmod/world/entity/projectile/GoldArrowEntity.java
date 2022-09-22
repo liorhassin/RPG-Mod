@@ -40,8 +40,8 @@ public class GoldArrowEntity extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        super.onHitEntity(result);
         this.setBaseDamage(5);
+        super.onHitEntity(result);
     }
 
     @Override
