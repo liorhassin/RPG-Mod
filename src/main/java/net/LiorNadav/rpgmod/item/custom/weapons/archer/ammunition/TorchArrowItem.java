@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition;
 
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
+import net.LiorNadav.rpgmod.world.entity.projectile.EmeraldArrowEntity;
 import net.LiorNadav.rpgmod.world.entity.projectile.TorchArrowEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -11,13 +12,17 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 
 public class TorchArrowItem extends ArrowItem {
-    public TorchArrowItem(Properties properties) {
+    public final float damage;
+    public TorchArrowItem(Properties properties, float damage) {
         super(properties);
+        this.damage = damage;
     }
 
     @Override
     public AbstractArrow createArrow(Level level, ItemStack itemStack, LivingEntity entity) {
-        return new TorchArrowEntity(ModEntityTypes.TORCH_ARROW.get(), entity, level);
+        TorchArrowEntity newArrow = new TorchArrowEntity(ModEntityTypes.TORCH_ARROW.get(), entity, level);
+        newArrow.setBaseDamage(this.damage);
+        return newArrow;
     }
 
     @Override

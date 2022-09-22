@@ -41,7 +41,6 @@ public class TorchArrowEntity extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        this.setBaseDamage(1);
         super.onHitEntity(result);
         if (result.getEntity() instanceof LivingEntity) {
             LivingEntity living = (LivingEntity)result.getEntity();

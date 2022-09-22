@@ -40,7 +40,6 @@ public class EmeraldArrowEntity extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        this.setBaseDamage(9);
         super.onHitEntity(result);
     }
 

@@ -41,7 +41,6 @@ public class FrostArrowEntity extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        this.setBaseDamage(3);
         super.onHitEntity(result);
         LivingEntity living = (LivingEntity)result.getEntity();
         living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 10));
