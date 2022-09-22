@@ -40,7 +40,6 @@ public class IronArrowEntity extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        this.setBaseDamage(3);
         super.onHitEntity(result);
     }
 

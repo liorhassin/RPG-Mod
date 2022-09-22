@@ -1,6 +1,7 @@
 package net.LiorNadav.rpgmod.item.custom.weapons.archer.ammunition;
 
 import net.LiorNadav.rpgmod.entity.ModEntityTypes;
+import net.LiorNadav.rpgmod.world.entity.projectile.EmeraldArrowEntity;
 import net.LiorNadav.rpgmod.world.entity.projectile.ExplosiveArrowEntity;
 import net.LiorNadav.rpgmod.world.entity.projectile.TorchArrowEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,13 +13,17 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 
 public class ExplosiveArrowItem extends ArrowItem {
-    public ExplosiveArrowItem(Properties properties) {
+    public final float damage;
+    public ExplosiveArrowItem(Properties properties, float damage) {
         super(properties);
+        this.damage = damage;
     }
 
     @Override
     public AbstractArrow createArrow(Level level, ItemStack itemStack, LivingEntity entity) {
-        return new ExplosiveArrowEntity(ModEntityTypes.EXPLOSIVE_ARROW.get(), entity, level);
+        ExplosiveArrowEntity newArrow = new ExplosiveArrowEntity(ModEntityTypes.EXPLOSIVE_ARROW.get(), entity, level);
+        newArrow.setBaseDamage(this.damage);
+        return newArrow;
     }
 
     @Override
