@@ -41,12 +41,12 @@ public class TorchArrowEntity extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        super.onHitEntity(result);
         this.setBaseDamage(1);
+        super.onHitEntity(result);
         if (result.getEntity() instanceof LivingEntity) {
             LivingEntity living = (LivingEntity)result.getEntity();
-            living.setSecondsOnFire(8);
-            living.addEffect(new MobEffectInstance(MobEffects.GLOWING, 200, 0));
+            living.setSecondsOnFire(4);
+            living.addEffect(new MobEffectInstance(MobEffects.GLOWING, 80, 0));
         }
     }
 

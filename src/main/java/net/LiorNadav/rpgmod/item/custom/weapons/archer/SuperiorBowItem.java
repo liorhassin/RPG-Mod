@@ -22,7 +22,7 @@ public class SuperiorBowItem extends ModBow{
 
     protected double getArrowDamage(ItemStack bowStack, AbstractArrow arrowEntity) {
         int powerLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, bowStack);
-            return (double)powerLevel * 1.5D + 2D;
+            return (double)powerLevel * 1.25D + 2D;
     }
 
     @Override

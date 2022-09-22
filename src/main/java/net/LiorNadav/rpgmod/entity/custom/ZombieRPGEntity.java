@@ -143,6 +143,7 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
                     });
                     if (canDrop[0]) {
                         ItemEntity itemEntity = this.spawnAtLocation(ModItems.WARRIOR_STARTER_KEY.get());
+                        this.spawnAtLocation(ModItems.MAGE_STARTER_KEY.get());
                         if (itemEntity != null) {
                             itemEntity.setExtendedLifetime();
                         }
@@ -161,6 +162,7 @@ public class ZombieRPGEntity extends Monster implements IAnimatable {
                     });
                     if (canDrop[0]) {
                         ItemEntity itemEntity = this.spawnAtLocation(ModItems.ARCHER_STARTER_KEY.get());
+                        this.spawnAtLocation(ModItems.MAGE_STARTER_KEY.get());
                         if (itemEntity != null) {
                             itemEntity.setExtendedLifetime();
                         }
