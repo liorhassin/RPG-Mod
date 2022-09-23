@@ -11,13 +11,13 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 //C2S meaning Client To Server.
-public class KnifeLevelC2SPacket {
+public class KnifeLevelS2CPacket {
 
-    public KnifeLevelC2SPacket(){
+    public KnifeLevelS2CPacket(){
 
     }
     //For now stays empty.
-    public KnifeLevelC2SPacket(FriendlyByteBuf buf){
+    public KnifeLevelS2CPacket(FriendlyByteBuf buf){
 
     }
     //For now stays empty.

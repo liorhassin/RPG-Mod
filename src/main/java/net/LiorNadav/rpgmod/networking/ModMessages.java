@@ -26,10 +26,10 @@ public class ModMessages {
                 .simpleChannel();
         INSTANCE = net;
 
-        net.messageBuilder(KnifeLevelC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(KnifeLevelC2SPacket::new)
-                .encoder(KnifeLevelC2SPacket::toByte)
-                .consumerMainThread(KnifeLevelC2SPacket::handle)
+        net.messageBuilder(KnifeLevelS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(KnifeLevelS2CPacket::new)
+                .encoder(KnifeLevelS2CPacket::toByte)
+                .consumerMainThread(KnifeLevelS2CPacket::handle)
                 .add();
 
         net.messageBuilder(BroadswordLevelC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
@@ -68,10 +68,10 @@ public class ModMessages {
                 .consumerMainThread(WandLevelC2SPacket::handle)
                 .add();
 
-        net.messageBuilder(AllWeaponsLevelC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(AllWeaponsLevelC2SPacket::new)
-                .encoder(AllWeaponsLevelC2SPacket::toByte)
-                .consumerMainThread(AllWeaponsLevelC2SPacket::handle)
+        net.messageBuilder(AllWeaponsLevelS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(AllWeaponsLevelS2CPacket::new)
+                .encoder(AllWeaponsLevelS2CPacket::toByte)
+                .consumerMainThread(AllWeaponsLevelS2CPacket::handle)
                 .add();
 
         net.messageBuilder(ManaDataSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)

@@ -2,11 +2,11 @@
   "replace": false,
   "values": [
     "rpgmod:torch_arrow",
-    "rpgmod:frost_arrow",
     "rpgmod:explosive_arrow",
+    "rpgmod:frost_arrow",
     "rpgmod:iron_arrow",
     "rpgmod:gold_arrow",
-    "rpgmod:diamond_Arrow",
+    "rpgmod:diamond_arrow",
     "rpgmod:emerald_arrow"
   ]
 }
