@@ -38,10 +38,6 @@ public class IronArrowEntity extends AbstractArrow {
         return new ItemStack(ModItems.IRON_ARROW.get());
     }
 
-    @Override
-    protected void onHitEntity(EntityHitResult result) {
-        super.onHitEntity(result);
-    }
 
     @Override
     public Packet<?> getAddEntityPacket() {

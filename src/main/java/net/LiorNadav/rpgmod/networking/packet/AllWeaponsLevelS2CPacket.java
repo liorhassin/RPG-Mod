@@ -19,13 +19,13 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 //C2S meaning Client To Server.
-public class AllWeaponsLevelC2SPacket {
+public class AllWeaponsLevelS2CPacket {
 
-    public AllWeaponsLevelC2SPacket(){
+    public AllWeaponsLevelS2CPacket(){
 
     }
     //For now stays empty.
-    public AllWeaponsLevelC2SPacket(FriendlyByteBuf buf){
+    public AllWeaponsLevelS2CPacket(FriendlyByteBuf buf){
 
     }
     //For now stays empty.

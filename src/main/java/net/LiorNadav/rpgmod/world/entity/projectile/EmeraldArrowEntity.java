@@ -39,11 +39,6 @@ public class EmeraldArrowEntity extends AbstractArrow {
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult result) {
-        super.onHitEntity(result);
-    }
-
-    @Override
     public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
