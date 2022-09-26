@@ -90,11 +90,11 @@ public class ModItems {
             () -> new StarterWandItem(new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     public static final RegistryObject<Item> BEGINNER_BROADSWORD = ITEMS.register("beginner_broadsword",
-            () -> new BeginnerBroadSwordItem(Tiers.STONE, 3, -2f,
+            () -> new BeginnerBroadSwordItem(Tiers.STONE, 5, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     public static final RegistryObject<Item> ADVANCED_BROADSWORD = ITEMS.register("advanced_broadsword",
-            () -> new AdvancedBroadSwordItem(Tiers.STONE, 6, -2f,
+            () -> new AdvancedBroadSwordItem(Tiers.STONE, 7, -2f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(400)));
 
     public static final RegistryObject<Item> SUPERIOR_BROADSWORD = ITEMS.register("superior_broadsword",
@@ -102,7 +102,7 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(800)));
 
     public static final RegistryObject<Item> BEGINNER_BATTLE_AXE = ITEMS.register("beginner_battle_axe",
-            () -> new BeginnerBattleAxeItem(Tiers.STONE, 5, -3f,
+            () -> new BeginnerBattleAxeItem(Tiers.STONE, 6, -3f,
                     new Item.Properties().tab(ModCreativeModeTab.RPG_MOD_WEAPONS).durability(200)));
 
     public static final RegistryObject<Item> ADVANCED_BATTLE_AXE = ITEMS.register("advanced_battle_axe",
