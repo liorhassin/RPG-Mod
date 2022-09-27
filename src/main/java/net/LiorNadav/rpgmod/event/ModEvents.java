@@ -31,6 +31,7 @@ import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroa
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.broadsword.PlayerBroadswordProvider;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnife;
 import net.LiorNadav.rpgmod.weapon_leveling_system.warrior.knife.PlayerKnifeProvider;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -45,6 +46,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -209,7 +211,8 @@ public class ModEvents {
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                             if(knifeExperience.getKnifeLevel() != 10) {
                                 if(knifeExperience.getKnifeExperience() + (int)event.getAmount() >= knifeExperience.getExperienceArray(knifeExperience.getKnifeLevel())){
-                                    ModMessages.sendToServer(new KnifeLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Knife leveled up, Current level: " + (knifeExperience.getKnifeLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new KnifeLevelC2SPacket());
                                 }
                                 knifeExperience.addExperience((int) event.getAmount());
                             }
@@ -219,7 +222,8 @@ public class ModEvents {
                         player.getCapability(PlayerSlingshotProvider.PLAYER_SLINGSHOT).ifPresent(slingshotExperience -> {
                             if (slingshotExperience.getSlingshotLevel() != 10) {
                                 if(slingshotExperience.getSlingshotExperience() + (int)event.getAmount() >= slingshotExperience.getExperienceArray(slingshotExperience.getSlingshotLevel())){
-                                    ModMessages.sendToServer(new SlingshotLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Slingshot leveled up, Current level: " + (slingshotExperience.getSlingshotLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new SlingshotLevelC2SPacket());
                                 }
                                 slingshotExperience.addExperience((int) event.getAmount());
                             }
@@ -229,7 +233,8 @@ public class ModEvents {
                         player.getCapability(PlayerWandProvider.PLAYER_WAND).ifPresent(wandExperience -> {
                             if (wandExperience.getWandLevel() != 10) {
                                 if(wandExperience.getWandExperience() + (int)event.getAmount() >= wandExperience.getExperienceArray(wandExperience.getWandLevel())){
-                                    ModMessages.sendToServer(new WandLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Wand leveled up, Current level: " + (wandExperience.getWandLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new WandLevelC2SPacket());
                                 }
                                 wandExperience.addExperience((int) event.getAmount());
                             }
@@ -242,7 +247,8 @@ public class ModEvents {
                                 player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                                     if (broadswordExperience.getSwordLevel() >= 0 && broadswordExperience.getTier() == 0) {
                                         if(broadswordExperience.getSwordExperience() + (int)event.getAmount() >= broadswordExperience.getExperienceArray(broadswordExperience.getSwordLevel())){
-                                            ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                            player.sendSystemMessage(Component.literal("Broadsword leveled up, Current level: " + (broadswordExperience.getSwordLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                            //ModMessages.sendToServer(new BroadswordLevelC2SPacket());
                                         }
                                         broadswordExperience.addExperience((int) event.getAmount());
                                     }
@@ -256,7 +262,8 @@ public class ModEvents {
                                 player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
                                     if (battleAxeExperience.getAxeLevel() >= 0 && battleAxeExperience.getTier() == 0) {
                                         if(battleAxeExperience.getAxeExperience() + (int)event.getAmount() >= battleAxeExperience.getExperienceArray(battleAxeExperience.getAxeLevel())){
-                                            ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                            player.sendSystemMessage(Component.literal("Battle axe leveled up, Current level: " + (battleAxeExperience.getAxeLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                            //ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
                                         }
                                         battleAxeExperience.addExperience((int) event.getAmount());
                                     }
@@ -271,7 +278,8 @@ public class ModEvents {
                                 player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
                                     if (bowExperience.getBowLevel() >= 0 && bowExperience.getTier() == 0) {
                                         if(bowExperience.getBowExperience() + (int)event.getAmount() >= bowExperience.getExperienceArray(bowExperience.getBowLevel())){
-                                            ModMessages.sendToServer(new BowLevelC2SPacket());
+                                            player.sendSystemMessage(Component.literal("Bow leveled up, Current level: " + (bowExperience.getBowLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                            //ModMessages.sendToServer(new BowLevelC2SPacket());
                                         }
                                         bowExperience.addExperience((int) event.getAmount());
                                     }
@@ -285,7 +293,8 @@ public class ModEvents {
                                 player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
                                     if (crossbowExperience.getCrossbowLevel() >= 0 && crossbowExperience.getTier() == 0) {
                                         if(crossbowExperience.getCrossbowExperience() + (int)event.getAmount() >= crossbowExperience.getExperienceArray(crossbowExperience.getCrossbowLevel())){
-                                            ModMessages.sendToServer(new CrossbowLevelC2SPacket());
+                                            player.sendSystemMessage(Component.literal("Crossbow leveled up, Current level: " + (crossbowExperience.getCrossbowLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                            //ModMessages.sendToServer(new CrossbowLevelC2SPacket());
                                         }
                                         crossbowExperience.addExperience((int) event.getAmount());
                                     }
@@ -300,7 +309,8 @@ public class ModEvents {
                                 player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
                                     if (staffExperience.getStaffLevel() >= 0 && staffExperience.getTier() == 0) {
                                         if(staffExperience.getStaffExperience() + (int)event.getAmount() >= staffExperience.getExperienceArray(staffExperience.getStaffLevel())){
-                                            ModMessages.sendToServer(new StaffLevelC2SPacket());
+                                            player.sendSystemMessage(Component.literal("Staff leveled up, Current level: " + (staffExperience.getStaffLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                            //ModMessages.sendToServer(new StaffLevelC2SPacket());
                                         }
                                         staffExperience.addExperience((int) event.getAmount());
                                     }
@@ -314,7 +324,8 @@ public class ModEvents {
                                 player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
                                     if (spellbookExperience.getSpellbookLevel() >= 0 && spellbookExperience.getTier() == 0) {
                                         if(spellbookExperience.getSpellbookExperience() + (int)event.getAmount() >= spellbookExperience.getExperienceArray(spellbookExperience.getSpellbookLevel())){
-                                            ModMessages.sendToServer(new SpellbookLevelC2SPacket());
+                                            player.sendSystemMessage(Component.literal("Spellbook leveled up, Current level: " + (spellbookExperience.getSpellbookLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                            //ModMessages.sendToServer(new SpellbookLevelC2SPacket());
                                         }
                                         spellbookExperience.addExperience((int) event.getAmount());
                                     }
@@ -328,7 +339,7 @@ public class ModEvents {
                         player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                             if (broadswordExperience.getSwordLevel() >= 30 && broadswordExperience.getTier() == 1) {
                                 if(broadswordExperience.getSwordExperience() + (int)event.getAmount() >= broadswordExperience.getExperienceArray(broadswordExperience.getSwordLevel())){
-                                    ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Broadsword leveled up, Current level: " + (broadswordExperience.getSwordLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
                                 }
                                 broadswordExperience.addExperience((int) event.getAmount());
                             }
@@ -338,7 +349,8 @@ public class ModEvents {
                         player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
                             if (battleAxeExperience.getAxeLevel() >= 30 && battleAxeExperience.getTier() == 1) {
                                 if(battleAxeExperience.getAxeExperience() + (int)event.getAmount() >= battleAxeExperience.getExperienceArray(battleAxeExperience.getAxeLevel())){
-                                    ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Battle axe leveled up, Current level: " + (battleAxeExperience.getAxeLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    // ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
                                 }
                                 battleAxeExperience.addExperience((int) event.getAmount());
                             }
@@ -349,7 +361,8 @@ public class ModEvents {
                         player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
                             if (bowExperience.getBowLevel() >= 30 && bowExperience.getTier() == 1) {
                                 if(bowExperience.getBowExperience() + (int)event.getAmount() >= bowExperience.getExperienceArray(bowExperience.getBowLevel())){
-                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Bow leveled up, Current level: " + (bowExperience.getBowLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new BowLevelC2SPacket());
                                 }
                                 bowExperience.addExperience((int) event.getAmount());
                             }
@@ -359,7 +372,8 @@ public class ModEvents {
                         player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
                             if (crossbowExperience.getCrossbowLevel() >= 30 && crossbowExperience.getTier() == 1) {
                                 if(crossbowExperience.getCrossbowExperience() + (int)event.getAmount() >= crossbowExperience.getExperienceArray(crossbowExperience.getCrossbowLevel())){
-                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Crossbow leveled up, Current level: " + (crossbowExperience.getCrossbowLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new BowLevelC2SPacket());
                                 }
                                 crossbowExperience.addExperience((int) event.getAmount());
                             }
@@ -370,7 +384,8 @@ public class ModEvents {
                         player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
                             if (staffExperience.getStaffLevel() >= 30 && staffExperience.getTier() == 1) {
                                 if(staffExperience.getStaffExperience() + (int)event.getAmount() >= staffExperience.getExperienceArray(staffExperience.getStaffLevel())){
-                                    ModMessages.sendToServer(new StaffLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Staff leveled up, Current level: " + (staffExperience.getStaffLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new StaffLevelC2SPacket());
                                 }
                                 staffExperience.addExperience((int) event.getAmount());
                             }
@@ -380,7 +395,8 @@ public class ModEvents {
                         player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
                             if (spellbookExperience.getSpellbookLevel() >= 30 && spellbookExperience.getTier() == 1) {
                                 if(spellbookExperience.getSpellbookExperience() + (int)event.getAmount() >= spellbookExperience.getExperienceArray(spellbookExperience.getSpellbookLevel())){
-                                    ModMessages.sendToServer(new SpellbookLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Spellbook leveled up, Current level: " + (spellbookExperience.getSpellbookLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new SpellbookLevelC2SPacket());
                                 }
                                 spellbookExperience.addExperience((int) event.getAmount());
                             }
@@ -391,7 +407,7 @@ public class ModEvents {
                         player.getCapability(PlayerBroadswordProvider.PLAYER_BROADSWORD).ifPresent(broadswordExperience -> {
                             if (broadswordExperience.getSwordLevel() >= 60 && broadswordExperience.getTier() == 2) {
                                 if(broadswordExperience.getSwordExperience() + (int)event.getAmount() >= broadswordExperience.getExperienceArray(broadswordExperience.getSwordLevel())){
-                                    ModMessages.sendToServer(new BroadswordLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Broadsword leveled up, Current level: " + (broadswordExperience.getSwordLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
                                 }
                                 broadswordExperience.addExperience((int) event.getAmount());
                             }
@@ -401,7 +417,8 @@ public class ModEvents {
                         player.getCapability(PlayerBattleAxeProvider.PLAYER_BATTLE_AXE).ifPresent(battleAxeExperience -> {
                             if (battleAxeExperience.getAxeLevel() >= 60 && battleAxeExperience.getTier() == 2) {
                                 if(battleAxeExperience.getAxeExperience() + (int)event.getAmount() >= battleAxeExperience.getExperienceArray(battleAxeExperience.getAxeLevel())){
-                                    ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Battle axe leveled up, Current level: " + (battleAxeExperience.getAxeLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new BattleAxeLevelC2SPacket());
                                 }
                                 battleAxeExperience.addExperience((int) event.getAmount());
                             }
@@ -412,7 +429,8 @@ public class ModEvents {
                         player.getCapability(PlayerBowProvider.PLAYER_BOW).ifPresent(bowExperience -> {
                             if (bowExperience.getBowLevel() >= 60 && bowExperience.getTier() == 2) {
                                 if(bowExperience.getBowExperience() + (int)event.getAmount() >= bowExperience.getExperienceArray(bowExperience.getBowLevel())){
-                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Bow leveled up, Current level: " + (bowExperience.getBowLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new BowLevelC2SPacket());
                                 }
                                 bowExperience.addExperience((int) event.getAmount());
                             }
@@ -422,7 +440,8 @@ public class ModEvents {
                         player.getCapability(PlayerCrossbowProvider.PLAYER_CROSSBOW).ifPresent(crossbowExperience -> {
                             if (crossbowExperience.getCrossbowLevel() >= 60 && crossbowExperience.getTier() == 2) {
                                 if(crossbowExperience.getCrossbowExperience() + (int)event.getAmount() >= crossbowExperience.getExperienceArray(crossbowExperience.getCrossbowLevel())){
-                                    ModMessages.sendToServer(new BowLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Crossbow leveled up, Current level: " + (crossbowExperience.getCrossbowLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new BowLevelC2SPacket());
                                 }
                                 crossbowExperience.addExperience((int) event.getAmount());
                             }
@@ -433,7 +452,8 @@ public class ModEvents {
                         player.getCapability(PlayerStaffProvider.PLAYER_STAFF).ifPresent(staffExperience -> {
                             if (staffExperience.getStaffLevel() >= 60 && staffExperience.getTier() == 2) {
                                 if(staffExperience.getStaffExperience() + (int)event.getAmount() >= staffExperience.getExperienceArray(staffExperience.getStaffLevel())){
-                                    ModMessages.sendToServer(new StaffLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Staff leveled up, Current level: " + (staffExperience.getStaffLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new StaffLevelC2SPacket());
                                 }
                                 staffExperience.addExperience((int) event.getAmount());
                             }
@@ -443,13 +463,15 @@ public class ModEvents {
                         player.getCapability(PlayerSpellbookProvider.PLAYER_SPELLBOOK).ifPresent(spellbookExperience -> {
                             if (spellbookExperience.getSpellbookLevel() >= 60 && spellbookExperience.getTier() == 2) {
                                 if(spellbookExperience.getSpellbookExperience() + (int)event.getAmount() >= spellbookExperience.getExperienceArray(spellbookExperience.getSpellbookLevel())){
-                                    ModMessages.sendToServer(new SpellbookLevelC2SPacket());
+                                    player.sendSystemMessage(Component.literal("Spellbook leveled up, Current level: " + (spellbookExperience.getSpellbookLevel()+1)).withStyle(ChatFormatting.DARK_GREEN));
+                                    //ModMessages.sendToServer(new SpellbookLevelC2SPacket());
                                 }
                                 spellbookExperience.addExperience((int) event.getAmount());
                             }
                         });
                         break;
                     //---------------------------Dev Tool-------------------------------//
+                    /*
                     case "apple":
                         player.getCapability(PlayerKnifeProvider.PLAYER_KNIFE).ifPresent(knifeExperience -> {
                             knifeExperience.addExperience(10000);
@@ -485,6 +507,7 @@ public class ModEvents {
                             //
                         });
                         break;
+                     */
                     default:
                         break;
                 }

@@ -6,6 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public class ModFireballSkill extends LargeFireball {
@@ -41,6 +42,13 @@ public class ModFireballSkill extends LargeFireball {
             }
             this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), (float)this.customExplosivePower, explosiveFire, flag);
             this.discard();
+        }
+    }
+
+    @Override
+    protected void onHitEntity(EntityHitResult pResult) {
+        if(pResult.getEntity() instanceof LivingEntity){
+            super.onHitEntity(pResult);
         }
     }
 

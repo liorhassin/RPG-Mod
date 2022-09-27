@@ -7,6 +7,7 @@ import net.LiorNadav.rpgmod.entity.custom.RedOgreEntity;
 import net.LiorNadav.rpgmod.entity.custom.ZombieRPGEntity;
 import net.LiorNadav.rpgmod.world.entity.projectile.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -46,7 +47,7 @@ public class ModEntityTypes {
                     .updateInterval(20).build("gold_arrow"));
 
     public static final RegistryObject<EntityType<DiamondArrowEntity>> DIAMOND_ARROW = ENTITY_TYPES.register("diamond_arrow",
-            () -> EntityType.Builder.of((EntityType.EntityFactory<DiamondArrowEntity>) DiamondArrowEntity::new, MobCategory.MISC)
+           () -> EntityType.Builder.of((EntityType.EntityFactory<DiamondArrowEntity>) DiamondArrowEntity::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F).clientTrackingRange(4)
                     .updateInterval(20).build("diamond_arrow"));
 
