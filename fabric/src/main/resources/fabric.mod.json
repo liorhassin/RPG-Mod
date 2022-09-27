@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "rpgmod",
+  "version": "${version}",
+  "name": "RPGMod",
+  "description": "Rpg mod ",
+  "authors": [
+    "Liorhassin",
+    "Nadavp13"
+  ],
+  "contact": {
+    "repo": "https://github.com/liorhassin/RPG-Mod",
+    "issues": "https://github.com/liorhassin/RPG-Mod/issues"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "liornadav.rpgmod.fabric.RPGModFabric"
+    ]
+  },
+  "mixins": [
+    "rpgmod.mixins.json",
+    "rpgmod-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "minecraft": ">=1.19.0"
+  }
+}
