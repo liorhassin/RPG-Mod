@@ -1,0 +1,90 @@
+{
+  "item.rpgmod.azurite_ingot": "Azurite Ingot",
+  "item.rpgmod.adamantite_ingot": "Adamantite Ingot",
+  "item.rpgmod.jadeite_ingot": "Jadeite Ingot",
+  "item.rpgmod.topaz": "Topaz",
+  "block.rpgmod.topaz_ore": "Topaz Ore",
+  "block.rpgmod.topaz_block": "Topaz Block",
+
+  "item.rpgmod.azurite_dust": "Azurite Dust",
+  "item.rpgmod.adamantite_dust": "Adamantite Dust",
+  "item.rpgmod.jadeite_dust": "Jadeite Dust",
+  "item.rpgmod.mix_dust": "Mix Dust",
+
+  "item.rpgmod.zombie_rpg_spawn_egg": "Red Zombie Spawn Egg",
+  "item.rpgmod.red_ogre_spawn_egg": "Red Ogre Spawn Egg",
+  "item.rpgmod.green_ogre_spawn_egg": "Green Ogre Spawn Egg",
+  "item.rpgmod.blue_ogre_spawn_egg": "Blue Ogre Spawn Egg",
+  "item.rpgmod.red_ogre_heart": "Red Ogre Heart",
+  "item.rpgmod.purified_red_ogre_heart": "Purified Red Ogre Heart",
+  "item.rpgmod.green_ogre_heart": "Green Ogre Heart",
+  "item.rpgmod.purified_green_ogre_heart": "Purified Green Ogre Heart",
+  "item.rpgmod.blue_ogre_heart": "Blue Ogre Heart",
+  "item.rpgmod.purified_blue_ogre_heart": "Purified Blue Ogre Heart",
+
+  "block.rpgmod.azurite_ore": "Azurite Ore",
+  "block.rpgmod.adamantite_ore": "Adamantite Ore",
+  "block.rpgmod.jadeite_ore": "Jadeite Ore",
+
+  "block.rpgmod.portal_block": "Portal Block",
+  "block.rpgmod.spawner": "Spawner",
+  "block.rpgmod.villager_block": "Villager Block",
+
+  "block.rpgmod.purifier": "Purifier",
+
+  "item.rpgmod.starter_knife": "Starter Knife",
+  "item.rpgmod.starter_slingshot": "Starter Slingshot",
+  "item.rpgmod.starter_wand": "Starter Wand",
+
+  "item.rpgmod.beginner_bow": "Beginner Bow",
+  "item.rpgmod.advanced_bow": "Advanced Bow",
+  "item.rpgmod.superior_bow": "Superior Bow",
+  "item.rpgmod.beginner_crossbow": "Beginner Crossbow",
+  "item.rpgmod.advanced_crossbow": "Advanced Crossbow",
+  "item.rpgmod.superior_crossbow": "Superior Crossbow",
+
+  "item.rpgmod.torch_arrow": "Torch Arrow",
+  "item.rpgmod.explosive_arrow": "Explosive Arrow",
+  "item.rpgmod.frost_arrow": "Frost Arrow",
+  "item.rpgmod.iron_arrow": "Iron Arrow",
+  "item.rpgmod.gold_arrow": "Gold Arrow",
+  "item.rpgmod.diamond_arrow": "Diamond Arrow",
+  "item.rpgmod.emerald_arrow": "Emerald Arrow",
+
+  "item.rpgmod.beginner_broadsword": "Beginner Broadsword",
+  "item.rpgmod.advanced_broadsword": "Advanced Broadsword",
+  "item.rpgmod.superior_broadsword": "Superior Broadsword",
+
+  "item.rpgmod.beginner_battle_axe": "Beginner Battle Axe",
+  "item.rpgmod.advanced_battle_axe": "Advanced Battle Axe",
+  "item.rpgmod.superior_battle_axe": "Superior Battle Axe",
+
+  "item.rpgmod.beginner_staff": "Disciple Staff",
+  "item.rpgmod.advanced_staff": "Master Staff",
+  "item.rpgmod.superior_staff": "Archmage Staff",
+  "item.rpgmod.beginner_spellbook": "Disciple Spellbook",
+  "item.rpgmod.advanced_spellbook": "Master Spellbook",
+  "item.rpgmod.superior_spellbook": "Archmage Spellbook",
+
+  "key.category.rpgmod": "RPG Mod",
+  "key.rpgmod.guide_book": "Open guide book",
+  "itemGroup.rpgmod_weapons_tab": "RPG Weapons",
+  "itemGroup.rpgmod_items_tab": "RPG Items",
+
+  "item.rpgmod.warrior_starter_key": "Warrior Starter Key",
+  "item.rpgmod.archer_starter_key": "Archer Starter Key",
+  "item.rpgmod.mage_starter_key": "Mage Starter Key",
+  "item.rpgmod.tablet": "Tablet",
+
+  "entity.minecraft.villager.rpgmod.dark_mage": "Dark Mage",
+
+  "item.rpgmod.soap_water_bucket": "Holy Water Bucket",
+  "fluid_type.rpgmod.soap_water_fluid": "Holy Water",
+  "rpgmod.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "rpgmod.tooltip.liquid.amount": "%s mB",
+
+  "entity.rpgmod.zombie_rpg": "Red Zombie",
+  "entity.rpgmod.red_ogre": "Red Ogre",
+  "entity.rpgmod.green_ogre": "Green Ogre",
+  "entity.rpgmod.blue_ogre": "Blue Ogre"
+}

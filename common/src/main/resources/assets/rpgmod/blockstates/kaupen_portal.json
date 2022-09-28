@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "axis=z": { "model":  "rpgmod:block/kaupen_portal_ew"},
+    "axis=x": { "model":  "rpgmod:block/kaupen_portal_ns"}
+  }
+}

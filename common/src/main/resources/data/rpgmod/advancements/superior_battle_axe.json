@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:superior_battle_axe"
+    },
+    "title": "Path to great power",
+    "description": "Construct your final battle axe!",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:advanced_battle_axe",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:superior_battle_axe"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

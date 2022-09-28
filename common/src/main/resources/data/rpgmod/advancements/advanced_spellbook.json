@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:advanced_spellbook"
+    },
+    "title": "Path to great power",
+    "description": "Construct your second spellbook!",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:beginner_spellbook",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:advanced_spellbook"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "rpgmod:superior_spellbook"
+    ]
+  }
+}

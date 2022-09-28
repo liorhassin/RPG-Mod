@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:superior_staff"
+    },
+    "title": "Path to great power",
+    "description": "Construct your second staff!",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:advanced_staff",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:superior_staff"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

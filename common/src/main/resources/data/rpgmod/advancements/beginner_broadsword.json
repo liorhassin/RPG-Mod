@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:beginner_broadsword"
+    },
+    "title": "Path to great power",
+    "description": "Construct your first sword!",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:starter_knife",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:beginner_broadsword"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

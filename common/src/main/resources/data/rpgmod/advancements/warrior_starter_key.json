@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:warrior_starter_key"
+    },
+    "title": "First special mob drop!",
+    "description": "This key might be useful later on!",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:rpgmod",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:warrior_starter_key"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

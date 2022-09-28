@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:arrow"
+    },
+    "Y": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "rpgmod:explosive_arrow",
+    "count": 4
+  }
+}

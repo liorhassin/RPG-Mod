@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:arrow"
+    },
+    "Y": {
+      "item": "minecraft:ice"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "rpgmod:frost_arrow",
+    "count": 8
+  }
+}

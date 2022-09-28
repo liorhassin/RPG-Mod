@@ -1,0 +1,15 @@
+{
+  "type": "rpgmod:purifying",
+  "ingredients": [
+    {
+      "item": "rpgmod:red_ogre_heart"
+    }
+  ],
+  "fluid": {
+   "FluidName": "rpgmod:soap_water_fluid",
+   "Amount": 1000
+  },
+  "output": {
+    "item": "rpgmod:purified_red_ogre_heart"
+  }
+}

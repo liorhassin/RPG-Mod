@@ -1,0 +1,12 @@
+{
+  "type": "rpgmod:kjdim",
+  "generator": {
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "preset": "minecraft:overworld"
+    },
+    "seed": 250,
+    "settings": "minecraft:overworld",
+    "type": "minecraft:noise"
+  }
+}

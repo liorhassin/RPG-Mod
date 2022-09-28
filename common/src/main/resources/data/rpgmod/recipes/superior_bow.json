@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "rpgmod:advanced_bow"
+    },
+    "Y": {
+      "item": "rpgmod:purified_red_ogre_heart"
+    },
+    "Z": {
+      "item": "rpgmod:topaz_block"
+    }
+  },
+  "pattern": [
+    "ZXY"
+  ],
+  "result": {
+    "item": "rpgmod:superior_bow"
+  }
+}

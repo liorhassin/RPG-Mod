@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "rpgmod:advanced_battle_axe"
+    },
+    "Y": {
+      "item": "rpgmod:purified_red_ogre_heart"
+    },
+    "Z": {
+      "item": "rpgmod:topaz_block"
+    }
+  },
+  "pattern": [
+    "Z",
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "rpgmod:superior_battle_axe"
+  }
+}

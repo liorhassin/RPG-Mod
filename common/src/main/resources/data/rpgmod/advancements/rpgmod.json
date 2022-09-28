@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:adamantite_ore"
+    },
+    "title": "RPG Mod",
+    "description": "Great journey ahead!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "rpgmod:textures/block/azurite_ore.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:adamantite_ore",
+              "rpgmod:azurite_ore",
+              "rpgmod:jadeite_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

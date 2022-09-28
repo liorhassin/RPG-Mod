@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "rpgmod:beginner_broadsword"
+    },
+    "Y": {
+      "item": "rpgmod:purified_red_ogre_heart"
+    },
+    "Z": {
+      "item": "rpgmod:topaz"
+    }
+  },
+  "pattern": [
+    "Z",
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "rpgmod:advanced_broadsword"
+  }
+}

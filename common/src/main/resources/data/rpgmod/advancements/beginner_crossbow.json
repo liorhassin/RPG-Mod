@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:beginner_crossbow"
+    },
+    "title": "Path to great power",
+    "description": "Construct your first crossbow!",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:starter_slingshot",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:beginner_crossbow"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "rpgmod:advanced_crossbow"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "rpgmod:red_ogre_heart"
+    },
+    "title": "First special boss drop!",
+    "description": "This heart is a mess, Maybe purifying it will result in something useful?",
+    "background": "rpgmod:item/advancement_background",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "rpgmod:warrior_starter_key",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "rpgmod:red_ogre_heart"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "rpgmod:purified_red_ogre_heart"
+    ]
+  }
+}

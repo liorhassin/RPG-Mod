@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "rpgmod:azurite_dust"
+    },
+    {
+      "item": "rpgmod:adamantite_dust"
+    },
+    {
+      "item": "rpgmod:jadeite_dust"
+    }
+  ],
+  "result": {
+    "item": "rpgmod:mix_dust",
+    "count": 2
+  }
+}

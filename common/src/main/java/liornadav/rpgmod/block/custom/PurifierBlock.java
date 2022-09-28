@@ -78,14 +78,14 @@ public class PurifierBlock extends BlockWithEntity {
     }
     */
 
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+    public void onRemove(BlockState pState, World world, BlockPos pos, BlockState state, boolean pIsMoving) {
+        if (pState.getBlock() != state.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof PurifierBlockEntity) {
                 ((PurifierBlockEntity) blockEntity).drops();
             }
         }
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+        super.onRemove(pState, world, pos, state, pIsMoving);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class PurifierBlock extends BlockWithEntity {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-        return ActionResult.sidedSuccess(world.isClientSide());
+        return ActionResult.success(world.isClient());
     }
 
     @Nullable
