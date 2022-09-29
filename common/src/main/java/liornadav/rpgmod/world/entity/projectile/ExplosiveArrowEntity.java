@@ -1,51 +1,51 @@
 package liornadav.rpgmod.world.entity.projectile;
 
-import net.LiorNadav.rpgmod.item.ModItems;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.network.NetworkHooks;
+import liornadav.rpgmod.item.ModItems;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
+//import net.minecraftforge.network.NetworkHooks;
 
-public class ExplosiveArrowEntity extends AbstractArrow {
-    public ExplosiveArrowEntity(EntityType<ExplosiveArrowEntity> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+public class ExplosiveArrowEntity extends PersistentProjectileEntity {
+    public ExplosiveArrowEntity(EntityType<ExplosiveArrowEntity> pEntityType, World pWorld) {
+        super(pEntityType, pWorld);
     }
 
-    public ExplosiveArrowEntity(EntityType<ExplosiveArrowEntity> pEntityType, double pX, double pY, double pZ, Level pLevel) {
-        super(pEntityType, pX, pY, pZ, pLevel);
+    public ExplosiveArrowEntity(EntityType<ExplosiveArrowEntity> pEntityType, double pX, double pY, double pZ, World pWorld) {
+        super(pEntityType, pX, pY, pZ, pWorld);
     }
 
-    public ExplosiveArrowEntity(EntityType<ExplosiveArrowEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
-        super(pEntityType, pShooter, pLevel);
+    public ExplosiveArrowEntity(EntityType<ExplosiveArrowEntity> pEntityType, LivingEntity pShooter, World pWorld) {
+        super(pEntityType, pShooter, pWorld);
     }
 
 
+    /*
     @Override
-    protected ItemStack getPickupItem() {
+    public Packet<?> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
+*/
+    @Override
+    protected ItemStack asItemStack() {
         return new ItemStack(ModItems.EXPLOSIVE_ARROW.get());
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult result) {
-        super.onHitEntity(result);
-        this.level.explode(this, this.getX(), this.getY(), this.getZ(), 2.5f, false, Explosion.BlockInteraction.NONE);
+    protected void onEntityHit(EntityHitResult result) {
+        super.onEntityHit(result);
+        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 2.5f, false, Explosion.DestructionType.NONE);
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult result) {
-        super.onHitBlock(result);
-        this.setBaseDamage(2);
-        this.level.explode(this, this.getX(), this.getY(), this.getZ(), 2.5f, false, Explosion.BlockInteraction.NONE);
-    }
-
-    @Override
-    public Packet<?> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
+    protected void onBlockHit(BlockHitResult result) {
+        super.onBlockHit(result);
+        this.setDamage(2);
+        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 2.5f, false, Explosion.DestructionType.NONE);
     }
 }

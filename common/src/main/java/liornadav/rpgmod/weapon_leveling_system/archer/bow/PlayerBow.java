@@ -1,6 +1,6 @@
 package liornadav.rpgmod.weapon_leveling_system.archer.bow;
 
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 
 public class PlayerBow {
     private int bowLevel;
@@ -71,13 +71,13 @@ public class PlayerBow {
         bowAdvancementFlag = source.bowAdvancementFlag;
     }
 
-    public void saveNBTData (CompoundTag nbt){
+    public void saveNBTData (NbtCompound nbt){
         nbt.putInt("bowLevel", bowLevel);
         nbt.putInt("bowExperience", bowExperience);
         nbt.putInt("bowAdvancementFlag", bowAdvancementFlag);
     }
 
-    public void loadNBTData (CompoundTag nbt){
+    public void loadNBTData (NbtCompound nbt){
         bowLevel = nbt.getInt("bowLevel");
         bowExperience = nbt.getInt("bowExperience");
         bowAdvancementFlag = nbt.getInt("bowAdvancementFlag");

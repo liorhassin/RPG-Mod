@@ -1,35 +1,34 @@
 package liornadav.rpgmod.world.entity.projectile;
 
-import net.LiorNadav.rpgmod.item.ModItems;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
+import liornadav.rpgmod.item.ModItems;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+//import net.minecraftforge.network.NetworkHooks;
 
-public class EmeraldArrowEntity extends AbstractArrow {
-    public EmeraldArrowEntity(EntityType<EmeraldArrowEntity> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+public class EmeraldArrowEntity extends PersistentProjectileEntity {
+    public EmeraldArrowEntity(EntityType<EmeraldArrowEntity> pEntityType, World pWorld) {
+        super(pEntityType, pWorld);
     }
 
-    public EmeraldArrowEntity(EntityType<EmeraldArrowEntity> pEntityType, double pX, double pY, double pZ, Level pLevel) {
-        super(pEntityType, pX, pY, pZ, pLevel);
+    public EmeraldArrowEntity(EntityType<EmeraldArrowEntity> pEntityType, double pX, double pY, double pZ, World pWorld) {
+        super(pEntityType, pX, pY, pZ, pWorld);
     }
 
-    public EmeraldArrowEntity(EntityType<EmeraldArrowEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
-        super(pEntityType, pShooter, pLevel);
+    public EmeraldArrowEntity(EntityType<EmeraldArrowEntity> pEntityType, LivingEntity pShooter, World pWorld) {
+        super(pEntityType, pShooter, pWorld);
     }
 
 
     @Override
-    protected ItemStack getPickupItem() {
+    protected ItemStack asItemStack() {
         return new ItemStack(ModItems.EMERALD_ARROW.get());
     }
-
+/*
     @Override
     public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
-    }
+    }*/
 }

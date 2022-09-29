@@ -1,9 +1,26 @@
 package liornadav.rpgmod.world.entity.projectile;
 
 import net.LiorNadav.rpgmod.item.ModItems;
+import liornadav.rpgmod.item.ModItems;
+import net.LiorNadav.rpgmod.item.ModItems;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -20,49 +37,54 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
-public class TorchArrowEntity extends AbstractArrow {
-    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+public class TorchArrowEntity extends PersistentProjectileEntity {
+    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, World pWorld) {
+        super(pEntityType, pWorld);
     }
 
-    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, double pX, double pY, double pZ, Level pLevel) {
-        super(pEntityType, pX, pY, pZ, pLevel);
+    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, double pX, double pY, double pZ, World pWorld) {
+        super(pEntityType, pX, pY, pZ, pWorld);
     }
 
-    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
-        super(pEntityType, pShooter, pLevel);
+    public TorchArrowEntity(EntityType<TorchArrowEntity> pEntityType, LivingEntity pShooter, World pWorld) {
+        super(pEntityType, pShooter, pWorld);
     }
 
-
+    /*
     @Override
-    protected ItemStack getPickupItem() {
+    public Packet<?> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
+*/
+    @Override
+    protected ItemStack asItemStack() {
         return new ItemStack(ModItems.TORCH_ARROW.get());
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult result) {
-        super.onHitEntity(result);
+    protected void onEntityHit(EntityHitResult result) {
+        super.onEntityHit(result);
         if (result.getEntity() instanceof LivingEntity) {
             LivingEntity living = (LivingEntity)result.getEntity();
-            living.setSecondsOnFire(4);
-            living.addEffect(new MobEffectInstance(MobEffects.GLOWING, 80, 0));
+            living.setOnFireFor(4);
+            living.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 80, 0));
         }
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult pResult) {
-        super.onHitBlock(pResult);
+    protected void onBlockHit(BlockHitResult pResult) {
+        super.onBlockHit(pResult);
         setToTorch(pResult);
         this.remove(Entity.RemovalReason.DISCARDED);
     }
 
     private void setToTorch(BlockHitResult hit) {
-        Direction face = hit.getDirection();
+        Direction face = hit.getSide();
         BlockPos pos = hit.getBlockPos().relative(face);
-        boolean isAir = this.level.getBlockState(pos).isAir();
+        boolean isAir = this.world.getBlockState(pos).isAir();
         if (face == Direction.DOWN || !isAir){
-            ItemEntity torch = new ItemEntity(this.level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.TORCH_ARROW.get()));
-            level.addFreshEntity(torch);
+            ItemEntity torch = new ItemEntity(this.world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.TORCH_ARROW.get()));
+            world.addFreshEntity(torch);
         }
         else{
             BlockState state = Blocks.TORCH.defaultBlockState();
@@ -83,12 +105,7 @@ public class TorchArrowEntity extends AbstractArrow {
                 default:
                     break;
             }
-            level.setBlockAndUpdate(pos, state);
+            world.setBlockState(pos, state);
         }
-    }
-
-    @Override
-    public Packet<?> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }
